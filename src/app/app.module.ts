@@ -9,11 +9,19 @@ import { AppComponent } from './app.component';
 import { SharedModule } from  './shared/shared.module';
 import { CoreModule } from  './core/core.module';
 
+import { AuthModule } from './auth/auth.module';
+import { AdminComponent } from './admin/admin.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
+import { InmueblesTableComponent } from './inmuebles-table/inmuebles-table.component';
+
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AdminComponent,
+    InmueblesTableComponent
   ],
   imports: [
     BrowserModule,
@@ -21,6 +29,7 @@ import { CoreModule } from  './core/core.module';
     AppRoutingModule,
     CoreModule,
     SharedModule,  
+    AuthModule, LayoutModule, MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatTableModule, MatPaginatorModule, MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]
