@@ -26,8 +26,8 @@ export class AuthComponent implements OnInit {
   ) {
     // use FormBuilder to create a form group
     this.authForm = this.fb.group({
-      'username': ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
-      'password': ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]]
+      'username': ['', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]],
+      'password': ['', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]]
     });
   }
 
@@ -39,10 +39,12 @@ export class AuthComponent implements OnInit {
       this.title = (this.authType === 'login') ? 'Login' : 'Registro';
       // add form control for username if this is the register page
       if (this.authType === 'register') {
-        this.authForm.addControl('email', new FormControl());
+        this.authForm.addControl('email', new FormControl('',[Validators.required, Validators.email]));
       }
     });
   }
+
+  get f() { return this.authForm.controls; }
 
   goToggle() {
     (this.authType === 'login') ?  this.router.navigate(['/register']): this.router.navigate(['/login']);;
