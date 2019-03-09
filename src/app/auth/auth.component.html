@@ -1,4 +1,4 @@
-<div class="auth-page">
+<!-- <div class="auth-page">
   <div class="container page">
     <div class="row">
 
@@ -42,4 +42,42 @@
 
     </div>
   </div>
+</div> -->
+<div fxLayout="row gap" fxLayoutAlign="center center"  fxFill>
+  <mat-card  class="card-auth" style="min-width: 300px">
+   <mat-card-header fxLayout="row" fxLayoutAlign="center center" style="margin-bottom:5px;" >
+     <mat-card-title>
+      <div *ngIf="authType == 'login'">
+        {{title}}/<span (click)="goToggle()" style="color:#3F51B5">Registro</span>
+      </div>
+      <div *ngIf="authType == 'register'">
+        {{title}}/<span (click)="goToggle()" style="color:#3F51B5">Login</span>
+      </div>
+    </mat-card-title>
+   </mat-card-header>
+   <mat-card-content>
+    <app-list-errors [errors]="errors"></app-list-errors>
+      <form [formGroup]="authForm" (ngSubmit)="submitForm()">
+        <fieldset  [disabled]="isSubmitting">
+          <mat-form-field color="primary" fxLayout="row gap" fxLayoutAlign="center center" class="form-group">
+            <input matInput formControlName="username" placeholder="Username" required>+
+            <mat-error *ngIf="hasError('username', 'required')">El nombre de usuario es requerido</mat-error>
+            <mat-error *ngIf="hasError('username', 'maxlength')">La longitud máxima son 10 carácteres.</mat-error>
+          </mat-form-field>
+          <mat-form-field *ngIf="authType == 'register'" color="primary" fxLayout="row gap" fxLayoutAlign="center center" class="form-group">
+            <input matInput  formControlName="email" placeholder="Email" required>
+            <mat-error *ngIf="hasError('email', 'required')">El email es requerido</mat-error>
+          </mat-form-field>
+          <mat-form-field color="primary" fxLayout="row gap" fxLayoutAlign="center center" class="form-group">
+            <input matInput formControlName="password" placeholder="Password" type="password" name="password" required>
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </mat-form-field>
+        </fieldset>
+      </form>
+   </mat-card-content>
+   <mat-card-actions fxLayout="row" fxLayoutAlign="center center" style="margin-bottom:5px;">
+     <button mat-raised-button [disabled]="!authForm.valid" type="submit" color="primary">{{title}}</button>
+   </mat-card-actions>
+  </mat-card>
 </div>
+<app-footer ></app-footer>

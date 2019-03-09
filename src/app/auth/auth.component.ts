@@ -7,7 +7,8 @@ import { Errors } from '../core/models/errors.model';
 
 @Component({
   selector: 'app-auth-page',
-  templateUrl: './auth.component.html'
+  templateUrl: './auth.component.html',
+  styleUrls:['./auth.component.scss'],
 })
 export class AuthComponent implements OnInit {
   authType: String = '';
@@ -15,6 +16,7 @@ export class AuthComponent implements OnInit {
   errors: Errors = {errors: {}};
   isSubmitting = false;
   authForm: FormGroup;
+  hide:boolean = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,8 +26,8 @@ export class AuthComponent implements OnInit {
   ) {
     // use FormBuilder to create a form group
     this.authForm = this.fb.group({
-      'email': ['', Validators.required],
-      'password': ['', Validators.required]
+      'username': ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
+      'password': ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]]
     });
   }
 
@@ -37,11 +39,18 @@ export class AuthComponent implements OnInit {
       this.title = (this.authType === 'login') ? 'Login' : 'Registro';
       // add form control for username if this is the register page
       if (this.authType === 'register') {
-        this.authForm.addControl('username', new FormControl());
+        this.authForm.addControl('email', new FormControl());
       }
     });
   }
 
+  goToggle() {
+    (this.authType === 'login') ?  this.router.navigate(['/register']): this.router.navigate(['/login']);;
+  }
+
+  public hasError = (controlName: string, errorName: string) =>{
+    return this.authForm.controls[controlName].hasError(errorName);
+  }
   submitForm() {
     this.isSubmitting = true;
     this.errors = {errors: {}};

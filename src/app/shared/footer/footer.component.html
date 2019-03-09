@@ -1,6 +1,11 @@
-<mat-toolbar color="primary"  fxLayout="row wrap" fxLayoutAlign="center">
-  <span class="author">
-      &copy; {{ today | date: 'yyyy' }}.
-      <strong>Martín Palacios Albors </strong> tiene los derechos de autor
-  </span>
-</mat-toolbar>
+
+<div fxLayout="row" fxLayoutAlign="end start" > 
+  <mat-toolbar color="primary" >
+    <span>
+      <small>
+        &copy; {{ today | date: 'yyyy' }}.
+        Martín Palacios Albors
+      </small>
+    </span>
+  </mat-toolbar>
+</div>
