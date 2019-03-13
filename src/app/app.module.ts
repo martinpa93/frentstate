@@ -6,29 +6,28 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module.';
 import { AppComponent } from './app.component';
 
-import { SharedModule } from  './shared/shared.module';
 import { CoreModule } from  './core/core.module';
+import { SharedModule } from  './shared/shared.module';
 
-import { AuthModule } from './auth/auth.module';
+import { AuthComponent } from './auth/auth.component';
 import { AdminComponent } from './admin/admin.component';
 
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
-import { InmueblesTableComponent } from './inmuebles-table/inmuebles-table.component';
+import { ListPropertyComponent } from './Property/list-property/list-property.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    AuthComponent,
     AdminComponent,
-    InmueblesTableComponent
+    ListPropertyComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     CoreModule,
-    SharedModule,  
-    AuthModule, MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatTableModule, MatPaginatorModule, MatSortModule
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

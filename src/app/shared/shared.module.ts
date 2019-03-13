@@ -4,11 +4,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { MatButtonModule, MatCheckboxModule,
-  MatIconModule, MatMenuModule, MatSidenavModule,
-  MatExpansionModule, MatListModule, MatFormFieldModule,MatCardModule
-,MatRadioModule, MatDatepickerModule, MatInputModule, MatNativeDateModule} from '@angular/material';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule, MatCheckboxModule, MatToolbarModule,
+  MatIconModule, MatMenuModule, MatSidenavModule,MatExpansionModule, 
+  MatListModule, MatFormFieldModule,MatCardModule,MatRadioModule, 
+  MatDatepickerModule, MatInputModule, MatNativeDateModule,MatTableModule,
+MatPaginatorModule,MatSortModule,} from '@angular/material';
+
+
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { ListErrorsComponent } from './errors/list-errors.component';
@@ -39,7 +41,10 @@ import { ShowAuthedDirective } from './show-authed.directive';
     MatRadioModule,
     MatDatepickerModule,
     MatInputModule,
-    MatNativeDateModule 
+    MatNativeDateModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
     
   ],
   declarations: [NavComponent,
@@ -69,6 +74,10 @@ import { ShowAuthedDirective } from './show-authed.directive';
     MatDatepickerModule,
     MatInputModule,
     MatNativeDateModule,
+    //table
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
     
     ShowAuthedDirective,
     ListErrorsComponent,

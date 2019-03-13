@@ -7,8 +7,7 @@ import { Errors } from '../core/models/errors.model';
 
 @Component({
   selector: 'app-auth-page',
-  templateUrl: './auth.component.html',
-  styleUrls:['./auth.component.scss'],
+  templateUrl: './auth.component.html'
 })
 export class AuthComponent implements OnInit {
   authType: String = '';
@@ -26,7 +25,7 @@ export class AuthComponent implements OnInit {
   ) {
     // use FormBuilder to create a form group
     this.authForm = this.fb.group({
-      'username': ['', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]],
+      'email': ['', [Validators.required, Validators.email]],
       'password': ['', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]]
     });
   }
@@ -39,7 +38,7 @@ export class AuthComponent implements OnInit {
       this.title = (this.authType === 'login') ? 'Login' : 'Registro';
       // add form control for username if this is the register page
       if (this.authType === 'register') {
-        this.authForm.addControl('email', new FormControl('',[Validators.required, Validators.email]));
+        this.authForm.addControl('name', new FormControl('',[Validators.required, Validators.minLength(3), Validators.maxLength(10)]));
       }
     });
   }
@@ -47,25 +46,39 @@ export class AuthComponent implements OnInit {
   get f() { return this.authForm.controls; }
 
   goToggle() {
-    (this.authType === 'login') ?  this.router.navigate(['/register']): this.router.navigate(['/login']);;
+    (this.authType === 'login') ?  this.router.navigate(['/register']): this.router.navigate(['/login']);
   }
 
-  public hasError = (controlName: string, errorName: string) =>{
-    return this.authForm.controls[controlName].hasError(errorName);
-  }
   submitForm() {
     this.isSubmitting = true;
     this.errors = {errors: {}};
 
     const credentials = this.authForm.value;
-    this.userService
-    .attemptAuth(this.authType, credentials)
-    .subscribe(
-      data => this.router.navigateByUrl('/'),
-      err => {
-        this.errors = err;
-        this.isSubmitting = false;
-      }
-    );
+   
+    if (this.authType == 'login'){
+      this.userService
+      .login(credentials)
+      .subscribe(
+        data => { 
+          this.router.navigateByUrl('/admin');
+        },
+        err => {
+          this.errors = err;
+          this.isSubmitting = false;
+        }
+      );
+      
+    }
+    if (this.authType == 'register'){
+      return this.userService
+      .register(credentials)
+      .subscribe(
+        data => this.router.navigateByUrl('/'),
+        err => {
+          this.errors = err;
+          this.isSubmitting = false;
+        }
+      );
+    }
   }
 }

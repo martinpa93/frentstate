@@ -1,72 +1,26 @@
-<!-- <div class="auth-page">
-  <div class="container page">
-    <div class="row">
-
-      <div class="col-md-6 offset-md-3 col-xs-12">
-        <h1 class="text-xs-center">{{ title }}</h1>
-        <p class="text-xs-center">
-          <a [routerLink]="['/login']" *ngIf="authType == 'register'">¿Tienes cuenta?</a>
-          <a [routerLink]="['/register']" *ngIf="authType == 'login'">¿Necesitas una cuenta?</a>
-        </p>
-        <app-list-errors [errors]="errors"></app-list-errors>
-        <form [formGroup]="authForm" (ngSubmit)="submitForm()">
-          <fieldset [disabled]="isSubmitting">
-            <fieldset class="form-group">
-              <input
-                formControlName="username"
-                placeholder="Username"
-                class="form-control form-control-lg"
-                type="text"
-                *ngIf="authType == 'register'" />
-            </fieldset>
-            <fieldset class="form-group">
-              <input
-                formControlName="email"
-                placeholder="Email"
-                class="form-control form-control-lg"
-                type="text" />
-            </fieldset>
-            <fieldset class="form-group">
-              <input
-                formControlName="password"
-                placeholder="Password"
-                class="form-control form-control-lg"
-                type="password" />
-            </fieldset>
-            <button class="btn btn-lg btn-primary pull-xs-right" [disabled]="!authForm.valid" type="submit">
-              {{ title }}
-            </button>
-          </fieldset>
-        </form>
-      </div>
-
-    </div>
-  </div>
-</div> -->
 <div fxLayout="row gap" fxLayoutAlign="center center"  fxFill>
   <mat-card  class="card-auth" style="min-width: 300px">
-   <mat-card-header fxLayout="row" fxLayoutAlign="center center" style="margin-bottom:5px;" >
-     <mat-card-title>
-      <div *ngIf="authType == 'login'">
-        {{title}}/<span (click)="goToggle()" style="color:#3F51B5">Registro</span>
-      </div>
-      <div *ngIf="authType == 'register'">
-        {{title}}/<span (click)="goToggle()" style="color:#3F51B5">Login</span>
-      </div>
-    </mat-card-title>
-   </mat-card-header>
-   <mat-card-content>
-    <app-list-errors [errors]="errors"></app-list-errors>
-      <form [formGroup]="authForm" (ngSubmit)="submitForm()">
-        <fieldset  [disabled]="isSubmitting">
-          <mat-form-field color="primary" fxLayout="row gap" fxLayoutAlign="center center" class="form-group">
-            <input matInput formControlName="username" placeholder="Username" required>
-            <mat-error *ngIf="f.username.errors?.required">El nombre de usuario es requerido</mat-error>
-            <mat-error *ngIf="f.username.errors?.minlength">La longitud mínima son 3 carácteres.</mat-error>
-            <mat-error *ngIf="f.username.errors?.maxlength">La longitud máxima son 10 carácteres.</mat-error>
-          </mat-form-field>
+    <mat-card-header fxLayout="row" fxLayoutAlign="center center" style="margin-bottom:5px;" >
+      <mat-card-title>
+        <div *ngIf="authType == 'login'">
+          {{title}}/<span (click)="goToggle()" style="color:#3F51B5">Registro</span>
+        </div>
+        <div *ngIf="authType == 'register'">
+          {{title}}/<span (click)="goToggle()" style="color:#3F51B5">Login</span>
+        </div>
+      </mat-card-title>
+    </mat-card-header>
+    <form [formGroup]="authForm" (ngSubmit)="submitForm()">
+      <fieldset  [disabled]="isSubmitting">
+        <mat-card-content>
           <mat-form-field *ngIf="authType == 'register'" color="primary" fxLayout="row gap" fxLayoutAlign="center center" class="form-group">
-            <input matInput  formControlName="email" placeholder="Email" required>
+            <input matInput formControlName="name" placeholder="Username" name="name" required>
+            <mat-error *ngIf="f.name.errors?.required">El nombre de usuario es requerido</mat-error>
+            <mat-error *ngIf="f.name.errors?.minlength">La longitud mínima son 3 carácteres.</mat-error>
+            <mat-error *ngIf="f.name.errors?.maxlength">La longitud máxima son 10 carácteres.</mat-error>
+          </mat-form-field>
+          <mat-form-field color="primary" fxLayout="row gap" fxLayoutAlign="center center" class="form-group">
+            <input matInput  formControlName="email" placeholder="Email" name="email" required>
             <mat-error *ngIf="f.email.errors?.required">El email es requerido</mat-error>
             <mat-error *ngIf="f.email.errors?.email">El email no es válido</mat-error>
           </mat-form-field>
@@ -76,12 +30,11 @@
             <mat-error *ngIf="f.password.errors?.minlength">La longitud mínima son 6 carácteres.</mat-error>
             <mat-error *ngIf="f.password.errors?.maxlength">La longitud máxima son 10 carácteres.</mat-error>
           </mat-form-field>
-        </fieldset>
-      </form>
-   </mat-card-content>
-   <mat-card-actions fxLayout="row" fxLayoutAlign="center center" style="margin-bottom:5px;">
-     <button mat-raised-button [disabled]="!authForm.valid" type="submit" color="primary">{{title}}</button>
-   </mat-card-actions>
+        </mat-card-content>
+        <mat-card-actions fxLayout="row" fxLayoutAlign="center center" style="margin-bottom:5px;">
+          <button mat-raised-button  type="submit" color="primary" [disabled]="!authForm.valid">{{title}}</button>  
+        </mat-card-actions>
+      </fieldset>
+    </form>
   </mat-card>
 </div>
-<app-footer ></app-footer>

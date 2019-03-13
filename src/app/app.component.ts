@@ -12,7 +12,7 @@ export class AppComponent {
   ) {}
 
   ngOnInit() {
-    this.userService.populate();
+   /*  this.userService.populate(); */
   }
 
  
