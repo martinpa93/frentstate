@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable ,  BehaviorSubject ,  ReplaySubject, throwError } from 'rxjs';
+import { Observable ,  BehaviorSubject ,  ReplaySubject} from 'rxjs';
 
 import { JwtService } from './jwt.service';
 import { User } from '../models/user';
-import { map ,  distinctUntilChanged, catchError } from 'rxjs/operators';
+import { map,distinctUntilChanged } from 'rxjs/operators';
+
+import { environment } from '../../../environments/environment'
 
 
 @Injectable()
@@ -14,8 +16,6 @@ export class UserService {
 
   private isAuthenticatedSubject = new ReplaySubject<boolean>(1);
   public isAuthenticated = this.isAuthenticatedSubject.asObservable();
-
-  public API_URL:string = 'http://localhost/api';
 
   constructor (
     private http: HttpClient ,
@@ -59,7 +59,7 @@ export class UserService {
   
   register(credentials):Observable<any> {
     let converter = {"name":credentials.name,"email":credentials.email,"password":credentials.password,"password_confirmation":credentials.password};
-    return this.http.post('http://localhost/api/register',converter)
+    return this.http.post(`${environment.apiUrl}/register`,converter)
     .pipe(map(
       data => {
         return data;
@@ -67,7 +67,7 @@ export class UserService {
   }
 
   login(credentials):Observable<any>{
-    return this.http.post('http://localhost/api/login', credentials)
+    return this.http.post(`${environment.apiUrl}/login`, credentials)
       .pipe(map(
       data => {
         this.setAuth(data);

@@ -8,6 +8,7 @@ import { HttpTokenInterceptor } from './interceptors/token.interceptor';
 import {AuthGuard } from './services/auth-guard.service' 
 import {JwtService } from './services/jwt.service' 
 import {UserService } from './services/user.service' 
+import { PropertyService } from './services/property.service';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import {UserService } from './services/user.service'
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
     AuthGuard,
     JwtService,
-    UserService
+    UserService,
+  /*   PropertyService */
   ],
   declarations: []
 })

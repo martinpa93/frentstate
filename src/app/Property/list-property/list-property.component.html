@@ -1,19 +1,53 @@
 <div class="mat-elevation-z8">
   <table mat-table class="full-width-table" [dataSource]="dataSource" matSort aria-label="Elements">
-    <!-- Id Column -->
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
-      <td mat-cell *matCellDef="let row">{{row.id}}</td>
-    </ng-container>
-
+    
     <!-- Name Column -->
-    <ng-container matColumnDef="name">
+    <ng-container matColumnDef="Referencia catastral">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-      <td mat-cell *matCellDef="let row">{{row.name}}</td>
+      <td mat-cell *matCellDef="let property">{{property.name}}</td>
+    </ng-container>
+   
+    <ng-container matColumnDef="Dirección">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+      <td mat-cell *matCellDef="let property">{{property.address}}</td>
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <ng-container matColumnDef="Población">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Población</th>
+      <td mat-cell *matCellDef="let property">{{property.population}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Código Postal">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Código postal</th>
+      <td mat-cell *matCellDef="let property">{{property.cp}}</td>
+    </ng-container>
+    
+    <ng-container matColumnDef="Tipo">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</th>
+      <td mat-cell *matCellDef="let property">{{property.type}}</td>
+    </ng-container>
+    
+    <ng-container matColumnDef="Dimensiones">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Dimensiones</th>
+      <td mat-cell *matCellDef="let property">{{property.m2}}</td>
+    </ng-container>
+    
+    <ng-container matColumnDef="Aire Acondicionado">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Aire acondicionado</th>
+      <td mat-cell *matCellDef="let property">{{property.ac}}</td>
+    </ng-container>
+    
+    <ng-container matColumnDef="Número de habitaciones">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>N. Habitaciones</th>
+      <td mat-cell *matCellDef="let property">{{property.nroom}}</td>
+    </ng-container>
+    <ng-container matColumnDef="Número de baños">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>N. Baños</th>
+      <td mat-cell *matCellDef="let property">{{property.nbath}}</td>
+    </ng-container>
+
+    <tr mat-header-property *matHeaderpropertyDef="displayedColumns"></tr>
+    <tr mat-property *matpropertyDef="let property; columns: displayedColumns;"></tr>
   </table>
 
   <mat-paginator #paginator
@@ -22,4 +56,5 @@
       [pageSize]="50"
       [pageSizeOptions]="[25, 50, 100, 250]">
   </mat-paginator>
+  
 </div>

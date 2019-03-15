@@ -12,7 +12,7 @@ import { SharedModule } from  './shared/shared.module';
 import { AuthComponent } from './auth/auth.component';
 import { AdminComponent } from './admin/admin.component';
 
-import { ListPropertyComponent } from './Property/list-property/list-property.component';
+/* import { ListPropertyComponent } from './Property/list-property/list-property.component'; */
 
 
 @NgModule({
@@ -20,7 +20,7 @@ import { ListPropertyComponent } from './Property/list-property/list-property.co
     AppComponent,
     AuthComponent,
     AdminComponent,
-    ListPropertyComponent
+    /* ListPropertyComponent */
   ],
   imports: [
     BrowserModule,
