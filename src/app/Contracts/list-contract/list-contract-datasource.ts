@@ -5,16 +5,16 @@ import { Observable, of as observableOf, merge } from 'rxjs';
 
 // TODO: Replace this with your own data model type
 export interface ListContractItem {
-  cref: string;
-  address: string;
-  population:string;
-  province:string;
-  cp:number;
-  type:string;
-  m2:number;
-  ac:boolean;
-  nroom:number;
-  nbath:number;
+  propertyAddress: string;
+  renterDNI:string
+  renterid:number
+  dstart:Date;
+  dend: Date;
+  iva:number;
+  watertax:number;
+  gastax:number;
+  electricitytax:string;
+  communitytax:number;
 }
 
 // TODO: replace this with real data from your application
@@ -84,16 +84,15 @@ export class ListContractDataSource extends DataSource<ListContractItem> {
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
-        case 'cref': return compare(a.cref, b.cref, isAsc);
-        case 'address': return compare(a.address, b.address, isAsc);
-        case 'population': return compare(a.population, b.population, isAsc);
-        case 'province': return compare(a.province, b.province, isAsc);
-        case 'cp': return compare(+a.cp, +b.cp, isAsc);
-        case 'type': return compare(a.type, b.type, isAsc);
-        case 'm2': return compare(a.m2, b.m2, isAsc);
-        case 'ac': return compare(a.ac, b.ac, isAsc);
-        case 'nroom': return compare(+a.cp, +b.cp, isAsc);
-        case 'nbath': return compare(+a.nbath, +b.nbath, isAsc);
+        case 'propertyAddress': return compare(a.dstart, b.dstart, isAsc);
+        case 'renterDNI': return compare(+a.dstart, +b.dstart, isAsc);
+        case 'dstart': return compare(a.dstart, b.dstart, isAsc);
+        case 'dend': return compare(a.dend, b.dend, isAsc);
+        case 'iva': return compare(+a.iva, +b.iva, isAsc);
+        case 'watertax': return compare(+a.watertax, +b.watertax, isAsc);
+        case 'gastax': return compare(+a.gastax, +b.gastax, isAsc);
+        case 'electricitytax': return compare(+a.electricitytax, +b.electricitytax, isAsc);
+        case 'communitytax': compare(+a.communitytax, +b.communitytax, isAsc);
         default: return 0;
       }
     });

@@ -4,9 +4,9 @@ import { ListRenterDataSource } from './list-renter-datasource';
 import { RenterService } from 'src/app/core/services/renter.service';
 
 @Component({
-  selector: 'app-list-Renter',
-  templateUrl: './list-Renter.component.html',
-  styleUrls: ['./list-Renter.component.css'],
+  selector: 'app-list-renter',
+  templateUrl: './list-renter.component.html',
+  styleUrls: ['./list-renter.component.css'],
 })
 export class ListRenterComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -15,7 +15,7 @@ export class ListRenterComponent implements OnInit {
   constructor(private pservice:RenterService){}
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['cref','address','population','province','cp','type','m2','ac','nroom','nbath'];
+  displayedColumns = ['dni','name','surname','dbirth','address','population','phone','job','salary'];
 
   ngOnInit() {
     this.pservice.getRenters().subscribe(data =>  this.dataSource.data = data);

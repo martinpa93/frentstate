@@ -9,54 +9,39 @@
   <table mat-table class="full-width-table" [dataSource]="dataSource" matSort aria-label="Elements">
     
     <!-- Name Column -->
-    <ng-container matColumnDef="cref">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>R.catastral</th>
-      <td mat-cell *matCellDef="let element">{{element.cref}}</td>
+    <ng-container matColumnDef="dstart">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha inicio</th>
+      <td mat-cell *matCellDef="let element">{{element.dstart}}</td>
     </ng-container>
    
-    <ng-container matColumnDef="address">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Dirección</th>
-      <td mat-cell *matCellDef="let element">{{element.address}}</td>
+    <ng-container matColumnDef="fend">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha fin</th>
+      <td mat-cell *matCellDef="let element">{{element.fend}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="population">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Población</th>
-      <td mat-cell *matCellDef="let element">{{element.population}}</td>
+    <ng-container matColumnDef="iva">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>IVA</th>
+      <td mat-cell *matCellDef="let element">{{element.iva}}</td>
     </ng-container>
  
-    <ng-container matColumnDef="province">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Provincia</th>
-      <td mat-cell *matCellDef="let element">{{element.province}}</td>
+    <ng-container matColumnDef="watertax">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Gasto de agua</th>
+      <td mat-cell *matCellDef="let element">{{element.watertax}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="cp">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Código postal</th>
-      <td mat-cell *matCellDef="let element">{{element.cp}}</td>
+    <ng-container matColumnDef="gastax">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Gasto de gas</th>
+      <td mat-cell *matCellDef="let element">{{element.gastax}}</td>
     </ng-container>
     
-    <ng-container matColumnDef="type">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</th>
-      <td mat-cell *matCellDef="let element">{{element.type}}</td>
+    <ng-container matColumnDef="electricitytax">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Gasto de electricidad</th>
+      <td mat-cell *matCellDef="let element">{{element.electricitytax}}</td>
     </ng-container>
     
-    <ng-container matColumnDef="m2">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Dimensiones</th>
-      <td mat-cell *matCellDef="let element">{{element.m2}}</td>
-    </ng-container>
-    
-    <ng-container matColumnDef="ac">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Aire acondicionado</th>
-      <td mat-cell *matCellDef="let element">{{element.ac}}</td>
-    </ng-container>
-    
-    <ng-container matColumnDef="nroom">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>N. Habitaciones</th>
-      <td mat-cell *matCellDef="let element">{{element.nroom}}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="nbath">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>N. Baños</th>
-      <td mat-cell *matCellDef="let element">{{element.nbath}}</td>
+    <ng-container matColumnDef="communitytax">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Gastos de comunidad</th>
+      <td mat-cell *matCellDef="let element">{{element.communitytax}}</td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

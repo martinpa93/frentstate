@@ -21,7 +21,7 @@ export interface ListRenterItem {
 
 
 /**
- * Data source for the ListProperty view. This class should
+ * Data source for the ListRenter view. This class should
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */

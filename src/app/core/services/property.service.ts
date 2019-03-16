@@ -5,21 +5,21 @@ import { map,tap } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 
 @Injectable()
-export class RenterService {
+export class PropertyService {
     constructor(
         private http: HttpClient
     ) {}
 
-    getRenterss() :Observable<any>{
-        return this.http.get(`${environment.apiUrl}/renter`)
+    getProperties() :Observable<any>{
+        return this.http.get(`${environment.apiUrl}/Property`)
         .pipe(map(
             data => {
               return data;
             }));
     }
 
-    getRenter(id):Observable<any>{
-        return this.http.get(`${environment.apiUrl}/renter/${id}`)
+    getProperty(id):Observable<any>{
+        return this.http.get(`${environment.apiUrl}/property/${id}`)
         .pipe(map(
             data => {
               return data;
@@ -27,28 +27,28 @@ export class RenterService {
         ));
     }
 
-    addRenter (renter): Observable<any> {
-        console.log(renter);
-        return this.http.post(`${environment.apiUrl}/renter/${renter}`, JSON.stringify(renter))
+    addProperty (property): Observable<any> {
+        console.log(property);
+        return this.http.post(`${environment.apiUrl}/property/${property}`, JSON.stringify(property))
         .pipe(tap(
-            (renter) => console.log(`added Renter w/ id=${renter.id}`)),
+            (property) => console.log(`added property w/ id=${property.id}`)),
         
         );
     }
 
 
-    updateRenter (id, renter): Observable<any> {
-        return this.http.put(`${environment.apiUrl}/renter/${id}`, JSON.stringify(renter))
+    updateProperty (id, property): Observable<any> {
+        return this.http.put(`${environment.apiUrl}/property/${id}`, JSON.stringify(property))
         .pipe(
-          tap(_ => console.log(`updated Renter id=${id}`))
+          tap(_ => console.log(`updated property id=${id}`))
         );
     }
 
 
-    deleteRenter (id): Observable<any> {
-        return this.http.delete(`${environment.apiUrl}/renter/${id}`)
+    deleteProperty (id): Observable<any> {
+        return this.http.delete(`${environment.apiUrl}/property/${id}`)
         .pipe(
-            tap(_ => console.log(`deleted Renter id=${id}`))
+            tap(_ => console.log(`deleted property id=${id}`))
         );
     }
 }

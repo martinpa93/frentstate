@@ -9,7 +9,7 @@
   <table mat-table class="full-width-table" [dataSource]="dataSource" matSort aria-label="Elements">
     
     <!-- Name Column -->
-    <ng-container matColumnDef="cref">
+    <ng-container matColumnDef="cref" sticky>
       <th mat-header-cell *matHeaderCellDef mat-sort-header>R.catastral</th>
       <td mat-cell *matCellDef="let element">{{element.cref}}</td>
     </ng-container>
@@ -54,7 +54,7 @@
       <td mat-cell *matCellDef="let element">{{element.nroom}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="nbath">
+    <ng-container matColumnDef="nbath" stickyEnd>
       <th mat-header-cell *matHeaderCellDef mat-sort-header>N. Baños</th>
       <td mat-cell *matCellDef="let element">{{element.nbath}}</td>
     </ng-container>
