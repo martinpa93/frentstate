@@ -22,15 +22,15 @@ export class ListRenterComponent implements OnInit {
     this.dataSource = new ListRenterDataSource(this.paginator, this.sort);
   }
 
-  ngAfterViewInit() {
+ /*  ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-  }
+  } */
 
-  applyFilter(filterValue: string) {
+ /*  applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
     this.dataSource.filter = filterValue;
-  }
+  } */
 }
  

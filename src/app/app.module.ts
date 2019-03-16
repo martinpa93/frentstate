@@ -14,13 +14,17 @@ import { AdminComponent } from './admin/admin.component';
 /* import { PropertyModule } from './Property/property.module';
  */
 import { ListPropertyComponent } from './Property/list-property/list-property.component';
+import { ListRenterComponent } from './Renter/list-renter/list-renter.component';
+import { ListContractComponent } from './Contracts/list-contract/list-contract.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
     AdminComponent,
-    ListPropertyComponent
+    ListPropertyComponent,
+    ListRenterComponent,
+    ListContractComponent
   ],
   imports: [
     BrowserModule,

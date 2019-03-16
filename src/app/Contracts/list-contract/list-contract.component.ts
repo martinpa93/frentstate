@@ -15,22 +15,22 @@ export class ListContractComponent implements OnInit {
   constructor(private cservice:ContractService){}
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['','address','population','province','cp','type','m2','ac','nroom','nbath'];
+  displayedColumns = ['propertyAddress','renterDNI','dstart','dend','iva','watertax','gastax','electricitytax','communitytax'];
 
   ngOnInit() {
     this.cservice.getContracts().subscribe(data =>  this.dataSource.data = data);
     this.dataSource = new ListContractDataSource(this.paginator, this.sort);
   }
 
-  ngAfterViewInit() {
+/*   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-  }
+  } */
 
-  applyFilter(filterValue: string) {
+  /* applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
     this.dataSource.filter = filterValue;
-  }
+  } */
 }
  

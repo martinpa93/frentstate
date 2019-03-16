@@ -11,7 +11,7 @@ export class PropertyService {
     ) {}
 
     getProperties() :Observable<any>{
-        return this.http.get(`${environment.apiUrl}/Property`)
+        return this.http.get(`${environment.apiUrl}/property`)
         .pipe(map(
             data => {
               return data;

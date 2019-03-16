@@ -22,7 +22,7 @@ export class ListPropertyComponent implements OnInit {
     this.dataSource = new ListPropertyDataSource(this.paginator, this.sort);
   }
 
-  ngAfterViewInit() {
+ /*  ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
@@ -31,6 +31,6 @@ export class ListPropertyComponent implements OnInit {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
     this.dataSource.filter = filterValue;
-  }
+  } */
 }
  

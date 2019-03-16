@@ -9,14 +9,24 @@
   <table mat-table class="full-width-table" [dataSource]="dataSource" matSort aria-label="Elements">
     
     <!-- Name Column -->
-    <ng-container matColumnDef="dstart">
+    <ng-container matColumnDef="propertyAddress" >
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Inmueble</th>
+      <td mat-cell *matCellDef="let element">{{element.propertyAddress}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="renterDNI" sticky>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+      <td mat-cell *matCellDef="let element">{{element.renterDNI}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="dstart" >
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha inicio</th>
       <td mat-cell *matCellDef="let element">{{element.dstart}}</td>
     </ng-container>
    
-    <ng-container matColumnDef="fend">
+    <ng-container matColumnDef="dend">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha fin</th>
-      <td mat-cell *matCellDef="let element">{{element.fend}}</td>
+      <td mat-cell *matCellDef="let element">{{element.dend}}</td>
     </ng-container>
 
     <ng-container matColumnDef="iva">
@@ -39,7 +49,7 @@
       <td mat-cell *matCellDef="let element">{{element.electricitytax}}</td>
     </ng-container>
     
-    <ng-container matColumnDef="communitytax">
+    <ng-container matColumnDef="communitytax" stickyEnd>
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Gastos de comunidad</th>
       <td mat-cell *matCellDef="let element">{{element.communitytax}}</td>
     </ng-container>
