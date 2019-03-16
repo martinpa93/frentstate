@@ -1,25 +1,25 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort } from '@angular/material';
-import { ListPropertyDataSource } from './list-property-datasource';
-import { PropertyService } from 'src/app/core/services/property.service';
+import { ListContractDataSource } from './list-contract-datasource';
+import { ContractService } from 'src/app/core/services/Contract.service';
 
 @Component({
-  selector: 'app-list-property',
-  templateUrl: './list-property.component.html',
-  styleUrls: ['./list-property.component.css'],
+  selector: 'app-list-Contract',
+  templateUrl: './list-Contract.component.html',
+  styleUrls: ['./list-Contract.component.css'],
 })
-export class ListPropertyComponent implements OnInit {
+export class ListContractComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  dataSource: ListPropertyDataSource; 
-  constructor(private pservice:PropertyService){}
+  dataSource: ListContractDataSource; 
+  constructor(private pservice:ContractService){}
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['cref','address','population','province','cp','type','m2','ac','nroom','nbath'];
 
   ngOnInit() {
     this.pservice.getProperties().subscribe(data =>  this.dataSource.data = data);
-    this.dataSource = new ListPropertyDataSource(this.paginator, this.sort);
+    this.dataSource = new ListContractDataSource(this.paginator, this.sort);
   }
 
   ngAfterViewInit() {

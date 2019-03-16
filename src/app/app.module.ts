@@ -11,23 +11,25 @@ import { SharedModule } from  './shared/shared.module';
 
 import { AuthComponent } from './auth/auth.component';
 import { AdminComponent } from './admin/admin.component';
-
-/* import { ListPropertyComponent } from './Property/list-property/list-property.component'; */
-
+/* import { PropertyModule } from './Property/property.module';
+ */
+import { ListPropertyComponent } from './Property/list-property/list-property.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
     AdminComponent,
-    /* ListPropertyComponent */
+    ListPropertyComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule,
     CoreModule,
-    SharedModule
+    SharedModule,
+    AppRoutingModule,
+    /* PropertyModule */
+
   ],
   providers: [],
   bootstrap: [AppComponent]

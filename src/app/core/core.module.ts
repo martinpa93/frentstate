@@ -20,7 +20,7 @@ import { PropertyService } from './services/property.service';
     AuthGuard,
     JwtService,
     UserService,
-  /*   PropertyService */
+    PropertyService
   ],
   declarations: []
 })

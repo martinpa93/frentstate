@@ -2,15 +2,15 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatPaginatorModule, MatSortModule, MatTableModule } from '@angular/material';
 
-import { ListPropertyComponent } from './list-property.component';
+import { ListRenterComponent } from './list-renter.component';
 
-describe('ListPropertyComponent', () => {
-  let component: ListPropertyComponent;
-  let fixture: ComponentFixture<ListPropertyComponent>;
+describe('ListRenterComponent', () => {
+  let component: ListRenterComponent;
+  let fixture: ComponentFixture<ListRenterComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ListPropertyComponent ],
+      declarations: [ ListRenterComponent ],
       imports: [
         NoopAnimationsModule,
         MatPaginatorModule,
@@ -21,7 +21,7 @@ describe('ListPropertyComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ListPropertyComponent);
+    fixture = TestBed.createComponent(ListRenterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

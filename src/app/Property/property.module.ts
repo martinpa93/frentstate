@@ -7,13 +7,13 @@ import { PropertyRoutingModule } from './property-routing.module';
 
 @NgModule({
   imports: [
-     ListPropertyDataSource,
+     
      PropertyRoutingModule
   ],
   declarations: [
     ListPropertyComponent
   ],
-  exports: [ListPropertyComponent]
+  exports: [ListPropertyComponent,PropertyRoutingModule]
 
 })
 export class PropertyModule {}

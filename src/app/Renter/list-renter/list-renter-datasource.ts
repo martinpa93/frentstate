@@ -4,17 +4,17 @@ import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
 
 // TODO: Replace this with your own data model type
-export interface ListPropertyItem {
-  cref: string;
-  address: string;
+export interface ListRenterItem {
+  dni:string;
+  name: string;
+  surname:string;
+  dbirth:Date;
+  address:string;
   population:string;
-  province:string;
-  cp:number;
-  type:string;
-  m2:number;
-  ac:boolean;
-  nroom:number;
-  nbath:number;
+  phone:number;
+  iban:string;
+  job:string;
+  salary:number;
 }
 
 // TODO: replace this with real data from your application
@@ -25,8 +25,8 @@ export interface ListPropertyItem {
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class ListPropertyDataSource extends DataSource<ListPropertyItem> {
-  data: ListPropertyItem[];
+export class ListRenterDataSource extends DataSource<ListRenterItem> {
+  data: ListRenterItem[];
 
   constructor(public paginator: MatPaginator,
                public sort: MatSort,
@@ -39,7 +39,7 @@ export class ListPropertyDataSource extends DataSource<ListPropertyItem> {
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<ListPropertyItem[]> {
+  connect(): Observable<ListRenterItem[]> {
     // Combine everything that affects the rendered data into one update
     // stream for the data-table to consume.
     
@@ -67,7 +67,7 @@ export class ListPropertyDataSource extends DataSource<ListPropertyItem> {
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: ListPropertyItem[]) {
+  private getPagedData(data: ListRenterItem[]) {
     const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
     return data.splice(startIndex, this.paginator.pageSize);
   }
@@ -76,7 +76,7 @@ export class ListPropertyDataSource extends DataSource<ListPropertyItem> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: ListPropertyItem[]) {
+  private getSortedData(data: ListRenterItem[]) {
     if (!this.sort.active || this.sort.direction === '') {
       return data;
     }
@@ -84,16 +84,15 @@ export class ListPropertyDataSource extends DataSource<ListPropertyItem> {
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
-        case 'cref': return compare(a.cref, b.cref, isAsc);
+        case 'dni': return compare(a.dni, b.dni, isAsc);
+        case 'name': return compare(a.name, b.name, isAsc);
+        case 'surname': return compare(a.surname, b.surname, isAsc);
+        case 'dbirth': return compare(+a.dbirth, +b.dbirth, isAsc);
         case 'address': return compare(a.address, b.address, isAsc);
         case 'population': return compare(a.population, b.population, isAsc);
-        case 'province': return compare(a.province, b.province, isAsc);
-        case 'cp': return compare(+a.cp, +b.cp, isAsc);
-        case 'type': return compare(a.type, b.type, isAsc);
-        case 'm2': return compare(a.m2, b.m2, isAsc);
-        case 'ac': return compare(a.ac, b.ac, isAsc);
-        case 'nroom': return compare(+a.cp, +b.cp, isAsc);
-        case 'nbath': return compare(+a.nbath, +b.nbath, isAsc);
+        case 'phone': return compare(+a.phone, +b.phone, isAsc);
+        case 'job': return compare(a.job, b.job, isAsc);
+        case 'salary': return compare(+a.salary, +b.salary, isAsc);
         default: return 0;
       }
     });

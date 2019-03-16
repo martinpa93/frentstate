@@ -10,7 +10,7 @@ export class RenterService {
         private http: HttpClient
     ) {}
 
-    getRenterss() :Observable<any>{
+    getRenters() :Observable<any>{
         return this.http.get(`${environment.apiUrl}/renter`)
         .pipe(map(
             data => {
@@ -28,10 +28,9 @@ export class RenterService {
     }
 
     addRenter (renter): Observable<any> {
-        console.log(renter);
         return this.http.post(`${environment.apiUrl}/renter/${renter}`, JSON.stringify(renter))
         .pipe(tap(
-            (renter) => console.log(`added Renter w/ id=${renter.id}`)),
+            (renter) => console.log(`added renter w/ id=${renter.id}`)),
         
         );
     }
@@ -40,7 +39,7 @@ export class RenterService {
     updateRenter (id, renter): Observable<any> {
         return this.http.put(`${environment.apiUrl}/renter/${id}`, JSON.stringify(renter))
         .pipe(
-          tap(_ => console.log(`updated Renter id=${id}`))
+          tap(_ => console.log(`updated renter id=${id}`))
         );
     }
 
@@ -48,7 +47,7 @@ export class RenterService {
     deleteRenter (id): Observable<any> {
         return this.http.delete(`${environment.apiUrl}/renter/${id}`)
         .pipe(
-            tap(_ => console.log(`deleted Renter id=${id}`))
+            tap(_ => console.log(`deleted renter id=${id}`))
         );
     }
 }

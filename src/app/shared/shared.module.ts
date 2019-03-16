@@ -16,7 +16,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ListErrorsComponent } from './errors/list-errors.component';
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
-import { ShowAuthedDirective } from './show-authed.directive';
 
 
 @NgModule({
@@ -49,8 +48,7 @@ import { ShowAuthedDirective } from './show-authed.directive';
   ],
   declarations: [NavComponent,
     FooterComponent,
-    ListErrorsComponent,
-    ShowAuthedDirective
+    ListErrorsComponent
   ],
   exports: [
     CommonModule,
@@ -79,7 +77,7 @@ import { ShowAuthedDirective } from './show-authed.directive';
     MatPaginatorModule,
     MatSortModule,
     
-    ShowAuthedDirective,
+    
     ListErrorsComponent,
     NavComponent,
     FooterComponent    
