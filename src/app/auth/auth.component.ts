@@ -73,7 +73,7 @@ export class AuthComponent implements OnInit {
       return this.userService
       .register(credentials)
       .subscribe(
-        data => this.router.navigateByUrl('/'),
+        data => this.router.navigateByUrl('/login'),
         err => {
           this.errors = err;
           this.isSubmitting = false;

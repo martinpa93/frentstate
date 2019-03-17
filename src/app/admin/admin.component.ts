@@ -3,6 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { UserService } from '../core/services/user.service';
+
+
 
 @Component({
   selector: 'app-admin',
@@ -16,7 +19,8 @@ export class AdminComponent {
       map(result => result.matches)
     );
 
-  constructor(private breakpointObserver: BreakpointObserver,
+  constructor(private service:UserService,
+              private breakpointObserver: BreakpointObserver,
               private route: ActivatedRoute,
               private router: Router,) {}
 
@@ -24,4 +28,10 @@ export class AdminComponent {
     this.router.navigate(['property']);
   }
 
+
+  logout(){
+    this.service.logout().subscribe(()=> { 
+      this.router.navigateByUrl('/login');
+    });
+  }
 }

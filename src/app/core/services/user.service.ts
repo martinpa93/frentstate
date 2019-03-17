@@ -48,38 +48,30 @@ export class UserService {
     this.isAuthenticatedSubject.next(true);
   }
   
-  delAuth() {
+  logout():Observable<User> {
     // Remove JWT from localstorage
     this.jwtService.destroyToken();
     // Set current user to an empty object
     this.currentUserSubject.next({} as User);
     // Set auth status to false
     this.isAuthenticatedSubject.next(false);
+    return this.http.get<User>(`${environment.apiUrl}/logout`);
   }
   
   register(credentials):Observable<any> {
     let converter = {"name":credentials.name,"email":credentials.email,"password":credentials.password,"password_confirmation":credentials.password};
-    return this.http.post(`${environment.apiUrl}/register`,converter)
-    .pipe(map(
-      data => {
-        return data;
-      }));
+    return this.http.post(`${environment.apiUrl}/register`,converter);
   }
 
-  login(credentials):Observable<any>{
-    return this.http.post(`${environment.apiUrl}/login`, credentials)
+  login(credentials):Observable<User>{
+    return this.http.post<User>(`${environment.apiUrl}/login`, credentials)
       .pipe(map(
       data => {
         this.setAuth(data);
         return data;
       }
     ));
-      
   }
-
-  /* logout():Observable<any>{
-    return this.
-  } */
     
 
   getCurrentUser(): User {
