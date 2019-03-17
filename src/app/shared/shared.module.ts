@@ -8,7 +8,7 @@ import { MatButtonModule, MatCheckboxModule, MatToolbarModule,
   MatIconModule, MatMenuModule, MatSidenavModule,MatExpansionModule, 
   MatListModule, MatFormFieldModule,MatCardModule,MatRadioModule, 
   MatDatepickerModule, MatInputModule, MatNativeDateModule,MatTableModule,
-MatPaginatorModule,MatSortModule,MatProgressSpinnerModule,} from '@angular/material';
+MatPaginatorModule,MatSortModule,MatProgressSpinnerModule, MatDialogModule,} from '@angular/material';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -41,7 +41,8 @@ import { ListErrorsComponent } from './errors/list-errors.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatProgressSpinnerModule
+
+    MatDialogModule
     
   ],
   declarations: [
@@ -73,7 +74,7 @@ import { ListErrorsComponent } from './errors/list-errors.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatProgressSpinnerModule,
+    MatDialogModule,
     
     ListErrorsComponent
   ]

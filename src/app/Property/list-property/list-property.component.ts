@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatSort } from '@angular/material';
+import { Router } from '@angular/router';
+import { MatPaginator, MatSort, MatDialog, MatDialogConfig } from '@angular/material';
 import { MatTableDataSource } from '@angular/material/table';
 import { PropertyService } from 'src/app/core/services/property.service';
 import { Property } from 'src/app/core/models/Property';
-import { Router } from '@angular/router';
-
+import { AddPropertyComponent } from '../add/add-Property.component';
 @Component({
   selector: 'app-list-property',
   templateUrl: './list-property.component.html',
@@ -15,7 +15,9 @@ export class ListPropertyComponent implements OnInit{
   @ViewChild(MatSort) sort: MatSort;
   MyDataSource:any;
   propertyList:Property[];
-  constructor(private service:PropertyService,private router: Router){}
+  constructor(private service:PropertyService,
+              private dialog:MatDialog,
+            private router: Router){}
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['cref','address','population','province','cp','type','m2','ac','nroom','nbath','action1','action2','action3'];
@@ -38,6 +40,10 @@ export class ListPropertyComponent implements OnInit{
 
   doFilter = (value: string) => {
     this.MyDataSource.filter = value.trim().toLocaleLowerCase();
+  }
+
+  onCreate(){
+    this.dialog.open(AddPropertyComponent);
   }
 }
  

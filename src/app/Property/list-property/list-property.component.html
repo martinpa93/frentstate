@@ -1,15 +1,18 @@
 
-<mat-toolbar>
+<mat-toolbar class=toolbarcontent>
     <span class="title-center">Inmuebles</span>
 </mat-toolbar>
 
-<div class="example-header">
+<div class="example-header"fxLayout="row wrap"   fxLayoutAlign="start start" fxLayoutGap="20px">
+  <button mat-raised-button (click)="onCreate()"fxFlexOffset="20px">
+    <mat-icon>add</mat-icon>Crear
+  </button>
   <mat-form-field>
-    <input matInput (keyup)="doFilter($event.target.value)" placeholder="Filtro">
+    <input matInput (keyup)="doFilter($event.target.value)" placeholder="Filtro" fxFlexOffset="20px">
   </mat-form-field>
 </div>
 
-<div class="mat-elevation-z8" class="table-container">
+<div class="mat-elevation-z8">
   <table mat-table class="full-width-table" [dataSource]="MyDataSource" matSort aria-label="Elements">
     <ng-container matColumnDef="cref">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>R.catastral</th>
