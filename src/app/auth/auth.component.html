@@ -25,7 +25,8 @@
             <mat-error *ngIf="f.email.errors?.email">El email no es válido</mat-error>
           </mat-form-field>
           <mat-form-field color="primary" fxLayout="row gap" fxLayoutAlign="center center" class="form-group">
-            <input matInput formControlName="password" placeholder="Password" type="password" name="password" required>
+            <input matInput formControlName="password" placeholder="Password" [type]="hide ? 'password' : 'text'" name="password" required>
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             <mat-error *ngIf="f.password.errors?.required">La contraseña es requerida</mat-error>
             <mat-error *ngIf="f.password.errors?.minlength">La longitud mínima son 6 carácteres.</mat-error>
             <mat-error *ngIf="f.password.errors?.maxlength">La longitud máxima son 10 carácteres.</mat-error>

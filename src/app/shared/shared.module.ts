@@ -8,14 +8,11 @@ import { MatButtonModule, MatCheckboxModule, MatToolbarModule,
   MatIconModule, MatMenuModule, MatSidenavModule,MatExpansionModule, 
   MatListModule, MatFormFieldModule,MatCardModule,MatRadioModule, 
   MatDatepickerModule, MatInputModule, MatNativeDateModule,MatTableModule,
-MatPaginatorModule,MatSortModule,} from '@angular/material';
-
+MatPaginatorModule,MatSortModule,MatProgressSpinnerModule,} from '@angular/material';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { ListErrorsComponent } from './errors/list-errors.component';
-import { NavComponent } from './nav/nav.component';
-import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -43,11 +40,11 @@ import { FooterComponent } from './footer/footer.component';
     MatNativeDateModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatProgressSpinnerModule
     
   ],
-  declarations: [NavComponent,
-    FooterComponent,
+  declarations: [
     ListErrorsComponent
   ],
   exports: [
@@ -76,11 +73,9 @@ import { FooterComponent } from './footer/footer.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatProgressSpinnerModule,
     
-    
-    ListErrorsComponent,
-    NavComponent,
-    FooterComponent    
+    ListErrorsComponent
   ]
   })
   export class SharedModule { }
