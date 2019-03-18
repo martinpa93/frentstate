@@ -81,10 +81,24 @@ export class AddPropertyComponent {
       "province": ["Logroño"]
     }
   ];
+  arrayTypes:Array<string>=["Vivienda","Local comercial","Garage"];
+  arrayNumber:Array<number>=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
   title = "Añadir inmueble";
   levelList = [];
   form: FormGroup;
   prov;
+  
+
+  //Selector dinámico
+  private _selected: any;
+  set selected (src : any) { 
+    this._selected = src; 
+    this.selected2 = this._selected.value[0];
+  };
+  get selected(): any { return this._selected; };
+  private selected2: string = "";
+
+
   constructor(public dialogRef: MatDialogRef<AddPropertyComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Property,
     private fb: FormBuilder
@@ -118,7 +132,7 @@ export class AddPropertyComponent {
       this.levelList = [];
     }
   }
-
+  get f() { return this.form.controls; }
   submit(form) {
     this.dialogRef.close(`${form.value.filename}`);
   }

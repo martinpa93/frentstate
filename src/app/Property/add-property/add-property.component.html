@@ -4,84 +4,88 @@
         <span>{{title}}</span>
       </div>  
   </mat-toolbar>
-  <h2 mat-dialog-title class="dialog-header"></h2>
+  <h2 mat-dialog-title></h2>
+
   <mat-dialog-content fxLayout="row wrap"  >
-    <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px">
+
+    <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px" fxFlexOffset="10px">
       <mat-form-field>
         <input matInput formControlName="cref" placeholder="Ref.catastral" name="cref" required>
-        <!-- <mat-error *ngIf="f.name.errors?.required">El nombre de usuario es requerido</mat-error>
-              <mat-error *ngIf="f.name.errors?.minlength">La longitud mínima son 3 carácteres.</mat-error>
-              <mat-error *ngIf="f.name.errors?.maxlength">La longitud máxima son 10 carácteres.</mat-error> -->
+        <mat-error *ngIf="f.cref.errors?.required">El campo es requerido.</mat-error>
+        <mat-error *ngIf="f.cref.errors?.minlength">Debes introducir 20 carácteres.</mat-error>
+        <mat-error *ngIf="f.cref.errors?.maxlength">Debes introducir 20 carácteres.</mat-error>
       </mat-form-field>
       <mat-form-field color="primary">
         <input matInput formControlName="address" placeholder="Dirección" name="name" required>
-        <!-- <mat-error *ngIf="f.name.errors?.required">El nombre de usuario es requerido</mat-error>
-              <mat-error *ngIf="f.name.errors?.minlength">La longitud mínima son 3 carácteres.</mat-error>
-              <mat-error *ngIf="f.name.errors?.maxlength">La longitud máxima son 10 carácteres.</mat-error> -->
+        <mat-error *ngIf="f.address.errors?.required">El campo es requerido.</mat-error>
+        <mat-error *ngIf="f.address.errors?.minlength">La longitud mínima son 5 carácteres.</mat-error>
+        <mat-error *ngIf="f.address.errors?.maxlength">La longitud máxima son 50 carácteres.</mat-error>
       </mat-form-field>
     </div>
-    <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px">
+
+    <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px" fxFlexOffset="10px">
       <mat-form-field>
-        <mat-select formControlName="province" matNativeControl placeholder="Comunidad autónoma"
-          (selectionChange)="geoLevelChange(population)">
-          <mat-option *ngFor="let population of geoList" [value]="population.population">{{ population.population }}
-          </mat-option>
+        <mat-select formControlName="population" [(ngModel)]="selected" placeholder="Comunidad autónoma">
+          <mat-option *ngFor="let data of geoList" value="data">{{ data.population }}</mat-option>
         </mat-select>
-        <!-- <mat-error *ngIf="f.name.errors?.required">El nombre de usuario es requerido</mat-error>
-              <mat-error *ngIf="f.name.errors?.minlength">La longitud mínima son 3 carácteres.</mat-error>
-              <mat-error *ngIf="f.name.errors?.maxlength">La longitud máxima son 10 carácteres.</mat-error> -->
+        <mat-error *ngIf="f.province.errors?.required">El campo es requerido.</mat-error>
       </mat-form-field>
-
       <mat-form-field>
-        <mat-select formControlName="province" placeholder="Provincia" name="province">
-          <mat-option *ngFor=" let province of levelList" [value]="province">{{ province }}
-          </mat-option>
+        <mat-select formControlName="province" [(ngModel)]="selected2" placeholder="Provincia">
+          <mat-option *ngFor="let val of selected?.value" [value]="val">{{ val.province }}</mat-option>
         </mat-select>
-        <!-- <mat-error *ngIf="f.email.errors?.required">El email es requerido</mat-error>
-              <mat-error *ngIf="f.email.errors?.email">El email no es válido</mat-error> -->
+        <mat-error *ngIf="f.province.errors?.required">El campo es requerido.</mat-error>
       </mat-form-field>
     </div>
-    <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px">
+
+    <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px" fxFlexOffset="10px">
       <mat-form-field>
-        <input matInput formControlName="cp" placeholder="Código postal" name="cp" required>
-        <!-- <mat-error *ngIf="f.email.errors?.required">El email es requerido</mat-error>
-              <mat-error *ngIf="f.email.errors?.email">El email no es válido</mat-error> -->
+        <input matInput formControlName="cp" placeholder="Código postal">
+        <mat-error *ngIf="f.cp.errors?.required">El campo es requerido.</mat-error>
+        <mat-error *ngIf="f.cp.errors?.minlength">Debes introducir 5 carácteres.</mat-error>
+        <mat-error *ngIf="f.cp.errors?.maxlength">Debes introducir 5 carácteres.</mat-error>
       </mat-form-field>
 
       <mat-form-field>
-        <input matInput formControlName="type" placeholder="Tipo de inmueble" name="type" required>
-        <!-- <mat-error *ngIf="f.email.errors?.required">El email es requerido</mat-error>
-              <mat-error *ngIf="f.email.errors?.email">El email no es válido</mat-error> -->
+          <mat-select formControlName="type" placeholder="Tipo de inmueble">
+              <mat-option *ngFor="let i of arrayTypes" value="i">{{ i }}</mat-option>
+          </mat-select>
+        <mat-error *ngIf="f.nroom.errors?.required">El campo es requerido.</mat-error>
       </mat-form-field>
     </div>
-    <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px">
+
+    <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px" fxFlexOffset="10px">
       <mat-form-field>
-        <input matInput formControlName="m2" placeholder="Dimensiones" name="m2" required>
-        <!-- <mat-error *ngIf="f.email.errors?.required">El email es requerido</mat-error>
-              <mat-error *ngIf="f.email.errors?.email">El email no es válido</mat-error> -->
+        <input matInput formControlName="m2" placeholder="Dimensiones">
+        <mat-error *ngIf="f.m2.errors?.required">El campo es requerido.</mat-error>
+        <mat-error *ngIf="f.m2.errors?.minlength">La cantidad mínima es de una cifra.</mat-error>
+        <mat-error *ngIf="f.m2.errors?.maxlength">La cantidad máxima es de 5 cifras.</mat-error>
       </mat-form-field>
 
-      <!-- select ac -->
-      <!--  <mat-form-field color="primary" fxLayout="row gap" fxLayoutAlign="center center" class="form-group">
-        <mat-error *ngIf="f.email.errors?.required">El email es requerido</mat-error>
-              <mat-error *ngIf="f.email.errors?.email">El email no es válido</mat-error>
-      </mat-form-field> -->
+     <!--  <mat-form-field> -->
+      <div>
+        <mat-checkbox formControlName="ac" >Aire acondicionado</mat-checkbox>
+      </div>
+      <!-- <mat-error *ngIf="f.ac.errors?.required">Aire acondicionado requerido.</mat-error> -->
+      <!-- </mat-form-field> -->
     </div>
-
-    <!--  select n habitaciones -->
-    <!--  <mat-form-field color="primary" fxLayout="row gap" fxLayoutAlign="center center" class="form-group">
-      <mat-error *ngIf="f.email.errors?.required">El email es requerido</mat-error>
-      <mat-error *ngIf="f.email.errors?.email">El email no es válido</mat-error>
-    </mat-form-field> -->
-
-    <!--  select n baños -->
-   <!--  <mat-form-field color="primary" fxLayout="row gap" fxLayoutAlign="center center" class="form-group">
-      <mat-error *ngIf="f.email.errors?.required">El email es requerido</mat-error>
-      <mat-error *ngIf="f.email.errors?.email">El email no es válido</mat-error>
-    </mat-form-field> -->
+    <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px" fxFlexOffset="10px">
+      <mat-form-field>
+        <mat-select formControlName="nroom" placeholder="Número de habitaciones">
+          <mat-option *ngFor="let i of arrayNumber" value="i">{{ i }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select formControlName="nbath" placeholder="Número de baños">
+          <mat-option *ngFor="let i of arrayNumber" value="i">{{ i }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
   </mat-dialog-content>
   <mat-dialog-actions>
-    <button mat-button mat-dialog-close>Cancelar</button>
-    <button mat-button [mat-dialog-close]="true">Guardar</button>
+    <div fxLayout="row" fxLayoutAlign="end end">
+      <button mat-button mat-dialog-close class="btnc">Cancelar</button>
+      <button mat-button [mat-dialog-close]="true" class="btng">Guardar</button>
+    </div>
   </mat-dialog-actions>
 </form>
