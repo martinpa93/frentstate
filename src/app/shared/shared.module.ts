@@ -4,11 +4,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { MatButtonModule, MatCheckboxModule, MatToolbarModule,
-  MatIconModule, MatMenuModule, MatSidenavModule,MatExpansionModule, 
-  MatListModule, MatFormFieldModule,MatCardModule,MatRadioModule, 
-  MatDatepickerModule, MatInputModule, MatNativeDateModule,MatTableModule,
-MatPaginatorModule,MatSortModule,MatProgressSpinnerModule, MatDialogModule,} from '@angular/material';
+import { MatButtonModule,MatCheckboxModule,MatToolbarModule,
+  MatIconModule,MatMenuModule,MatSidenavModule,MatExpansionModule, 
+  MatListModule,MatFormFieldModule,MatCardModule,MatRadioModule, 
+  MatDatepickerModule,MatInputModule,MatNativeDateModule,MatTableModule,
+MatPaginatorModule,MatSortModule,MatDialogModule,MatSelectModule,} from '@angular/material';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -41,8 +41,9 @@ import { ListErrorsComponent } from './errors/list-errors.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-
+    MatSelectModule,
     MatDialogModule
+    
     
   ],
   declarations: [
@@ -74,6 +75,7 @@ import { ListErrorsComponent } from './errors/list-errors.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatSelectModule,
     MatDialogModule,
     
     ListErrorsComponent

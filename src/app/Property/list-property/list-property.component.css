@@ -35,6 +35,10 @@ background-color:#FAFAFA;
 .iconed{color:blue}
 .icondel{color:red}
 
+.mat-column-actions{
+  text-align:center;
+}
+
 .footer{
   position: fixed;
   left: 0;

@@ -51,4 +51,5 @@ export class PropertyService {
             tap(_ => console.log(`deleted property id=${id}`))
         );
     }
+
 }

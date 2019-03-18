@@ -14,9 +14,9 @@ import { AdminComponent } from './admin/admin.component';
 /* import { PropertyModule } from './Property/property.module';
  */
 import { ListPropertyComponent } from './Property/list-property/list-property.component';
+import { AddPropertyComponent } from './Property/add-property/add-property.component';
 import { ListRenterComponent } from './Renter/list-renter/list-renter.component';
 import { ListContractComponent } from './Contracts/list-contract/list-contract.component';
-import { AddPropertyComponent } from './Property/add/add-Property.component';
 
 @NgModule({
   declarations: [

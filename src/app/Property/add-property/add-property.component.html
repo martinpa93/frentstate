@@ -1,0 +1,87 @@
+<form [formGroup]="form">
+  <mat-toolbar color="primary">
+      <div style="margin:auto;">
+        <span>{{title}}</span>
+      </div>  
+  </mat-toolbar>
+  <h2 mat-dialog-title class="dialog-header"></h2>
+  <mat-dialog-content fxLayout="row wrap"  >
+    <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px">
+      <mat-form-field>
+        <input matInput formControlName="cref" placeholder="Ref.catastral" name="cref" required>
+        <!-- <mat-error *ngIf="f.name.errors?.required">El nombre de usuario es requerido</mat-error>
+              <mat-error *ngIf="f.name.errors?.minlength">La longitud mínima son 3 carácteres.</mat-error>
+              <mat-error *ngIf="f.name.errors?.maxlength">La longitud máxima son 10 carácteres.</mat-error> -->
+      </mat-form-field>
+      <mat-form-field color="primary">
+        <input matInput formControlName="address" placeholder="Dirección" name="name" required>
+        <!-- <mat-error *ngIf="f.name.errors?.required">El nombre de usuario es requerido</mat-error>
+              <mat-error *ngIf="f.name.errors?.minlength">La longitud mínima son 3 carácteres.</mat-error>
+              <mat-error *ngIf="f.name.errors?.maxlength">La longitud máxima son 10 carácteres.</mat-error> -->
+      </mat-form-field>
+    </div>
+    <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px">
+      <mat-form-field>
+        <mat-select formControlName="province" matNativeControl placeholder="Comunidad autónoma"
+          (selectionChange)="geoLevelChange(population)">
+          <mat-option *ngFor="let population of geoList" [value]="population.population">{{ population.population }}
+          </mat-option>
+        </mat-select>
+        <!-- <mat-error *ngIf="f.name.errors?.required">El nombre de usuario es requerido</mat-error>
+              <mat-error *ngIf="f.name.errors?.minlength">La longitud mínima son 3 carácteres.</mat-error>
+              <mat-error *ngIf="f.name.errors?.maxlength">La longitud máxima son 10 carácteres.</mat-error> -->
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select formControlName="province" placeholder="Provincia" name="province">
+          <mat-option *ngFor=" let province of levelList" [value]="province">{{ province }}
+          </mat-option>
+        </mat-select>
+        <!-- <mat-error *ngIf="f.email.errors?.required">El email es requerido</mat-error>
+              <mat-error *ngIf="f.email.errors?.email">El email no es válido</mat-error> -->
+      </mat-form-field>
+    </div>
+    <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px">
+      <mat-form-field>
+        <input matInput formControlName="cp" placeholder="Código postal" name="cp" required>
+        <!-- <mat-error *ngIf="f.email.errors?.required">El email es requerido</mat-error>
+              <mat-error *ngIf="f.email.errors?.email">El email no es válido</mat-error> -->
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput formControlName="type" placeholder="Tipo de inmueble" name="type" required>
+        <!-- <mat-error *ngIf="f.email.errors?.required">El email es requerido</mat-error>
+              <mat-error *ngIf="f.email.errors?.email">El email no es válido</mat-error> -->
+      </mat-form-field>
+    </div>
+    <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px">
+      <mat-form-field>
+        <input matInput formControlName="m2" placeholder="Dimensiones" name="m2" required>
+        <!-- <mat-error *ngIf="f.email.errors?.required">El email es requerido</mat-error>
+              <mat-error *ngIf="f.email.errors?.email">El email no es válido</mat-error> -->
+      </mat-form-field>
+
+      <!-- select ac -->
+      <!--  <mat-form-field color="primary" fxLayout="row gap" fxLayoutAlign="center center" class="form-group">
+        <mat-error *ngIf="f.email.errors?.required">El email es requerido</mat-error>
+              <mat-error *ngIf="f.email.errors?.email">El email no es válido</mat-error>
+      </mat-form-field> -->
+    </div>
+
+    <!--  select n habitaciones -->
+    <!--  <mat-form-field color="primary" fxLayout="row gap" fxLayoutAlign="center center" class="form-group">
+      <mat-error *ngIf="f.email.errors?.required">El email es requerido</mat-error>
+      <mat-error *ngIf="f.email.errors?.email">El email no es válido</mat-error>
+    </mat-form-field> -->
+
+    <!--  select n baños -->
+   <!--  <mat-form-field color="primary" fxLayout="row gap" fxLayoutAlign="center center" class="form-group">
+      <mat-error *ngIf="f.email.errors?.required">El email es requerido</mat-error>
+      <mat-error *ngIf="f.email.errors?.email">El email no es válido</mat-error>
+    </mat-form-field> -->
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancelar</button>
+    <button mat-button [mat-dialog-close]="true">Guardar</button>
+  </mat-dialog-actions>
+</form>

@@ -1,10 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatPaginator, MatSort, MatDialog, MatDialogConfig } from '@angular/material';
+import { MatPaginator, MatSort, MatDialog } from '@angular/material';
 import { MatTableDataSource } from '@angular/material/table';
 import { PropertyService } from 'src/app/core/services/property.service';
+
 import { Property } from 'src/app/core/models/Property';
-import { AddPropertyComponent } from '../add/add-Property.component';
+
+import { AddPropertyComponent } from '../add-property/add-property.component';
+
 @Component({
   selector: 'app-list-property',
   templateUrl: './list-property.component.html',
@@ -20,7 +23,7 @@ export class ListPropertyComponent implements OnInit{
             private router: Router){}
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['cref','address','population','province','cp','type','m2','ac','nroom','nbath','action1','action2','action3'];
+  displayedColumns = ['cref','address','population','province','cp','type','m2','ac','nroom','nbath','actions'];
 
   ngOnInit(){
     this.getProperties();
@@ -42,8 +45,13 @@ export class ListPropertyComponent implements OnInit{
     this.MyDataSource.filter = value.trim().toLocaleLowerCase();
   }
 
-  onCreate(){
-    this.dialog.open(AddPropertyComponent);
+  openDialog(): void {
+    const dialogRef = this.dialog.open(AddPropertyComponent, {
+      width: '500px',height:'500px',autoFocus:true,minHeight:400,minWidth:400,maxHeight:700,maxWidth:700});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 }
  
