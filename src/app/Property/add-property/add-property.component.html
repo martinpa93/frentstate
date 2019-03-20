@@ -25,14 +25,14 @@
 
     <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px" fxFlexOffset="10px">
       <mat-form-field>
-        <mat-select formControlName="population" [(ngModel)]="selected" placeholder="Comunidad autónoma">
+        <mat-select formControlName="population" placeholder="Comunidad autónoma">
           <mat-option *ngFor="let data of geoList" value="data">{{ data.population }}</mat-option>
         </mat-select>
         <mat-error *ngIf="f.province.errors?.required">El campo es requerido.</mat-error>
       </mat-form-field>
       <mat-form-field>
-        <mat-select formControlName="province" [(ngModel)]="selected2" placeholder="Provincia">
-          <mat-option *ngFor="let val of selected?.value" [value]="val">{{ val.province }}</mat-option>
+        <mat-select formControlName="province" placeholder="Provincia">
+          <mat-option *ngFor="let val of geoList" value="val">{{ val.province[2] }}</mat-option>
         </mat-select>
         <mat-error *ngIf="f.province.errors?.required">El campo es requerido.</mat-error>
       </mat-form-field>

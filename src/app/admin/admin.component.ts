@@ -24,9 +24,7 @@ export class AdminComponent {
               private route: ActivatedRoute,
               private router: Router,) {}
 
-  goProperties() {
-    this.router.navigate(['property']);
-  }
+ 
 
 
   logout(){

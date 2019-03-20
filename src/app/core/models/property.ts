@@ -1,4 +1,5 @@
 export interface Property {
+    id:number
     cref: string;
     address: string;
     population:string;

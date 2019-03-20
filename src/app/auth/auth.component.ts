@@ -31,12 +31,13 @@ export class AuthComponent implements OnInit {
   }
 
   ngOnInit() {
+    //Enrutador se suscribe para ver los cambios y aplicar efecto
     this.route.url.subscribe(data => {
-      // Get the last piece of the URL (it's either 'login' or 'register')
+      // ultima secuencia del path
       this.authType = data[data.length - 1].path;
-      // Set a title for the page accordingly
+      //cambia el titulo segun el path
       this.title = (this.authType === 'login') ? 'Login' : 'Registro';
-      // add form control for username if this is the register page
+      // añade un control al formulario y su validación de ser el registro
       if (this.authType === 'register') {
         this.authForm.addControl('name', new FormControl('',[Validators.required, Validators.minLength(3), Validators.maxLength(10)]));
       }
