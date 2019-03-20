@@ -1,36 +1,57 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatSort } from '@angular/material';
-import { ListContractDataSource } from './list-contract-datasource';
+import { Router } from '@angular/router';
+import { MatPaginator, MatSort, MatDialog } from '@angular/material';
+import { MatTableDataSource } from '@angular/material/table';
 import { ContractService } from 'src/app/core/services/contract.service';
 
+import { Contract } from 'src/app/core/models/contract';
+
+import { AddContractComponent } from '../add-contract/add-contract.component';
+
 @Component({
-  selector: 'app-list-contract',
+  selector: 'app-list-Contract',
   templateUrl: './list-contract.component.html',
   styleUrls: ['./list-contract.component.css'],
 })
-export class ListContractComponent implements OnInit {
+export class ListContractComponent implements OnInit{
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  dataSource: ListContractDataSource; 
-  constructor(private cservice:ContractService){}
+  MyDataSource:any;
+  contract:Contract[];
+  constructor(private service:ContractService,
+              private dialog:MatDialog,
+            private router: Router){}
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['propertyAddress','renterDNI','dstart','dend','iva','watertax','gastax','electricitytax','communitytax'];
+  displayedColumns = ['property_id','renter_id','dstart','dend','iva','watertax','gastax','electricitytax','communitytax','actions'];
 
-  ngOnInit() {
-    this.cservice.getContracts().subscribe(data =>  this.dataSource.data = data);
-    this.dataSource = new ListContractDataSource(this.paginator, this.sort);
+  ngOnInit(){
+    this.getProperties();
+  }
+  
+  
+  getProperties() {
+    this.service
+    .getContracts()
+    .subscribe((data: Contract[]) => {
+    this.MyDataSource = new MatTableDataSource();
+    this.MyDataSource.data = data;
+    this.MyDataSource.paginator = this.paginator;
+    this.MyDataSource.sort = this.sort;
+    });
   }
 
-/*   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  } */
+  doFilter = (value: string) => {
+    this.MyDataSource.filter = value.trim().toLocaleLowerCase();
+  }
 
-  /* applyFilter(filterValue: string) {
-    filterValue = filterValue.trim(); // Remove whitespace
-    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
-    this.dataSource.filter = filterValue;
-  } */
+  openDialog(): void {
+    const dialogRef = this.dialog.open(AddContractComponent, {
+      width: '500px',height:'500px',autoFocus:true,minHeight:400,minWidth:400,maxHeight:700,maxWidth:700});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
 }
  

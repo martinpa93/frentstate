@@ -34,7 +34,6 @@ import { ListContractComponent } from './Contracts/list-contract/list-contract.c
     CoreModule,
     SharedModule,
     AppRoutingModule,
-    /* PropertyModule */
 
   ],
   providers: [],

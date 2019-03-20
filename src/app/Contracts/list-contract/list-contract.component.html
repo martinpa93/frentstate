@@ -1,68 +1,91 @@
 
-<div class="example-header">
-  <mat-form-field>
-    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtro">
+<mat-toolbar class=toolbarcontent>
+    <span class="title-center">Contratos</span>
+</mat-toolbar>
+
+<div class="example-header" fxLayout="row wrap"   fxLayoutAlign="space-around center" fxLayoutGap="20px">
+  
+  <mat-form-field fxFill fxFlex=60>
+    <input matInput (keyup)="doFilter($event.target.value)" placeholder="Filtro" fxFlexOffset="20px">
   </mat-form-field>
 </div>
 
-<div class="mat-elevation-z8">
-  <table mat-table class="full-width-table" [dataSource]="dataSource" matSort aria-label="Elements">
-    
-    <!-- Name Column -->
-    <ng-container matColumnDef="propertyAddress" >
+<div class="mat-elevation-z8" style="overflow-x:scroll">
+  <table mat-table class="full-width-table" [dataSource]="MyDataSource" matSort aria-label="Elements">
+    <ng-container matColumnDef="property_id">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Inmueble</th>
-      <td mat-cell *matCellDef="let element">{{element.propertyAddress}}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="renterDNI" sticky>
-      <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
-      <td mat-cell *matCellDef="let element">{{element.renterDNI}}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="dstart" >
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha inicio</th>
-      <td mat-cell *matCellDef="let element">{{element.dstart}}</td>
+      <td mat-cell *matCellDef="let element">{{element.property_id}}</td>
     </ng-container>
    
+    <ng-container matColumnDef="renter_id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Inquilino</th>
+      <td mat-cell *matCellDef="let element">{{element.renter_id}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="dstart">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Inicio</th>
+      <td mat-cell *matCellDef="let element">{{element.dstart}}</td>
+    </ng-container>
+ 
     <ng-container matColumnDef="dend">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha fin</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Fin</th>
       <td mat-cell *matCellDef="let element">{{element.dend}}</td>
     </ng-container>
 
     <ng-container matColumnDef="iva">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>IVA</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Iva</th>
       <td mat-cell *matCellDef="let element">{{element.iva}}</td>
     </ng-container>
- 
+    
     <ng-container matColumnDef="watertax">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Gasto de agua</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Impuesto de agua</th>
       <td mat-cell *matCellDef="let element">{{element.watertax}}</td>
     </ng-container>
-
+    
     <ng-container matColumnDef="gastax">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Gasto de gas</th>
-      <td mat-cell *matCellDef="let element">{{element.gastax}}</td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Impuesto de gas</th>
+      <td mat-cell *matCellDef="let element" class="textc">{{element.gastax}}</td>
     </ng-container>
     
     <ng-container matColumnDef="electricitytax">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Gasto de electricidad</th>
-      <td mat-cell *matCellDef="let element">{{element.electricitytax}}</td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Impuesto de electricidad</th>
+      <td mat-cell *matCellDef="let element" class="textc">{{element.electricitytax}}</td>
     </ng-container>
     
-    <ng-container matColumnDef="communitytax" stickyEnd>
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Gastos de comunidad</th>
-      <td mat-cell *matCellDef="let element">{{element.communitytax}}</td>
+    <ng-container matColumnDef="communitytax">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Impuesto de comunidad</th>
+      <td mat-cell *matCellDef="let element" class="textc">{{element.communitytax}}</td>
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <ng-container matColumnDef="actions" stickyEnd>
+        <th mat-header-cell *matHeaderCellDef>
+          <button mat-icon-button color="primary">
+            <mat-icon>add</mat-icon>
+          </button>
+        </th>   
+
+        <td mat-cell *matCellDef="let element;let i=index">
+          <div fxLayout="row">
+            <button mat-button color="accent">
+                <mat-icon aria-label="Edit">edit</mat-icon>
+            </button>
+            <button mat-button >
+                <mat-icon aria-label="Delete">delete</mat-icon>
+            </button>
+          </div>
+        </td>
+    
+    </ng-container>
+    
+    <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
     <tr mat-row *matRowDef="let row; columns:displayedColumns;"></tr>
   </table>
-
-  <mat-paginator #paginator
-      [length]="dataSource.data?.length"
-      [pageIndex]="0"
-      [pageSize]="5"
-      [pageSizeOptions]="[5, 10, 15, 20]">
-  </mat-paginator>
   
+  <div class="footer">
+    <mat-paginator #paginator
+        [pageIndex]="0"
+        [pageSize]="5"
+        [pageSizeOptions]="[5, 10, 15, 20]">
+    </mat-paginator>
+  </div>  
 </div>
