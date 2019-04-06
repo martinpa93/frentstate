@@ -20,16 +20,6 @@ export class AddContractComponent {
   prov;
   
 
-  //Selector dinámico
-  private _selected: any;
-  set selected (src : any) { 
-    this._selected = src; 
-    this.selected2 = this._selected.value[0];
-  };
-  get selected(): any { return this._selected; };
-  private selected2: string = "";
-
-
   constructor(public dialogRef: MatDialogRef<AddContractComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Contract,
     private fb: FormBuilder
@@ -53,6 +43,7 @@ export class AddContractComponent {
   }
   
   get f() { return this.form.controls; }
+  
   submit(form) {
     this.dialogRef.close(`${form.value.filename}`);
   }

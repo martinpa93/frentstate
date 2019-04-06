@@ -17,6 +17,8 @@ import { ListPropertyComponent } from './Property/list-property/list-property.co
 import { AddPropertyComponent } from './Property/add-property/add-property.component';
 import { ListRenterComponent } from './Renter/list-renter/list-renter.component';
 import { ListContractComponent } from './Contracts/list-contract/list-contract.component';
+import { AddRenterComponent } from './Renter/add-renter/add-renter.component';
+import { AddContractComponent } from './Contracts/add-contract/add-contract.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { ListContractComponent } from './Contracts/list-contract/list-contract.c
     ListPropertyComponent,
     ListRenterComponent,
     ListContractComponent,
-    AddPropertyComponent
+    AddPropertyComponent,
+    AddRenterComponent,
+    AddContractComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +42,6 @@ import { ListContractComponent } from './Contracts/list-contract/list-contract.c
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents:[AddPropertyComponent]
+  entryComponents:[AddPropertyComponent, AddRenterComponent, AddContractComponent]
 })
 export class AppModule { }
