@@ -5,6 +5,11 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Contract } from 'src/app/core/models/contract';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+import { PropertyService } from 'src/app/core/services/property.service';
+import { RenterService } from 'src/app/core/services/renter.service';
+import { Property } from 'src/app/core/models/Property';
+import { Renter } from 'src/app/core/models/Renter';
+
 @Component({
   selector: 'add-contract',
   templateUrl: './add-contract.component.html',
@@ -17,17 +22,21 @@ export class AddContractComponent {
   title = "Añadir contrato";
   levelList = [];
   form: FormGroup;
-  prov;
+  properties:Property[];
+  renters:Renter[];
   
 
   constructor(public dialogRef: MatDialogRef<AddContractComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Contract,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private pservice:PropertyService,
+    private rservice:RenterService
   ) {
 
   }
 
   ngOnInit() {
+    
     this.form = this.fb.group({
       'property_id': ['', [Validators.required, Validators.minLength(20), Validators.maxLength(20)]],
       'renter_id': ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
@@ -39,8 +48,28 @@ export class AddContractComponent {
       'electricitytax': ['', []],
       'communitytax': ['', []]
     });
+
+    this.getProperties();
+
   }
   
+  getProperties(){
+    this.pservice
+    .getProperties()
+    .subscribe((data) => {
+        this.properties=data;
+    });
+  }
+
+  getRenters(){
+    this.rservice
+    .getRenters()
+    .subscribe((data) => {
+        this.renters=data;
+    });
+
+  }
+
   get f() { return this.form.controls; }
   
   submit(form) {

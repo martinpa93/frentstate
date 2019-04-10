@@ -17,7 +17,7 @@ export class ListContractComponent implements OnInit{
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   MyDataSource:any;
-  contract:Contract[];
+
   constructor(private service:ContractService,
               private dialog:MatDialog,
             private router: Router){}
@@ -26,11 +26,11 @@ export class ListContractComponent implements OnInit{
   displayedColumns = ['property_id','renter_id','dstart','dend','iva','watertax','gastax','electricitytax','communitytax','actions'];
 
   ngOnInit(){
-    this.getProperties();
+    this.getContracts();
   }
   
   
-  getProperties() {
+  getContracts() {
     this.service
     .getContracts()
     .subscribe((data: Contract[]) => {
@@ -47,7 +47,7 @@ export class ListContractComponent implements OnInit{
 
   openDialog(): void {
     const dialogRef = this.dialog.open(AddContractComponent, {
-      width: '500px',height:'500px',autoFocus:true,minHeight:400,minWidth:400,maxHeight:700,maxWidth:700});
+      width: '480',height:'500px',autoFocus:true,minHeight:400,minWidth:400,maxHeight:700,maxWidth:480});
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
