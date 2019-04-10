@@ -7,7 +7,7 @@ export interface Renter {
     address:string;
     population:string;
     phone;number;
-    creditcard:string;
+    iban:string;
     job:string;
     salary:string;
 }

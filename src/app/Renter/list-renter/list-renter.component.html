@@ -47,9 +47,9 @@
       <td mat-cell *matCellDef="let element">{{element.phone}}</td>
     </ng-container>
     
-    <ng-container matColumnDef="creditcard">
+    <ng-container matColumnDef="iban">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Tarjeta de crédito</th>
-      <td mat-cell *matCellDef="let element" class="textc">{{element.creditcard}}</td>
+      <td mat-cell *matCellDef="let element" class="textc">{{element.iban}}</td>
     </ng-container>
     
     <ng-container matColumnDef="job">
@@ -64,7 +64,7 @@
 
     <ng-container matColumnDef="actions" stickyEnd>
         <th mat-header-cell *matHeaderCellDef>
-          <button mat-icon-button color="primary">
+          <button mat-icon-button color="primary" (click)="openDialog()">
             <mat-icon>add</mat-icon>
           </button>
         </th>   
@@ -89,7 +89,7 @@
   <div class="footer">
     <mat-paginator #paginator
         [pageIndex]="0"
-        [pageSize]="5"
+        [pageSize]="10"
         [pageSizeOptions]="[5, 10, 15, 20]">
     </mat-paginator>
   </div>  

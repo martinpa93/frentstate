@@ -29,16 +29,15 @@ export class AddContractComponent {
 
   ngOnInit() {
     this.form = this.fb.group({
-      'cref': ['', [Validators.required, Validators.minLength(20), Validators.maxLength(20)]],
-      'address': ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
-      'population': ['', [Validators.required]],
-      'province': ['', [Validators.required]],
-      'cp': ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]],
-      'type': ['', [Validators.required]],
-      'm2': ['', [Validators.required, Validators.minLength(1), Validators.maxLength(5)]],
-      'ac': ['', [Validators.required]],
-      'nroom': ['', [Validators.required]],
-      'nbath': ['', [Validators.required]]
+      'property_id': ['', [Validators.required, Validators.minLength(20), Validators.maxLength(20)]],
+      'renter_id': ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
+      'dstart': ['', [Validators.required]],
+      'dend': ['', [Validators.required]],
+      'iva': ['', [Validators.required]],
+      'watertax': ['', []],
+      'gastax': ['', []],
+      'electricitytax': ['', []],
+      'communitytax': ['', []]
     });
   }
   

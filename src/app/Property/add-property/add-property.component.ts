@@ -133,6 +133,7 @@ export class AddPropertyComponent {
     }
   }
   get f() { return this.form.controls; }
+  
   submit(form) {
     this.dialogRef.close(`${form.value.filename}`);
   }

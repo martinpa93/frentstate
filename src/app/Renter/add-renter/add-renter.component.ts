@@ -18,16 +18,63 @@ export class AddRenterComponent {
   levelList = [];
   form: FormGroup;
   prov;
+  geoList: any = [
+    {
+      "population": "Andalucia",
+    },
+    {
+      "population": "Aragon",
+    },
+    {
+      "population": "Asturias",
+    },
+    {
+      "population": "Baleares",
+    },
+    {
+      "population": "Canarias",
+    },
+    {
+      "population": "Cantabria",
+    },
+    {
+      "population": "Castilla-La Mancha",
+    },
+    {
+      "population": "Castilla y León",
+    },
+    {
+      "population": "Cataluña",
+    },
+    {
+      "population": "Comunidad Valenciana",
+    },
+    {
+      "population": "Extremadura",
+    },
+    {
+      "population": "Galicia",
+    },
+    {
+      "population": "Madrid",
+    },
+    {
+      "population": "Murcia",
+    },
+    {
+      "population": "Navarra",
+    },
+    {
+      "population": "País Vasco",
+    },
+    {
+      "population": "La Rioja",
+    }
+  ];
   
 
   //Selector dinámico
-  private _selected: any;
-  set selected (src : any) { 
-    this._selected = src; 
-    this.selected2 = this._selected.value[0];
-  };
-  get selected(): any { return this._selected; };
-  private selected2: string = "";
+
 
 
   constructor(public dialogRef: MatDialogRef<AddRenterComponent>,
@@ -39,19 +86,20 @@ export class AddRenterComponent {
 
   ngOnInit() {
     this.form = this.fb.group({
-      'dni': ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8)]],
+      'dni': ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
       'name': ['', [Validators.required, Validators.minLength(2), Validators.maxLength(10)]],
       'surname': ['', [Validators.required,Validators.minLength(2), Validators.maxLength(10)]],
       'dbirth': ['', [Validators.required]],
       'address': ['', [Validators.required, Validators.minLength(5), Validators.maxLength(25)]],
       'population': ['', [Validators.required]],
       'phone': ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
-      'creditcard': ['', [Validators.required,Validators.minLength(10), Validators.maxLength(20)]],
+      'iban': ['', [Validators.required,Validators.minLength(10), Validators.maxLength(20)]],
       'job': ['', [Validators.required,Validators.minLength(5), Validators.maxLength(20)]],
       'salary': ['', [Validators.required]]
     });
   }
   get f() { return this.form.controls; }
+
   submit(form) {
     this.dialogRef.close(`${form.value.filename}`);
   }

@@ -23,14 +23,14 @@ export class ListRenterComponent implements OnInit{
             private router: Router){}
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['dni','name','surname','dbirth','address','population','phone','creditcard','job','salary','actions'];
+  displayedColumns = ['dni','name','surname','dbirth','address','population','phone','iban','job','salary','actions'];
 
   ngOnInit(){
-    this.getProperties();
+    this.getRenters();
   }
   
   
-  getProperties() {
+  getRenters() {
     this.service
     .getRenters()
     .subscribe((data: Renter[]) => {
@@ -47,7 +47,7 @@ export class ListRenterComponent implements OnInit{
 
   openDialog(): void {
     const dialogRef = this.dialog.open(AddRenterComponent, {
-      width: '500px',height:'500px',autoFocus:true,minHeight:400,minWidth:400,maxHeight:700,maxWidth:700});
+      width: '500px',height:'500px',autoFocus:true,minHeight:570,minWidth:400,maxHeight:570,maxWidth:700});
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
