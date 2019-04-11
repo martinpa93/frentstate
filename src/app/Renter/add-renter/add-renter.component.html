@@ -37,7 +37,7 @@
       </mat-form-field>
     </div>
 
-    <div fxLayout="row wrap" fxFill fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px" fxFlexOffset="10px">
+    <div class="singlefield" fxLayout="row wrap" fxFill fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px" fxFlexOffset="10px">
       <mat-form-field fxFill>
         <input matInput formControlName="address" placeholder="Dirección">
         <mat-error *ngIf="f.address.errors?.required">El campo es requerido.</mat-error>
@@ -61,7 +61,7 @@
       </mat-form-field>
     </div>
 
-    <div fxLayout="row wrap" fxFill fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px" fxFlexOffset="10px">
+    <div class="singlefield" fxLayout="row wrap" fxFill fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px" fxFlexOffset="10px">
       <mat-form-field fxFill>
         <input matInput formControlName="iban" placeholder="IBAN">
         <mat-error *ngIf="f.iban.errors?.required">El campo es requerido.</mat-error>

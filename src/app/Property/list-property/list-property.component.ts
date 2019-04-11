@@ -17,7 +17,7 @@ export class ListPropertyComponent implements OnInit{
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   MyDataSource:any;
-  propertyList:Property[];
+  property:Property;
   constructor(private service:PropertyService,
               private dialog:MatDialog,
             private router: Router){}
@@ -47,11 +47,21 @@ export class ListPropertyComponent implements OnInit{
 
   openDialog(): void {
     const dialogRef = this.dialog.open(AddPropertyComponent, {
-      width: '500px',height:'500px',autoFocus:true,minHeight:400,minWidth:400,maxHeight:700,maxWidth:700});
+      data:{property:this.property},
+      width: '500px',height:'500px',autoFocus:true,
+      minHeight:400,minWidth:400,maxHeight:700,maxWidth:700});
 
-   /*  dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    }); */
+    dialogRef.afterClosed().subscribe(result => {
+      this.property = result;
+    });
   }
+
+ /*  refresh() {
+    this.authService.getAuthenticatedUser().subscribe((res) => {
+      this.user = res;
+      this.Myda = new MatTableDataSource();
+      this.changeDetectorRefs.detectChanges();
+    });
+  } */
 }
  
