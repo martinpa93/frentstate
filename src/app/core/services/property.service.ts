@@ -28,10 +28,9 @@ export class PropertyService {
     }
 
     addProperty (property): Observable<any> {
-        console.log(property);
-        return this.http.post(`${environment.apiUrl}/property/${property}`, JSON.stringify(property))
+        return this.http.post(`${environment.apiUrl}/property`, property)
         .pipe(tap(
-            (property) => console.log(`added property w/ id=${property.id}`)),
+            (property) => console.log(`added property w/ id=${property.cref}`)),
         
         );
     }

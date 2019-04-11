@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { UserService } from '../core/services/user.service';
-import { Errors } from '../core/models/errors.model';
 
 @Component({
   selector: 'app-auth-page',
@@ -12,8 +11,6 @@ import { Errors } from '../core/models/errors.model';
 export class AuthComponent implements OnInit {
   authType: String = '';
   title: String = '';
-  errors: Errors = {errors: {}};
-  isSubmitting = false;
   authForm: FormGroup;
   hide:boolean = true;
 
@@ -21,7 +18,7 @@ export class AuthComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private userService: UserService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
   ) {
     // use FormBuilder to create a form group
     this.authForm = this.fb.group({
@@ -51,34 +48,21 @@ export class AuthComponent implements OnInit {
   }
 
   submitForm() {
-    this.isSubmitting = true;
-    this.errors = {errors: {}};
-
     const credentials = this.authForm.value;
    
     if (this.authType == 'login'){
       this.userService
       .login(credentials)
       .subscribe(
-        data => { 
-          this.router.navigateByUrl('/admin');
-        },
-        err => {
-          this.errors = err;
-          this.isSubmitting = false;
-        }
+        data => this.router.navigateByUrl('/admin')
       );
-      
     }
+
     if (this.authType == 'register'){
       return this.userService
       .register(credentials)
       .subscribe(
-        data => this.router.navigateByUrl('/login'),
-        err => {
-          this.errors = err;
-          this.isSubmitting = false;
-        }
+        data => this.router.navigateByUrl('/login')
       );
     }
   }

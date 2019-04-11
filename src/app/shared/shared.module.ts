@@ -8,12 +8,11 @@ import { MatButtonModule,MatToolbarModule,
   MatIconModule,MatMenuModule,MatSidenavModule,MatExpansionModule, 
   MatListModule,MatFormFieldModule,MatCardModule,MatRadioModule, 
   MatDatepickerModule,MatInputModule,MatNativeDateModule,MatTableModule,
-MatPaginatorModule,MatSortModule,MatDialogModule,MatSelectModule,} from '@angular/material';
+MatPaginatorModule,MatSortModule,MatDialogModule,MatSelectModule, MatSnackBarModule,} from '@angular/material';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { ListErrorsComponent } from './errors/list-errors.component';
 
 
 @NgModule({
@@ -42,12 +41,12 @@ import { ListErrorsComponent } from './errors/list-errors.component';
     MatPaginatorModule,
     MatSortModule,
     MatSelectModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule
     
     
   ],
   declarations: [
-    ListErrorsComponent
   ],
   exports: [
     CommonModule,
@@ -76,8 +75,8 @@ import { ListErrorsComponent } from './errors/list-errors.component';
     MatSortModule,
     MatSelectModule,
     MatDialogModule,
+    MatSnackBarModule,
     
-    ListErrorsComponent
   ]
   })
   export class SharedModule { }

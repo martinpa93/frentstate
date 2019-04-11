@@ -17,7 +17,7 @@ import { Renter } from 'src/app/core/models/Renter';
 })
 export class AddContractComponent {
  
-  arrayTypes:Array<string>=["Vivienda","Local comercial","Garage"];
+  arrayTypes:Array<string>=["Vivienda","Local comercial","Garaje"];
   arrayNumber:Array<number>=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
   title = "Añadir contrato";
   levelList = [];

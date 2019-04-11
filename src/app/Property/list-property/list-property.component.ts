@@ -49,9 +49,9 @@ export class ListPropertyComponent implements OnInit{
     const dialogRef = this.dialog.open(AddPropertyComponent, {
       width: '500px',height:'500px',autoFocus:true,minHeight:400,minWidth:400,maxHeight:700,maxWidth:700});
 
-    dialogRef.afterClosed().subscribe(result => {
+   /*  dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-    });
+    }); */
   }
 }
  

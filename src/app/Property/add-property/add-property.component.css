@@ -5,3 +5,8 @@
 .bntg:hover{
     background-color: aliceblue;
 }
+
+.snackBar {
+    background-color: green;
+    color: white;
+  }

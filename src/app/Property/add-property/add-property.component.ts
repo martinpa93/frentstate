@@ -1,9 +1,10 @@
 import { Component, Inject } from '@angular/core';
 
 import { ActivatedRoute, Router } from '@angular/router';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 import { Property } from 'src/app/core/models/Property';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { PropertyService } from 'src/app/core/services/property.service';
 
 @Component({
   selector: 'add-property',
@@ -12,96 +13,39 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class AddPropertyComponent {
   geoList: any = [
-    {
-      "population": "Andalucia",
-      "province": ["Almeria", "Cadiz", "Córdoba", "Granada", "Huelva", "Jaén", "Málaga", "Sevilla"]
-    },
-    {
-      "population": "Aragon",
-      "province": ["Huesca", "Teruel", "Zaragoza"]
-    },
-    {
-      "population": "Asturias",
-      "province": ["Oviedo"]
-    },
-    {
-      "population": "Baleares",
-      "province": ["Palma de Mallorca"]
-    },
-    {
-      "population": "Canarias",
-      "province": ["Santa Cruz de Tenerife", "Las Palmas de Gran Canaria"]
-    },
-    {
-      "population": "Cantabria",
-      "province": ["Santander"]
-    },
-    {
-      "population": "Castilla-La Mancha",
-      "province": ["Albacete", "Ciudad Real", "Cuenca", "Guadalajara", "Toledo"]
-    },
-    {
-      "population": "Castilla y León",
-      "province": ["Ávila", "Burgos", "León", "Salamanca", "Segovia", "Soria", "Valladolid", "Zamora"]
-    },
-    {
-      "population": "Cataluña",
-      "province": ["Barcelona", "Gerona", "Lérida", "Tarragona"]
-    },
-    {
-      "population": "Comunidad Valenciana",
-      "province": ["Alicante", "Castellón de la Plana", "Valencia"]
-    },
-    {
-      "population": "Extremadura",
-      "province": ["Badajoz", "Cáceres"]
-    },
-    {
-      "population": "Galicia",
-      "province": ["La Coruña", "Lugo", "Orense", "Pontevedra"]
-    },
-    {
-      "population": "Madrid",
-      "province": ["Madrid"]
-    },
-    {
-      "population": "Murcia",
-      "province": ["Murcia"]
-    },
-    {
-      "population": "Navarra",
-      "province": ["Pamplona"]
-    },
-    {
-      "population": "País Vasco",
-      "province": ["Bilbao", "San Sebastián", "Vitoria"]
-    },
-    {
-      "population": "La Rioja",
-      "province": ["Logroño"]
-    }
+    "Andalucia",
+    "Aragon",
+    "Asturias",
+    "Baleares",
+    "Canarias",
+    "Cantabria",
+    "Castilla-La Mancha",
+    "Castilla y León",
+    "Cataluña",
+    "Comunidad Valenciana",
+    "Extremadura",
+    "Galicia",
+    "Madrid",
+    "Murcia",
+    "Navarra",
+    "País Vasco",
+    "La Rioja"
   ];
   arrayTypes:Array<string>=["Vivienda","Local comercial","Garage"];
   arrayNumber:Array<number>=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
   title = "Añadir inmueble";
-  levelList = [];
   form: FormGroup;
-  prov;
+  property:any;
   
 
-  //Selector dinámico
-  private _selected: any;
-  set selected (src : any) { 
-    this._selected = src; 
-    this.selected2 = this._selected.value[0];
-  };
-  get selected(): any { return this._selected; };
-  private selected2: string = "";
+
 
 
   constructor(public dialogRef: MatDialogRef<AddPropertyComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Property,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private pservice:PropertyService,
+    private snackBar:MatSnackBar
   ) {
 
   }
@@ -121,21 +65,20 @@ export class AddPropertyComponent {
     });
   }
 
-  geoLevelChange(population) {
-    let dropDownData = this.geoList.find((data: any) => data.population === population);
-    if (dropDownData) {
-      this.levelList = dropDownData.population;
-      if (this.levelList) {
-        this.prov = this.levelList[0];
-      }
-    } else {
-      this.levelList = [];
-    }
-  }
+ 
   get f() { return this.form.controls; }
   
-  submit(form) {
-    this.dialogRef.close(`${form.value.filename}`);
+  onSubmit() {
+    this.pservice.addProperty(this.form.value).subscribe(
+
+      data=>this.snackBar.open('Guardado', 'OK', {
+        verticalPosition: 'bottom',
+        horizontalPosition: 'center',
+        duration: 4000,
+        panelClass: "background-color:'green',color:'white'"
+      })
+    );
+  /*   this.dialogRef.close(`${form.value.filename}`); */
   }
 
 }

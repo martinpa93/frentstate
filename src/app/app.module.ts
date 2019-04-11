@@ -35,8 +35,8 @@ import { AddContractComponent } from './Contracts/add-contract/add-contract.comp
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    CoreModule,
     SharedModule,
+    CoreModule,
     AppRoutingModule,
 
   ],
