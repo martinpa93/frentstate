@@ -20,7 +20,7 @@ export class ListPropertyComponent implements OnInit{
   property:Property;
   constructor(private service:PropertyService,
               private dialog:MatDialog,
-            private router: Router){}
+              private router: Router){}
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['cref','address','population','province','cp','type','m2','ac','nroom','nbath','actions'];
@@ -47,13 +47,18 @@ export class ListPropertyComponent implements OnInit{
 
   openDialog(): void {
     const dialogRef = this.dialog.open(AddPropertyComponent, {
-      data:{property:this.property},
       width: '500px',height:'500px',autoFocus:true,
       minHeight:400,minWidth:400,maxHeight:700,maxWidth:700});
 
-    dialogRef.afterClosed().subscribe(result => {
-      this.property = result;
-    });
+    dialogRef.afterClosed().subscribe(
+      
+      data =>{
+        if(data){
+          this.MyDataSource.data.splice(0,0,data);
+          this.MyDataSource.filter ='';
+        }
+      }
+    );
   }
 
  /*  refresh() {

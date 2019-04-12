@@ -80,7 +80,7 @@ export class AddPropertyComponent {
         duration: 4000,
         panelClass: "snackBar"
       })
-      this.dialogRef.close();}
+      this.dialogRef.close(this.form.value);}
     );
   }
 
