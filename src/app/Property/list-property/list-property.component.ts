@@ -1,18 +1,18 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatPaginator, MatSort, MatDialog } from '@angular/material';
+import { MatPaginator, MatSort, MatDialog, MatSnackBar } from '@angular/material';
 import { MatTableDataSource } from '@angular/material/table';
 import { PropertyService } from 'src/app/core/services/property.service';
 
 import { Property } from 'src/app/core/models/Property';
 
 import { AddPropertyComponent } from '../add-property/add-property.component';
-import { ConsoleReporter } from 'jasmine';
+import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
 
 @Component({
   selector: 'app-list-property',
   templateUrl: './list-property.component.html',
-  styleUrls: ['./list-property.component.css'],
+  styleUrls: ['./list-property.component.scss'],
 })
 export class ListPropertyComponent implements OnInit{
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -21,6 +21,7 @@ export class ListPropertyComponent implements OnInit{
   property:Property;
   constructor(private service:PropertyService,
               private dialog:MatDialog,
+              private snackBar:MatSnackBar,
               private router: Router){}
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
@@ -91,13 +92,21 @@ export class ListPropertyComponent implements OnInit{
   }
 
   onDelete(element:any): void {
-    this.service
-    .deleteProperty(element.cref).subscribe(
-      data => {
-        
-      }
-    );
-
+    const dialogRef = this.dialog.open(DeleteDialogComponent, {
+      data:{data:element},
+      width: '400px',height:'250px',autoFocus:true,
+      minHeight:"250px",minWidth:"400px",maxHeight:"280px",maxWidth:"500px"});
+    
+      dialogRef.afterClosed().subscribe(
+        data =>{
+          if(data){
+            let objIndex =  this.MyDataSource.data.findIndex(obj => obj.cref == element.cref);
+            this.MyDataSource.data.splice(objIndex, 1);
+            this.MyDataSource.filter ='';
+          }
+        }
+      );
   }
+
 }
  

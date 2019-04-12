@@ -19,6 +19,7 @@ import { ListRenterComponent } from './Renter/list-renter/list-renter.component'
 import { ListContractComponent } from './Contracts/list-contract/list-contract.component';
 import { AddRenterComponent } from './Renter/add-renter/add-renter.component';
 import { AddContractComponent } from './Contracts/add-contract/add-contract.component';
+import { DeleteDialogComponent } from './Property/delete-dialog/delete-dialog.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { AddContractComponent } from './Contracts/add-contract/add-contract.comp
     ListRenterComponent,
     ListContractComponent,
     AddPropertyComponent,
+    DeleteDialogComponent,
     AddRenterComponent,
     AddContractComponent
   ],
@@ -42,6 +44,6 @@ import { AddContractComponent } from './Contracts/add-contract/add-contract.comp
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents:[AddPropertyComponent, AddRenterComponent, AddContractComponent]
+  entryComponents:[AddPropertyComponent, DeleteDialogComponent, AddRenterComponent, AddContractComponent]
 })
 export class AppModule { }

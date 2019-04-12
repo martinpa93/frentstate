@@ -29,12 +29,17 @@
 background-color:#FAFAFA;
 }
 
-.icondet{color:black}
-.iconed{color:blue}
-.icondel{color:red}
-
 .mat-column-actions{
   text-align:center;
+}
+
+::ng-deep snack-bar-container.snackBar {
+  background-color: green;
+  color: white;
+
+}
+::ng-deep snack-bar-container.snackBar button{
+    color:white;
 }
 
 .footer{
