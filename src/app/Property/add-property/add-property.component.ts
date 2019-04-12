@@ -42,7 +42,7 @@ export class AddPropertyComponent {
 
 
   constructor(public dialogRef: MatDialogRef<AddPropertyComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Property,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
     private pservice:PropertyService,
     private snackBar:MatSnackBar
@@ -65,23 +65,54 @@ export class AddPropertyComponent {
       'nroom': ['', [Validators.required]],
       'nbath': ['', [Validators.required]]
     });
+ 
+    if(this.data){
+      this.form.patchValue({
+        cref:this.data.id.cref,
+        address:this.data.id.address,
+        population:this.data.id.population,
+        province:this.data.id.province,
+        cp:this.data.id.cp,
+        type:this.data.id.type,
+        m2:this.data.id.m2,
+        ac:this.data.id.ac,
+        nroom:this.data.id.nroom,
+        nbath:this.data.id.nbath
+      });
+      this.form.controls['cref'].disable();
 
+
+    }
   }
 
  
   get f() { return this.form.controls; }
   
   onSubmit() {
-    this.pservice.addProperty(this.form.value).subscribe(
-      data=>{
-        this.snackBar.open('Guardado', 'OK', {
-        verticalPosition: 'bottom',
-        horizontalPosition: 'center',
-        duration: 4000,
-        panelClass: "snackBar"
-      })
-      this.dialogRef.close(this.form.value);}
-    );
+    if (this.data){
+      this.pservice.updateProperty(this.data.id.cref,this.form.value).subscribe(
+        data=>{
+          this.snackBar.open('Guardado', 'OK', {
+          verticalPosition: 'bottom',
+          horizontalPosition: 'center',
+          duration: 4000,
+          panelClass: "snackBar"
+        })
+        this.dialogRef.close(this.form.value);
+      });
+    }
+    else{
+      this.pservice.addProperty(this.form.value).subscribe(
+        data=>{
+          this.snackBar.open('Guardado', 'OK', {
+          verticalPosition: 'bottom',
+          horizontalPosition: 'center',
+          duration: 4000,
+          panelClass: "snackBar"
+        })
+        this.dialogRef.close(this.form.value);}
+      );
+    }
   }
 
 }

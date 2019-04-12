@@ -85,7 +85,7 @@
   <mat-dialog-actions>
     <div fxLayout="row" fxLayoutAlign="end end">
       <button mat-button mat-dialog-close class="btnc">Cancelar</button>
-      <button mat-button   type="submit"  class="btng" [disabled]="!form.valid">Guardar</button>
+      <button mat-button   type="submit"  class="btng" [disabled]="form.invalid || form.pristine">Guardar</button>
     </div>
   </mat-dialog-actions>
 </form>

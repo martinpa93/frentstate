@@ -37,9 +37,9 @@ export class PropertyService {
 
 
     updateProperty (id, property): Observable<any> {
-        return this.http.put(`${environment.apiUrl}/property/${id}`, JSON.stringify(property))
-        .pipe(
-          tap(_ => console.log(`updated property id=${id}`))
+        return this.http.put(`${environment.apiUrl}/property/${id}`, property)
+        .pipe(tap(
+            (property) => console.log(`updated property id=${id}`))
         );
     }
 
@@ -47,7 +47,7 @@ export class PropertyService {
     deleteProperty (id): Observable<any> {
         return this.http.delete(`${environment.apiUrl}/property/${id}`)
         .pipe(
-            tap(_ => console.log(`deleted property id=${id}`))
+            tap(data => console.log(`deleted property id=${id}`))
         );
     }
 
