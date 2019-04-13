@@ -12,70 +12,28 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class AddRenterComponent {
   
-  arrayTypes:Array<string>=["Vivienda","Local comercial","Garage"];
+  geoList: any = [
+    "Andalucia",
+    "Aragon",
+    "Asturias",
+    "Baleares",
+    "Canarias",
+    "Cantabria",
+    "Castilla-La Mancha",
+    "Castilla y León",
+    "Cataluña",
+    "Comunidad Valenciana",
+    "Extremadura",
+    "Galicia",
+    "Madrid",
+    "Murcia",
+    "Navarra",
+    "País Vasco",
+    "La Rioja"
+  ];
   arrayNumber:Array<number>=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
   title = "Añadir inquilino";
-  levelList = [];
   form: FormGroup;
-  prov;
-  geoList: any = [
-    {
-      "population": "Andalucia",
-    },
-    {
-      "population": "Aragon",
-    },
-    {
-      "population": "Asturias",
-    },
-    {
-      "population": "Baleares",
-    },
-    {
-      "population": "Canarias",
-    },
-    {
-      "population": "Cantabria",
-    },
-    {
-      "population": "Castilla-La Mancha",
-    },
-    {
-      "population": "Castilla y León",
-    },
-    {
-      "population": "Cataluña",
-    },
-    {
-      "population": "Comunidad Valenciana",
-    },
-    {
-      "population": "Extremadura",
-    },
-    {
-      "population": "Galicia",
-    },
-    {
-      "population": "Madrid",
-    },
-    {
-      "population": "Murcia",
-    },
-    {
-      "population": "Navarra",
-    },
-    {
-      "population": "País Vasco",
-    },
-    {
-      "population": "La Rioja",
-    }
-  ];
-  
-
-  //Selector dinámico
-
-
 
   constructor(public dialogRef: MatDialogRef<AddRenterComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Renter,
@@ -90,7 +48,7 @@ export class AddRenterComponent {
       'name': ['', [Validators.required, Validators.minLength(2), Validators.maxLength(10)]],
       'surname': ['', [Validators.required,Validators.minLength(2), Validators.maxLength(10)]],
       'dbirth': ['', [Validators.required]],
-      'address': ['', [Validators.required, Validators.minLength(5), Validators.maxLength(25)]],
+      'address': ['', [Validators.required, /* Validators.minLength(5), Validators.maxLength(25) */]],
       'population': ['', [Validators.required]],
       'phone': ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
       'iban': ['', [Validators.required,Validators.minLength(10), Validators.maxLength(20)]],

@@ -32,7 +32,7 @@ import { DeleteDialogComponent } from './Property/delete-dialog/delete-dialog.co
     AddPropertyComponent,
     DeleteDialogComponent,
     AddRenterComponent,
-    AddContractComponent
+    AddContractComponent,
   ],
   imports: [
     BrowserModule,

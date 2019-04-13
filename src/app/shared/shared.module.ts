@@ -48,6 +48,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   ],
   declarations: [
   ],
+  providers: [],
   exports: [
     CommonModule,
     HttpClientModule,

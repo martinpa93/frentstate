@@ -9,7 +9,7 @@ import { PropertyService } from 'src/app/core/services/property.service';
 @Component({
   selector: 'add-property',
   templateUrl: './add-property.component.html',
-  styleUrls: ['./add-property.component.scss']
+  styleUrls: ['./add-property.component.scss'],
 })
 export class AddPropertyComponent {
   geoList: any = [
@@ -31,12 +31,15 @@ export class AddPropertyComponent {
     "País Vasco",
     "La Rioja"
   ];
+  title = "Añadir inmueble";
   arrayTypes:Array<string>=["Vivienda","Local comercial","Garaje"];
   arrayNumber:Array<number>=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
-  title = "Añadir inmueble";
   form: FormGroup;
   property:any;
-  
+  crefpattern:string="[a-zA-z0-9]{20}";
+  addresspattern:string="(Via|Plaza|Plz|C\/|Calle|Avenida|){1}\\s{1}(\\w){1,30}\\s{1}(1?\\d?\\d?\\d{1}){1}\.{1}\\s{1}([0-5]?\\d?\\d{1}){1}\ª{1}\-{1}([0-1]?\\d?\\d{1}){1}\º{1}";
+  cppattern:string="((0[1-9]|5[0-2])|[1-4][0-9])[0-9]{3}";
+  m2pattern:string="(\\d?\\d?\\d?\\d{1}){1}";
 
 
 
@@ -54,13 +57,13 @@ export class AddPropertyComponent {
 
 
     this.form = this.fb.group({
-      'cref': ['', [Validators.required, Validators.minLength(20), Validators.maxLength(20)]],
-      'address': ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
+      'cref': ['', [Validators.required, Validators.minLength(20), Validators.maxLength(20),Validators.pattern(this.crefpattern)]],
+      'address': ['', [Validators.required, Validators.pattern(this.addresspattern)]],
       'population': ['', [Validators.required]],
       'province': ['', [Validators.required]],
-      'cp': ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]],
+      'cp': ['', [Validators.required, Validators.pattern(this.cppattern)]],
       'type': ['', [Validators.required]],
-      'm2': ['', [Validators.required, Validators.minLength(1), Validators.maxLength(5)]],
+      'm2': ['', [Validators.required, Validators.pattern(this.m2pattern)]],
       'ac': [false, /* [Validators.required] */],
       'nroom': ['', [Validators.required]],
       'nbath': ['', [Validators.required]]
@@ -80,8 +83,6 @@ export class AddPropertyComponent {
         nbath:this.data.id.nbath
       });
       this.form.controls['cref'].disable();
-
-
     }
   }
 

@@ -14,12 +14,20 @@
         <mat-error *ngIf="f.cref.errors?.required">El campo es requerido.</mat-error>
         <mat-error *ngIf="f.cref.errors?.minlength">Debes introducir 20 carácteres.</mat-error>
         <mat-error *ngIf="f.cref.errors?.maxlength">Debes introducir 20 carácteres.</mat-error>
+        <mat-error *ngIf="f.cref.errors?.pattern &&
+                          !f.cref.errors?.required &&
+                          !f.cref.errors?.minlength &&
+                          !f.cref.errors?.maxlength">
+                        Referencia catastral inválida.
+        </mat-error>
       </mat-form-field>
       <mat-form-field color="primary">
         <input matInput formControlName="address" placeholder="Dirección" name="name" required>
         <mat-error *ngIf="f.address.errors?.required">El campo es requerido.</mat-error>
-        <mat-error *ngIf="f.address.errors?.minlength">La longitud mínima son 5 carácteres.</mat-error>
-        <mat-error *ngIf="f.address.errors?.maxlength">La longitud máxima son 50 carácteres.</mat-error>
+        <mat-error *ngIf="f.address.errors?.pattern &&
+                          !f.address.errors?.required">
+                          Dirección inválida.
+        </mat-error>
       </mat-form-field>
     </div>
 
@@ -40,10 +48,9 @@
 
     <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px" fxFlexOffset="10px">
       <mat-form-field>
-        <input matInput formControlName="cp" placeholder="Código postal" required>
+        <input matInput formControlName="cp" type="number" placeholder="Código postal" required>
         <mat-error *ngIf="f.cp.errors?.required">El campo es requerido.</mat-error>
-        <mat-error *ngIf="f.cp.errors?.minlength">Debes introducir 5 carácteres.</mat-error>
-        <mat-error *ngIf="f.cp.errors?.maxlength">Debes introducir 5 carácteres.</mat-error>
+        <mat-error *ngIf="f.cp.errors?.pattern">Código postal inválido.</mat-error>
       </mat-form-field>
 
       <mat-form-field>
@@ -56,10 +63,9 @@
 
     <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px" fxFlexOffset="10px">
       <mat-form-field>
-        <input matInput formControlName="m2" placeholder="Dimensiones" required>
+        <input matInput formControlName="m2" type="number" placeholder="Dimensiones" required>
         <mat-error *ngIf="f.m2.errors?.required">El campo es requerido.</mat-error>
-        <mat-error *ngIf="f.m2.errors?.minlength">La cantidad mínima es de una cifra.</mat-error>
-        <mat-error *ngIf="f.m2.errors?.maxlength">La cantidad máxima es de 5 cifras.</mat-error>
+        <mat-error *ngIf="f.m2.errors?.pattern">Dimensión inválida.</mat-error>
       </mat-form-field>
 
      <!--  <mat-form-field> -->
@@ -85,7 +91,7 @@
   <mat-dialog-actions>
     <div fxLayout="row" fxLayoutAlign="end end">
       <button mat-button mat-dialog-close class="btnc">Cancelar</button>
-      <button mat-button   type="submit"  class="btng" [disabled]="form.invalid || form.pristine">Guardar</button>
+      <button mat-button  type="submit" class="btng" [disabled]="form.invalid || form.pristine">Guardar</button>
     </div>
   </mat-dialog-actions>
 </form>
