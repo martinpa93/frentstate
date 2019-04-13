@@ -34,13 +34,13 @@
     <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px" fxFlexOffset="10px">
       <mat-form-field>
         <mat-select formControlName="population" placeholder="C.autónoma" required>
-          <mat-option *ngFor="let data of geoList" [value]="data">{{ data }}</mat-option>
+          <mat-option *ngFor="let data of loop" [value]="data" >{{ data }}</mat-option>
         </mat-select>
         <mat-error *ngIf="f.province.errors?.required">El campo es requerido.</mat-error>
       </mat-form-field>
       <mat-form-field>
         <mat-select formControlName="province" placeholder="Provincia" required>
-          <mat-option *ngFor="let val of geoList" [value]="val">{{ val }}</mat-option>
+          <mat-option *ngFor="let val of arrayProv" [value]="val">{{ val }}</mat-option>
         </mat-select>
         <mat-error *ngIf="f.province.errors?.required">El campo es requerido.</mat-error>
       </mat-form-field>

@@ -61,7 +61,7 @@
     <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px" fxFlexOffset="10px">
       <mat-form-field>
         <mat-select formControlName="population" placeholder="Comunidad autónoma">
-          <mat-option *ngFor="let data of geoList" value="data">{{ data.population }}</mat-option>
+          <mat-option *ngFor="let data of loop" value="data">{{ data }}</mat-option>
         </mat-select>
         <mat-error *ngIf="f.population.errors?.required">El campo es requerido.</mat-error>
       </mat-form-field>
