@@ -7,6 +7,7 @@ import { RenterService } from 'src/app/core/services/renter.service';
 import { Renter } from 'src/app/core/models/renter';
 
 import { AddRenterComponent } from '../add-renter/add-renter.component';
+import { DeleteRDialogComponent } from '../deleter-dialog/deleter-dialog.component';
 
 @Component({
   selector: 'app-list-Renter',
@@ -69,7 +70,7 @@ export class ListRenterComponent implements OnInit{
       
       data =>{
         if(data){
-          let objIndex =  this.MyDataSource.data.findIndex(obj => obj.dni == data.dni);
+          let objIndex =  this.MyDataSource.data.findIndex(obj => obj.dni == id.dni);
 
           //Update object's name property.
           this.MyDataSource.data[objIndex].name = data.name;
@@ -81,10 +82,26 @@ export class ListRenterComponent implements OnInit{
           this.MyDataSource.data[objIndex].iban = data.iban;
           this.MyDataSource.data[objIndex].job =data.job ;
           this.MyDataSource.data[objIndex].salary = data.salary;
-
         }
       }
     );
+  }
+
+  onDelete(element:any): void {
+    const dialogRef = this.dialog.open(DeleteRDialogComponent, {
+      data:{data:element},
+      width: '400px',height:'250px',autoFocus:true,
+      minHeight:"250px",minWidth:"400px",maxHeight:"280px",maxWidth:"500px"});
+    
+      dialogRef.afterClosed().subscribe(
+        data =>{
+          if(data){
+            let objIndex =  this.MyDataSource.data.findIndex(obj => obj.dni == element.dni);
+            this.MyDataSource.data.splice(objIndex, 1);
+            this.MyDataSource.filter ='';
+          }
+        }
+      );
   }
 }
  

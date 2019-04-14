@@ -20,7 +20,7 @@ import { ListContractComponent } from './Contracts/list-contract/list-contract.c
 import { AddRenterComponent } from './Renter/add-renter/add-renter.component';
 import { AddContractComponent } from './Contracts/add-contract/add-contract.component';
 import { DeleteDialogComponent } from './Property/delete-dialog/delete-dialog.component';
-import { DatePipe } from '@angular/common';
+import { DeleteRDialogComponent } from './Renter/deleter-dialog/deleter-dialog.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +33,7 @@ import { DatePipe } from '@angular/common';
     AddPropertyComponent,
     DeleteDialogComponent,
     AddRenterComponent,
+    DeleteRDialogComponent,
     AddContractComponent,
   ],
   imports: [
@@ -43,8 +44,8 @@ import { DatePipe } from '@angular/common';
     AppRoutingModule,
 
   ],
-  providers: [DatePipe],
+  providers: [],
   bootstrap: [AppComponent],
-  entryComponents:[AddPropertyComponent, DeleteDialogComponent, AddRenterComponent, AddContractComponent]
+  entryComponents:[AddPropertyComponent, DeleteDialogComponent, AddRenterComponent, DeleteRDialogComponent, AddContractComponent]
 })
 export class AppModule { }

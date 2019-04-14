@@ -47,7 +47,7 @@ export class RenterService {
     deleteRenter (id): Observable<any> {
         return this.http.delete(`${environment.apiUrl}/renter/${id}`)
         .pipe(
-            tap(_ => console.log(`deleted renter id=${id}`))
+            tap((renter) => console.log(`deleted renter id=${id}`))
         );
     }
 }
