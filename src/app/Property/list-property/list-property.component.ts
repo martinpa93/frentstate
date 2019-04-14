@@ -21,8 +21,7 @@ export class ListPropertyComponent implements OnInit{
   property:Property;
   constructor(private service:PropertyService,
               private dialog:MatDialog,
-              private snackBar:MatSnackBar,
-              private router: Router){}
+              ){}
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['cref','address','population','province','cp','type','m2','ac','nroom','nbath','actions'];

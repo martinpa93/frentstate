@@ -26,11 +26,13 @@
     <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px" fxFlexOffset="10px">
       <mat-form-field style="max-width: 180px">
         <input matInput formControlName="dstart" [matDatepicker]="picker" placeholder="F.inicio">
+        <mat-error *ngIf="f.dstart.errors?.required">El campo es requerido.</mat-error>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
       <mat-form-field style="max-width: 180px">
         <input matInput formControlName="dend" [matDatepicker]="picker2" placeholder="F.fin">
+        <mat-error *ngIf="f.dend.errors?.required">El campo es requerido.</mat-error>
         <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
         <mat-datepicker #picker2></mat-datepicker>
       </mat-form-field>

@@ -28,18 +28,18 @@ export class RenterService {
     }
 
     addRenter (renter): Observable<any> {
-        return this.http.post(`${environment.apiUrl}/renter/${renter}`, JSON.stringify(renter))
+        return this.http.post(`${environment.apiUrl}/renter`, renter)
         .pipe(tap(
-            (renter) => console.log(`added renter w/ id=${renter.id}`)),
+            (renter) => console.log(`added renter w/ id=${renter.dni}`)),
         
         );
     }
 
 
     updateRenter (id, renter): Observable<any> {
-        return this.http.put(`${environment.apiUrl}/renter/${id}`, JSON.stringify(renter))
+        return this.http.put(`${environment.apiUrl}/renter/${id}`, renter)
         .pipe(
-          tap(_ => console.log(`updated renter id=${id}`))
+          tap((renter) => console.log(`updated renter id=${id}`))
         );
     }
 

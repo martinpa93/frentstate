@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 
 import { ActivatedRoute, Router } from '@angular/router';
-import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar, MatSnackBarConfig } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 import { Property } from 'src/app/core/models/Property';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PropertyService } from 'src/app/core/services/property.service';
@@ -93,6 +93,7 @@ export class AddPropertyComponent {
   addresspattern:string="(Via|Plaza|Plz|C\/|Calle|Avenida|){1}\\s{1}(\\w){1,30}\\s{1}(1?\\d?\\d?\\d{1}){1}\.{1}\\s{1}([0-5]?\\d?\\d{1}){1}\ª{1}\-{1}([0-1]?\\d?\\d{1}){1}\º{1}";
   cppattern:string="((0[1-9]|5[0-2])|[1-4][0-9])[0-9]{3}";
   m2pattern:string="(\\d?\\d?\\d?\\d{1}){1}";
+  
 
 
 

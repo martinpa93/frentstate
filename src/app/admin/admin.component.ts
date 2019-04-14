@@ -4,6 +4,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { UserService } from '../core/services/user.service';
+import { MatSnackBar } from '@angular/material';
 
 
 
@@ -22,13 +23,20 @@ export class AdminComponent {
   constructor(private service:UserService,
               private breakpointObserver: BreakpointObserver,
               private route: ActivatedRoute,
-              private router: Router,) {}
+              private router: Router,
+              private snackBar:MatSnackBar) {}
 
  
 
 
   logout(){
     this.service.logout().subscribe(()=> { 
+      this.snackBar.open('Desconectado', 'OK', {
+        verticalPosition: 'bottom',
+        horizontalPosition: 'center',
+        duration: 4000,
+        panelClass: "snackBar"
+      })
       this.router.navigateByUrl('/login');
     });
   }

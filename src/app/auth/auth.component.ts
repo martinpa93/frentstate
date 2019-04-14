@@ -3,10 +3,12 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { UserService } from '../core/services/user.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-auth-page',
-  templateUrl: './auth.component.html'
+  templateUrl: './auth.component.html',
+  styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent implements OnInit {
   authType: String = '';
@@ -19,6 +21,7 @@ export class AuthComponent implements OnInit {
     private router: Router,
     private userService: UserService,
     private fb: FormBuilder,
+    private snackBar:MatSnackBar
   ) {
     // use FormBuilder to create a form group
     this.authForm = this.fb.group({
@@ -54,7 +57,15 @@ export class AuthComponent implements OnInit {
       this.userService
       .login(credentials)
       .subscribe(
-        data => this.router.navigateByUrl('/admin')
+        data =>{
+          this.snackBar.open('Conectado', 'OK', {
+            verticalPosition: 'bottom',
+            horizontalPosition: 'center',
+            duration: 4000,
+            panelClass: "snackBar"
+          })
+          this.router.navigateByUrl('/admin')
+        } 
       );
     }
 

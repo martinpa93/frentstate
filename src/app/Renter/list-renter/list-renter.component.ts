@@ -11,7 +11,7 @@ import { AddRenterComponent } from '../add-renter/add-renter.component';
 @Component({
   selector: 'app-list-Renter',
   templateUrl: './list-renter.component.html',
-  styleUrls: ['./list-renter.component.css'],
+  styleUrls: ['./list-renter.component.scss'],
 })
 export class ListRenterComponent implements OnInit{
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -24,6 +24,7 @@ export class ListRenterComponent implements OnInit{
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['dni','name','surname','dbirth','address','population','phone','iban','job','salary','actions'];
+
 
   ngOnInit(){
     this.getRenters();
@@ -49,9 +50,41 @@ export class ListRenterComponent implements OnInit{
     const dialogRef = this.dialog.open(AddRenterComponent, {
       width: '500px',height:'500px',autoFocus:true,minHeight:570,minWidth:400,maxHeight:570,maxWidth:700});
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+    dialogRef.afterClosed().subscribe(
+      data => {
+        if(data){
+          this.MyDataSource.data.splice(0,0,data);
+          this.MyDataSource.filter ='';
+        }
     });
+  }
+
+  onEdit(id:any): void {
+    const dialogRef = this.dialog.open(AddRenterComponent, {
+      data:{data:id, mode:'edit'},
+      width: '500px',height:'500px',autoFocus:true,
+      minHeight:570,minWidth:400,maxHeight:570,maxWidth:700});
+
+    dialogRef.afterClosed().subscribe(
+      
+      data =>{
+        if(data){
+          let objIndex =  this.MyDataSource.data.findIndex(obj => obj.dni == data.dni);
+
+          //Update object's name property.
+          this.MyDataSource.data[objIndex].name = data.name;
+          this.MyDataSource.data[objIndex].surname = data.surname;
+          this.MyDataSource.data[objIndex].dbirth =data.dbirth;
+          this.MyDataSource.data[objIndex].address = data.address;
+          this.MyDataSource.data[objIndex].population = data.population;
+          this.MyDataSource.data[objIndex].phone = data.phone;
+          this.MyDataSource.data[objIndex].iban = data.iban;
+          this.MyDataSource.data[objIndex].job =data.job ;
+          this.MyDataSource.data[objIndex].salary = data.salary;
+
+        }
+      }
+    );
   }
 }
  
