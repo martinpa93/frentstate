@@ -28,7 +28,7 @@ export class ContractService {
     }
 
     addContract (contract): Observable<any> {
-        return this.http.post(`${environment.apiUrl}/contract/${contract}`, JSON.stringify(contract))
+        return this.http.post(`${environment.apiUrl}/contract`, contract)
         .pipe(tap(
             (contract) => console.log(`added contract w/ id=${contract.id}`)),
         
@@ -37,7 +37,7 @@ export class ContractService {
 
 
     updateContract (id, contract): Observable<any> {
-        return this.http.put(`${environment.apiUrl}/contract/${id}`, JSON.stringify(contract))
+        return this.http.put(`${environment.apiUrl}/contract/${id}`, contract)
         .pipe(
           tap(_ => console.log(`updated contract id=${id}`))
         );
@@ -47,7 +47,7 @@ export class ContractService {
     deleteContract (id): Observable<any> {
         return this.http.delete(`${environment.apiUrl}/contract/${id}`)
         .pipe(
-            tap(_ => console.log(`deleted contract id=${id}`))
+            tap((Contract) => console.log(`deleted contract id=${id}`))
         );
     }
 }

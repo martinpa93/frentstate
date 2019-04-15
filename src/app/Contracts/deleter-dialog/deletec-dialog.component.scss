@@ -1,0 +1,17 @@
+.btnd:hover{
+    background-color: tomato;
+}
+
+.bntc:hover{
+    background-color: aliceblue;
+}
+
+
+::ng-deep snack-bar-container.snackBar {
+    background-color: green;
+    color: white;
+
+  }
+  ::ng-deep snack-bar-container.snackBar button{
+      color:white;
+  }

@@ -73,8 +73,16 @@ export class AuthComponent implements OnInit {
       return this.userService
       .register(credentials)
       .subscribe(
-        data => this.router.navigateByUrl('/login')
-      );
+        
+        data => {
+          this.snackBar.open('¡Registro completado con éxito!', 'OK', {
+            verticalPosition: 'bottom',
+            horizontalPosition: 'center',
+            duration: 4000,
+            panelClass: "snackBar"
+          })
+          this.router.navigateByUrl('/login')
+        });
     }
   }
 }

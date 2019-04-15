@@ -28,7 +28,8 @@ export class XhrErrorHandlerService implements ErrorHandler{
       });
     }
     else{
-      console.error(error);
+     /*  console.error(error) */;
+     console.error('Unloggin');
     }
   }
 }

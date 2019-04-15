@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { UserService } from '../core/services/user.service';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatSidenav } from '@angular/material';
 
 
 
@@ -14,7 +14,8 @@ import { MatSnackBar } from '@angular/material';
   styleUrls: ['./admin.component.scss'],
 })
 export class AdminComponent {
-
+  @ViewChild('drawer') sidenav: MatSidenav;
+  
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches)
@@ -26,8 +27,11 @@ export class AdminComponent {
               private router: Router,
               private snackBar:MatSnackBar) {}
 
- 
-
+  linkClose(){
+    if(this.sidenav.mode==='over'){
+      this.sidenav.close();
+    }
+  }
 
   logout(){
     this.service.logout().subscribe(()=> { 
