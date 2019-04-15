@@ -1,36 +1,32 @@
 import { Component, Inject } from '@angular/core';
 
-import { ActivatedRoute, Router } from '@angular/router';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { Contract } from 'src/app/core/models/contract';
+import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Contract } from 'src/app/core/models/contract';
 
 import { PropertyService } from 'src/app/core/services/property.service';
 import { RenterService } from 'src/app/core/services/renter.service';
-import { Property } from 'src/app/core/models/Property';
-import { Renter } from 'src/app/core/models/Renter';
+import { ContractService } from 'src/app/core/services/contract.service';
 
 @Component({
   selector: 'add-contract',
   templateUrl: './add-contract.component.html',
-  styleUrls: ['./add-contract.component.css']
+  styleUrls: ['./add-contract.component.scss']
 })
 export class AddContractComponent {
- 
-  arrayTypes:Array<string>=["Vivienda","Local comercial","Garaje"];
-  arrayNumber:Array<number>=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
   title = "Añadir contrato";
-  levelList = [];
   form: FormGroup;
-  properties:Property[];
-  renters:Renter[];
+  properties=[];
+  renters=[];
   
 
   constructor(public dialogRef: MatDialogRef<AddContractComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Contract,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
+    private cservice:ContractService,
     private pservice:PropertyService,
-    private rservice:RenterService
+    private rservice:RenterService,
+    private snackBar:MatSnackBar
   ) {
 
   }
@@ -38,26 +34,41 @@ export class AddContractComponent {
   ngOnInit() {
     
     this.form = this.fb.group({
-      'property_id': ['', [Validators.required, Validators.minLength(20), Validators.maxLength(20)]],
-      'renter_id': ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
+      'property_id': ['', [Validators.required]],
+      'renter_id': ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
       'dstart': ['', [Validators.required]],
       'dend': ['', [Validators.required]],
-      'iva': ['', [Validators.required]],
+      'iva': ['', []],
       'watertax': ['', []],
       'gastax': ['', []],
       'electricitytax': ['', []],
       'communitytax': ['', []]
     });
 
+   
     this.getProperties();
+    this.getRenters();
+    
+  }
 
+  showInput(event){
+  
+   
+    if(event.checked){
+      /* this.authForm.addControl('name', new FormControl('',[Validators.required, Validators.minLength(3), Validators.maxLength(10)])); */
+    }
+    else{}
   }
   
   getProperties(){
     this.pservice
     .getProperties()
     .subscribe((data) => {
-        this.properties=data;
+      let loop=[];
+      data.forEach(function(element) {
+        loop.push(element.address);
+      });
+      this.properties=loop;
     });
   }
 
@@ -65,15 +76,41 @@ export class AddContractComponent {
     this.rservice
     .getRenters()
     .subscribe((data) => {
-        this.renters=data;
+      let loop=[];
+      data.forEach(function(element) {
+        loop.push(element.dni);
+      });
+      this.renters=loop;
     });
-
   }
 
   get f() { return this.form.controls; }
   
-  submit(form) {
-    this.dialogRef.close(`${form.value.filename}`);
+  onSubmit() {
+    if (this.data){
+      this.cservice.updateContract(this.data.data.id,this.form.value).subscribe(
+        data=>{
+          this.snackBar.open('Guardado', 'OK', {
+          verticalPosition: 'bottom',
+          horizontalPosition: 'center',
+          duration: 4000,
+          panelClass: "snackBar"
+        })
+        this.dialogRef.close(this.form.value);
+      });
+    }
+    else{ 
+      this.cservice.addContract(this.form.value).subscribe(
+      data=>{
+        this.snackBar.open('Guardado', 'OK', {
+          verticalPosition: 'bottom',
+          horizontalPosition: 'center',
+          duration: 4000,
+          panelClass: "snackBar"
+        })
+      this.dialogRef.close(this.form.value);}
+      );
+    }
   }
 
 }

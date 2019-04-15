@@ -11,31 +11,38 @@
       </mat-card-title>
     </mat-card-header>
     <form [formGroup]="authForm" (ngSubmit)="submitForm()">
-      <fieldset  [disabled]="isSubmitting">
         <mat-card-content>
-          <mat-form-field *ngIf="authType == 'register'" color="primary" fxLayout="row gap" fxLayoutAlign="center center" class="form-group">
-            <input matInput formControlName="name" placeholder="Username" name="name" required>
-            <mat-error *ngIf="f.name.errors?.required">El nombre de usuario es requerido</mat-error>
-            <mat-error *ngIf="f.name.errors?.minlength">La longitud mínima son 3 carácteres.</mat-error>
-            <mat-error *ngIf="f.name.errors?.maxlength">La longitud máxima son 10 carácteres.</mat-error>
-          </mat-form-field>
-          <mat-form-field color="primary" fxLayout="row gap" fxLayoutAlign="center center" class="form-group">
-            <input matInput  formControlName="email" placeholder="Email" name="email" required>
-            <mat-error *ngIf="f.email.errors?.required">El email es requerido</mat-error>
-            <mat-error *ngIf="f.email.errors?.email">El email no es válido</mat-error>
-          </mat-form-field>
-          <mat-form-field color="primary" fxLayout="row gap" fxLayoutAlign="center center" class="form-group">
-            <input matInput formControlName="password" placeholder="Password" [type]="hide ? 'password' : 'text'" name="password" required>
-            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-            <mat-error *ngIf="f.password.errors?.required">La contraseña es requerida</mat-error>
-            <mat-error *ngIf="f.password.errors?.minlength">La longitud mínima son 6 carácteres.</mat-error>
-            <mat-error *ngIf="f.password.errors?.maxlength">La longitud máxima son 10 carácteres.</mat-error>
-          </mat-form-field>
+          <div  *ngIf="authType == 'register'" fxLayout="row wrap" fxLayoutAlign="center">
+            <mat-form-field>
+              <input matInput formControlName="name" placeholder="Username" name="name" required>
+              <mat-error *ngIf="f.name.errors?.required">El nombre de usuario es requerido</mat-error>
+              <mat-error *ngIf="f.name.errors?.minlength">Longitud mínima de 3 carácteres.</mat-error>
+              <mat-error *ngIf="f.name.errors?.maxlength">Longitud máxima de 10 carácteres.</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div fxLayout="row wrap" fxLayoutAlign="center">
+            <mat-form-field>
+              <input matInput  formControlName="email" placeholder="Email" name="email" required>
+              <mat-error *ngIf="f.email.errors?.required">El email es requerido</mat-error>
+              <mat-error *ngIf="f.email.errors?.email">El email no es válido</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div fxLayout="row wrap" fxLayoutAlign="center center">
+            <mat-form-field fxFlex="180px">
+              <input matInput formControlName="password" placeholder="Password" [type]="hide ? 'password' : 'text'" name="password" required>
+              <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              <mat-error *ngIf="f.password.errors?.required">La contraseña es requerida</mat-error>
+              <mat-error *ngIf="f.password.errors?.minlength">La longitud mínima son 6 carácteres.</mat-error>
+              <mat-error *ngIf="f.password.errors?.maxlength">La longitud máxima son 10 carácteres.</mat-error>
+            </mat-form-field>
+          </div>
+         
         </mat-card-content>
         <mat-card-actions fxLayout="row" fxLayoutAlign="center center" style="margin-bottom:5px;">
           <button mat-raised-button color="primary" [disabled]="!authForm.valid">{{title}}</button>  
         </mat-card-actions>
-      </fieldset>
     </form>
   </mat-card>
 </div>

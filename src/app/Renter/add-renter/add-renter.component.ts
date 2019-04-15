@@ -68,6 +68,7 @@ export class AddRenterComponent {
     });
 
     if(this.data){
+      this.title="Editar inquilino";
       this.form.patchValue({
         dni:this.data.data.dni,
         name:this.data.data.name,
@@ -86,7 +87,6 @@ export class AddRenterComponent {
   get f() { return this.form.controls; }
 
   onSubmit() {
-    console.log(this.data)
     if (this.data){
       this.rservice.updateRenter(this.data.data.dni,this.form.value).subscribe(
         data=>{
@@ -99,7 +99,8 @@ export class AddRenterComponent {
         this.dialogRef.close(this.form.value);
       });
     }
-    /* this.rservice.addRenter(this.form.value).subscribe(
+    else{ 
+      this.rservice.addRenter(this.form.value).subscribe(
       data=>{
         this.snackBar.open('Guardado', 'OK', {
           verticalPosition: 'bottom',
@@ -108,7 +109,8 @@ export class AddRenterComponent {
           panelClass: "snackBar"
         })
       this.dialogRef.close(this.form.value);}
-    ); */
+      );
+    }
   }
 
 }

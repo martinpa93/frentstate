@@ -48,8 +48,8 @@ export class ListPropertyComponent implements OnInit{
 
   openDialog(): void {
     const dialogRef = this.dialog.open(AddPropertyComponent, {
-      width: '500px',height:'500px',autoFocus:true,
-      minHeight:400,minWidth:400,maxHeight:700,maxWidth:700});
+      width: '500px',autoFocus:true,
+     });
 
     dialogRef.afterClosed().subscribe(
       
@@ -65,8 +65,7 @@ export class ListPropertyComponent implements OnInit{
   onEdit(id:any): void {
     const dialogRef = this.dialog.open(AddPropertyComponent, {
       data:{id:id, mode:'edit'},
-      width: '500px',height:'500px',autoFocus:true,
-      minHeight:400,minWidth:400,maxHeight:700,maxWidth:700});
+      width: '500px',autoFocus:true});
 
     dialogRef.afterClosed().subscribe(
       

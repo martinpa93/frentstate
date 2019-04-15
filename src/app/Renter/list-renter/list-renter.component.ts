@@ -49,7 +49,7 @@ export class ListRenterComponent implements OnInit{
 
   openDialog(): void {
     const dialogRef = this.dialog.open(AddRenterComponent, {
-      width: '500px',height:'500px',autoFocus:true,minHeight:570,minWidth:400,maxHeight:570,maxWidth:700});
+      width: '500px',autoFocus:true});
 
     dialogRef.afterClosed().subscribe(
       data => {
@@ -63,8 +63,7 @@ export class ListRenterComponent implements OnInit{
   onEdit(id:any): void {
     const dialogRef = this.dialog.open(AddRenterComponent, {
       data:{data:id, mode:'edit'},
-      width: '500px',height:'500px',autoFocus:true,
-      minHeight:570,minWidth:400,maxHeight:570,maxWidth:700});
+      width: '500px',autoFocus:true});
 
     dialogRef.afterClosed().subscribe(
       

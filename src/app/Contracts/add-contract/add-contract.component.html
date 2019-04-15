@@ -1,36 +1,36 @@
-<form [formGroup]="form" fxLayout="row wrap">
-  <mat-toolbar color="primary">
-      <div style="margin:auto;">
-        <span>{{title}}</span>
-      </div>  
+<mat-toolbar color="primary">
+  <div style="margin:auto;">
+      <!-- <span>{{title}}</span> -->
+      <h2 mat-dialog-title>{{title}}</h2>
+    </div>  
   </mat-toolbar>
-  <h2 mat-dialog-title></h2>
-
-  <mat-dialog-content fxLayout="row wrap"  >
-
-    <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px" fxFlexOffset="10px">
+  
+  <mat-dialog-content fxLayout="row wrap">
+    
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" fxLayout="row wrap">
+    <div fxLayout="row wrap" fxLayoutGap.gt-xs="30px" class="centerInput">
       <mat-form-field>
         <mat-select formControlName="property_id" placeholder="Propiedad">
-          <mat-option *ngFor="let data of properties" value="data">{{ data }}</mat-option>
+          <mat-option *ngFor="let data of properties" [value]="data">{{ data }}</mat-option>
         </mat-select>
         <mat-error *ngIf="f.property_id.errors?.required">El campo es requerido.</mat-error>
       </mat-form-field>
       <mat-form-field>
         <mat-select formControlName="renter_id" placeholder="Inquilino">
-          <mat-option *ngFor="let data of renters" value="data">{{ data }}</mat-option>
+          <mat-option *ngFor="let data of renters" [value]="data">{{ data }}</mat-option>
         </mat-select>
         <mat-error *ngIf="f.renter_id.errors?.required">El campo es requerido.</mat-error>
       </mat-form-field>
     </div>
 
-    <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px" fxFlexOffset="10px">
-      <mat-form-field style="max-width: 180px">
+    <div fxLayout="row wrap" fxLayoutGap.gt-xs="30px" class="centerInput">
+      <mat-form-field fxFlex="180px">
         <input matInput formControlName="dstart" [matDatepicker]="picker" placeholder="F.inicio">
         <mat-error *ngIf="f.dstart.errors?.required">El campo es requerido.</mat-error>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
-      <mat-form-field style="max-width: 180px">
+      <mat-form-field fxFlex="180px">
         <input matInput formControlName="dend" [matDatepicker]="picker2" placeholder="F.fin">
         <mat-error *ngIf="f.dend.errors?.required">El campo es requerido.</mat-error>
         <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
@@ -38,20 +38,31 @@
       </mat-form-field>
     </div>
 
-    <div fxLayout="row wrap" fxLayoutAlign="center center"  style="width:100%">
-      <mat-checkbox formControlName="iva" >IVA</mat-checkbox>
-    </div>
+    <div fxLayout="row wrap" fxFlex="100%" fxLayoutAlign="center" class="centerInput">
+        <mat-checkbox formControlName="iva">IVA</mat-checkbox>
+    </div>  
 
-    <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px" fxFlexOffset="10px">
-      <mat-checkbox formControlName="watertax" >Agua</mat-checkbox>
-      <mat-checkbox formControlName="gastax" >Gas</mat-checkbox>
-      <mat-checkbox formControlName="electricitytax" >Electricidad</mat-checkbox>
-      <mat-checkbox formControlName="communitytax" >Comunidad</mat-checkbox>
+    <div fxLayout="row wrap" fxLayoutGap.gt-xs="30px" class="centerInput">
+      <mat-checkbox (change)="showInput($event)">Agua</mat-checkbox>
+      <mat-checkbox  >Gas</mat-checkbox>
+      <mat-checkbox >Electricidad</mat-checkbox>
+      <mat-checkbox  >Comunidad</mat-checkbox>
     </div>
+    <div fxLayout="row wrap" fxLayoutGap.gt-xs="30px" class="centerInput">
+        <div fxLayout="column wrap">
+          <mat-checkbox (change)="showInput($event)">Agua</mat-checkbox>
+        </div>
+        <div fxLayout="column wrap">
+            <mat-checkbox (change)="showInput($event)">Gas</mat-checkbox>
+        </div>
+        
+        <!-- <mat-checkbox (change)="showInput($event)">Electricidad</mat-checkbox>
+        <mat-checkbox (change)="showInput($event)">Comunidad</mat-checkbox> -->
+      </div>
    
+  </form>
   </mat-dialog-content>
-  <mat-dialog-actions  fxLayout="row" fxLayoutAlign="end end">
+  <mat-dialog-actions>
       <button mat-button mat-dialog-close class="btnc">Cancelar</button>
-      <button mat-button [mat-dialog-close]="true" class="btng">Guardar</button>
+      <button mat-button class="btng">Guardar</button>
   </mat-dialog-actions>
-</form>

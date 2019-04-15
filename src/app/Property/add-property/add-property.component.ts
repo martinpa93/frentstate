@@ -133,6 +133,7 @@ export class AddPropertyComponent {
 
  
     if(this.data){
+      this.title="Editar inmueble";
       this.form.patchValue({
         cref:this.data.id.cref,
         address:this.data.id.address,

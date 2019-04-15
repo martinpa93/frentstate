@@ -1,10 +1,9 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <mat-toolbar color="primary">
       <div style="margin:auto;">
-        <span>{{title}}</span>
+        <h2 mat-dialog-title>{{title}}</h2>
       </div>  
   </mat-toolbar>
-  <h2 mat-dialog-title></h2>
 
   <mat-dialog-content fxLayout="row wrap"  >
 
@@ -89,9 +88,7 @@
     </div>
   </mat-dialog-content>
   <mat-dialog-actions>
-    <div fxLayout="row" fxLayoutAlign="end end">
       <button mat-button mat-dialog-close class="btnc">Cancelar</button>
       <button mat-button  type="submit" class="btng" [disabled]="form.invalid || form.pristine">Guardar</button>
-    </div>
   </mat-dialog-actions>
 </form>

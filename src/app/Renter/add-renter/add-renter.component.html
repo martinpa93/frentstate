@@ -1,10 +1,9 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <mat-toolbar color="primary">
       <div style="margin:auto;">
-        <span>{{title}}</span>
+          <h2 mat-dialog-title>{{title}}</h2>
       </div>  
   </mat-toolbar>
-  <h2 mat-dialog-title></h2>
 
   <mat-dialog-content fxLayout="row wrap"  >
 
@@ -34,17 +33,17 @@
         <mat-error *ngIf="f.surname.errors?.minlength">La longitud mínima son 2 carácteres.</mat-error>
         <mat-error *ngIf="f.surname.errors?.maxlength">La longitud mínima son 2 carácteres..</mat-error>
       </mat-form-field>
-      <mat-form-field>
-        <input matInput formControlName="dbirth" [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="F.nacimiento" >
+      <mat-form-field  fxFlex="180px">
+        <input matInput formControlName="dbirth" [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="F.nacimiento" required >
         <mat-error *ngIf="f.dbirth.errors?.required">El campo es requerido.</mat-error>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
     </div>
 
-    <div class="singlefield" fxLayout="row wrap" fxFill fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px" fxFlexOffset="10px">
-      <mat-form-field fxFill>
-        <input matInput formControlName="address" placeholder="Dirección">
+    <div fxLayout="row wrap" fxLayoutAlign="center center" fxFlexOffset="10px" fxLayoutGap.gt-xs="30px">
+      <mat-form-field fxFlex="390px"  fxFlex.xs="180px">
+        <input matInput formControlName="address" placeholder="Dirección" required>
         <mat-error *ngIf="f.address.errors?.required">El campo es requerido.</mat-error>
         <mat-error *ngIf="f.address.errors?.minlength">La longitud mínima son 5 carácteres.</mat-error>
         <mat-error *ngIf="f.address.errors?.maxlength">La longitud máxima son 50 carácteres.</mat-error>
@@ -58,23 +57,23 @@
     </div>
 
     <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px" fxFlexOffset="10px">
-      <mat-form-field>
-        <mat-select formControlName="population" placeholder="Comunidad autónoma">
+      <mat-form-field  fxFlex="180px">
+        <mat-select formControlName="population" placeholder="Comunidad autónoma" required>
           <mat-option *ngFor="let data of geoList" [value]="data">{{ data }}</mat-option>
         </mat-select>
         <mat-error *ngIf="f.population.errors?.required">El campo es requerido.</mat-error>
       </mat-form-field>
       <mat-form-field>
-        <input matInput formControlName="phone" placeholder="Teléfono">
+        <input matInput formControlName="phone" placeholder="Teléfono" required>
         <mat-error *ngIf="f.phone.errors?.required">El campo es requerido.</mat-error>
         <mat-error *ngIf="f.phone.errors?.pattern && !f.phone.errors?.required">
                       Teléfono inválido, ej 678432212.</mat-error>
       </mat-form-field>
     </div>
 
-    <div class="singlefield" fxLayout="row wrap" fxFill fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px" fxFlexOffset="10px">
-      <mat-form-field fxFill>
-        <input matInput formControlName="iban" pattern="ES\d{22}" placeholder="IBAN">
+    <div fxLayout="row wrap"  fxFlexOffset="10px">
+      <mat-form-field fxFlex="390px"  fxFlex.xs="180px">
+        <input matInput formControlName="iban" pattern="ES\d{22}" placeholder="IBAN" required>
         <mat-error *ngIf="f.iban.errors?.required">El campo es requerido.</mat-error>
         <mat-error *ngIf="f.iban.errors?.pattern && !f.iban.errors?.required">
                      IBAN inválido. ej ES+22 dígitos.</mat-error>
@@ -89,7 +88,7 @@
         <mat-error *ngIf="f.job.errors?.maxlength">La longitud máxima son 10 carácteres.</mat-error>
       </mat-form-field>
       <mat-form-field>
-        <input matInput formControlName="salary" type="number" placeholder="Salario">
+        <input matInput formControlName="salary" type="number" placeholder="Salario" required>
         <mat-error *ngIf="f.salary.errors?.required">El campo es requerido.</mat-error>
         <mat-error *ngIf="f.salary.errors?.pattern && !f.salary.errors?.required">
                   Salario inválido.</mat-error>
@@ -98,9 +97,7 @@
 
   </mat-dialog-content>
   <mat-dialog-actions>
-    <div fxLayout="row" fxLayoutAlign="end end">
       <button mat-button mat-dialog-close class="btnc">Cancelar</button>
       <button mat-button type="submit" class="btng" [disabled]="form.invalid || form.pristine">Guardar</button>
-    </div>
   </mat-dialog-actions>
 </form>

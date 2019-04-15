@@ -47,8 +47,7 @@ export class ListContractComponent implements OnInit{
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(AddContractComponent, {
-      width: '480',height:'500px',autoFocus:true,minHeight:400,minWidth:400,maxHeight:700,maxWidth:480});
+    const dialogRef = this.dialog.open(AddContractComponent, {autoFocus:true, width:"600px"});
 
     dialogRef.afterClosed().subscribe(
       data => {
