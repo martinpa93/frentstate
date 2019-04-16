@@ -21,7 +21,7 @@ export class DeleteDialogComponent {
   }
 
   ngOnInit() {
-    this.title=`Confirmar borrado propiedad:${this.data.data.cref}`;
+    this.title=`Confirmar borrado Propiedad:${this.data.data.cref}`;
     this.message=`El borrado de este registro podría provocar la pérdida
     de información relacionada con este y su borrado permanente.`;
 

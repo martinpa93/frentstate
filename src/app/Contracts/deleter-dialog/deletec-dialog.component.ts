@@ -23,7 +23,7 @@ export class DeleteCDialogComponent {
   }
 
   ngOnInit() {
-    this.title=`Confirmar borrado contrato:`;
+    this.title=`Confirmar borrado :`;
     this.property=`Inmueble ${this.data.data.property_id}`;
     this.renter=`Inquilino ${this.data.data.renter_id}`;
     this.message=`El borrado de este registro podría provocar la pérdida

@@ -21,7 +21,7 @@ export class DeleteRDialogComponent {
   }
 
   ngOnInit() {
-    this.title=`Confirmar borrado inquilino:${this.data.data.dni}`;
+    this.title=`Confirmar borrado Inquilino:${this.data.data.dni}`;
     this.message=`El borrado de este registro podría provocar la pérdida
     de información relacionada con este y su borrado permanente.`;
 
