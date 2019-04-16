@@ -6,3 +6,8 @@
     background-color: aliceblue;
 }
 
+@media (max-width: 600px){
+    .formCol{
+        place-content: center!important;
+    }
+}

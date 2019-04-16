@@ -92,10 +92,10 @@ export class AddContractComponent {
       else if(input === 'community') this.showIcommunity=true;
     }
     else{
-      if(input === 'water') this.showIwater=false;
-      else if(input === 'gas') this.showIgas=false;
-      else if(input === 'electricity') this.showIelectricity=false;
-      else if(input === 'community') this.showIcommunity=false;
+      if(input === 'water') {this.showIwater=false; this.form.patchValue({watertax:0});}
+      else if(input === 'gas') {this.showIgas=false; this.form.patchValue({gastax:0});}
+      else if(input === 'electricity') {this.showIelectricity=false; this.form.patchValue({electricitytax:0});}
+      else if(input === 'community') {this.showIcommunity=false; this.form.patchValue({communitytax:0});}
     }
   }
   

@@ -41,8 +41,8 @@
       </mat-form-field>
     </div>
 
-    <div fxLayout="row wrap" fxLayoutAlign="center center" fxFlexOffset="10px" fxLayoutGap.gt-xs="30px">
-      <mat-form-field fxFlex="390px"  fxFlex.xs="180px">
+    <div fxLayout="row wrap" fxFlexOffset.gt-xs="10px" fxLayoutGap.gt-xs="30px" fxFill class="formCol" >
+      <mat-form-field fxFlex="390px" fxFlex.xs="180px">
         <input matInput formControlName="address" placeholder="Dirección" required>
         <mat-error *ngIf="f.address.errors?.required">El campo es requerido.</mat-error>
         <mat-error *ngIf="f.address.errors?.minlength">La longitud mínima son 5 carácteres.</mat-error>
@@ -71,7 +71,7 @@
       </mat-form-field>
     </div>
 
-    <div fxLayout="row wrap"  fxFlexOffset="10px">
+    <div fxLayout="row wrap" fxFlexOffset.gt-xs="10px" fxLayoutGap.gt-xs="30px" fxFill class="formCol">
       <mat-form-field fxFlex="390px"  fxFlex.xs="180px">
         <input matInput formControlName="iban" pattern="ES\d{22}" placeholder="IBAN" required>
         <mat-error *ngIf="f.iban.errors?.required">El campo es requerido.</mat-error>

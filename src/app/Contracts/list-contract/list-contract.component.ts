@@ -68,7 +68,6 @@ export class ListContractComponent implements OnInit{
       
       data =>{
         if(data){
-          console.log(this.MyDataSource.data);
           let objIndex =  this.MyDataSource.data.findIndex(obj => obj.id == id.id);
           //Update object's name property.
           this.MyDataSource.data[objIndex].property_id = data.property_id;
