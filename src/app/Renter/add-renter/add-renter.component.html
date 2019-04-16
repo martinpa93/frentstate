@@ -7,7 +7,7 @@
 
   <mat-dialog-content fxLayout="row wrap"  >
 
-    <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px" fxFlexOffset="10px">
+    <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px"  fxFlexOffset.gt-xs="10px">
       <mat-form-field>
         <input matInput formControlName="dni" placeholder="DNI" required>
         <mat-error *ngIf="f.dni.errors?.required">El campo es requerido.</mat-error>
@@ -26,7 +26,7 @@
       </mat-form-field>
     </div>
 
-    <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px" fxFlexOffset="10px">
+    <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px"  fxFlexOffset.gt-xs="10px">
       <mat-form-field color="primary">
         <input matInput formControlName="surname" placeholder="Apellido" required>
         <mat-error *ngIf="f.surname.errors?.required">El campo es requerido.</mat-error>
@@ -56,7 +56,7 @@
       </mat-form-field>
     </div>
 
-    <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px" fxFlexOffset="10px">
+    <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px"  fxFlexOffset.gt-xs="10px">
       <mat-form-field  fxFlex="180px">
         <mat-select formControlName="population" placeholder="Comunidad autónoma" required>
           <mat-option *ngFor="let data of geoList" [value]="data">{{ data }}</mat-option>
@@ -80,7 +80,7 @@
       </mat-form-field>
     </div>
 
-    <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px" fxFlexOffset="10px">
+    <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px"  fxFlexOffset.gt-xs="10px">
       <mat-form-field color="primary">
         <input matInput formControlName="job" placeholder="Trabajo" required>
         <mat-error *ngIf="f.job.errors?.required">El campo es requerido.</mat-error>
