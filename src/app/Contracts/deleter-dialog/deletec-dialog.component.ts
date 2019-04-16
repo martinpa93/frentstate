@@ -33,7 +33,7 @@ export class DeleteCDialogComponent {
 
 
   onConfirm(){
-   this.cservice.deleteContract(this.data.data.dni).subscribe(
+   this.cservice.deleteContract(this.data.data.id).subscribe(
       (data:Contract) => {
         this.snackBar.open('Eliminado', 'OK', {
           verticalPosition: 'bottom',
