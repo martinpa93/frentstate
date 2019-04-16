@@ -175,6 +175,7 @@ export class AddPropertyComponent {
       });
     }
     else{
+      console.log(this.form.value);
       this.pservice.addProperty(this.form.value).subscribe(
         data=>{
           this.snackBar.open('Guardado', 'OK', {

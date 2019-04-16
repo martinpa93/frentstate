@@ -21,6 +21,7 @@ import { AddRenterComponent } from './Renter/add-renter/add-renter.component';
 import { AddContractComponent } from './Contracts/add-contract/add-contract.component';
 import { DeleteDialogComponent } from './Property/delete-dialog/delete-dialog.component';
 import { DeleteRDialogComponent } from './Renter/deleter-dialog/deleter-dialog.component';
+import { DeleteCDialogComponent } from './Contracts/deleter-dialog/deletec-dialog.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { DeleteRDialogComponent } from './Renter/deleter-dialog/deleter-dialog.c
     AddRenterComponent,
     DeleteRDialogComponent,
     AddContractComponent,
+    DeleteCDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -46,6 +48,6 @@ import { DeleteRDialogComponent } from './Renter/deleter-dialog/deleter-dialog.c
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents:[AddPropertyComponent, DeleteDialogComponent, AddRenterComponent, DeleteRDialogComponent, AddContractComponent]
+  entryComponents:[AddPropertyComponent, DeleteDialogComponent, AddRenterComponent, DeleteRDialogComponent, AddContractComponent, DeleteCDialogComponent]
 })
 export class AppModule { }

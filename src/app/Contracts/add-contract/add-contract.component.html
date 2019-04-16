@@ -1,68 +1,92 @@
 <mat-toolbar color="primary">
   <div style="margin:auto;">
-      <!-- <span>{{title}}</span> -->
-      <h2 mat-dialog-title>{{title}}</h2>
-    </div>  
-  </mat-toolbar>
+    <h2 mat-dialog-title>{{title}}</h2>
+  </div>  
+</mat-toolbar>
   
-  <mat-dialog-content fxLayout="row wrap">
-    
-    <form [formGroup]="form" (ngSubmit)="onSubmit()" fxLayout="row wrap">
-    <div fxLayout="row wrap" fxLayoutGap.gt-xs="30px" class="centerInput">
-      <mat-form-field>
-        <mat-select formControlName="property_id" placeholder="Propiedad">
-          <mat-option *ngFor="let data of properties" [value]="data">{{ data }}</mat-option>
-        </mat-select>
-        <mat-error *ngIf="f.property_id.errors?.required">El campo es requerido.</mat-error>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-select formControlName="renter_id" placeholder="Inquilino">
-          <mat-option *ngFor="let data of renters" [value]="data">{{ data }}</mat-option>
-        </mat-select>
-        <mat-error *ngIf="f.renter_id.errors?.required">El campo es requerido.</mat-error>
-      </mat-form-field>
-    </div>
-
-    <div fxLayout="row wrap" fxLayoutGap.gt-xs="30px" class="centerInput">
-      <mat-form-field fxFlex="180px">
-        <input matInput formControlName="dstart" [matDatepicker]="picker" placeholder="F.inicio">
-        <mat-error *ngIf="f.dstart.errors?.required">El campo es requerido.</mat-error>
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-      <mat-form-field fxFlex="180px">
-        <input matInput formControlName="dend" [matDatepicker]="picker2" placeholder="F.fin">
-        <mat-error *ngIf="f.dend.errors?.required">El campo es requerido.</mat-error>
-        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-        <mat-datepicker #picker2></mat-datepicker>
-      </mat-form-field>
-    </div>
-
-    <div fxLayout="row wrap" fxFlex="100%" fxLayoutAlign="center" class="centerInput">
-        <mat-checkbox formControlName="iva">IVA</mat-checkbox>
-    </div>  
-
-    <div fxLayout="row wrap" fxLayoutGap.gt-xs="30px" class="centerInput">
-      <mat-checkbox (change)="showInput($event)">Agua</mat-checkbox>
-      <mat-checkbox  >Gas</mat-checkbox>
-      <mat-checkbox >Electricidad</mat-checkbox>
-      <mat-checkbox  >Comunidad</mat-checkbox>
-    </div>
-    <div fxLayout="row wrap" fxLayoutGap.gt-xs="30px" class="centerInput">
-        <div fxLayout="column wrap">
-          <mat-checkbox (change)="showInput($event)">Agua</mat-checkbox>
-        </div>
-        <div fxLayout="column wrap">
-            <mat-checkbox (change)="showInput($event)">Gas</mat-checkbox>
-        </div>
-        
-        <!-- <mat-checkbox (change)="showInput($event)">Electricidad</mat-checkbox>
-        <mat-checkbox (change)="showInput($event)">Comunidad</mat-checkbox> -->
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <mat-dialog-content>
+    <div fxLayout="row wrap" fxLayoutAlign="center center">
+      <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px" fxFlexOffset="10px">
+        <mat-form-field>
+          <mat-select formControlName="property_id" placeholder="Propiedad">
+            <mat-option *ngFor="let data of properties" [value]="data">{{ data }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="f.property_id.errors?.required">El campo es requerido.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select formControlName="renter_id" placeholder="Inquilino">
+            <mat-option *ngFor="let data of renters" [value]="data">{{ data }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="f.renter_id.errors?.required">El campo es requerido.</mat-error>
+        </mat-form-field>
       </div>
-   
-  </form>
+
+      <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px" fxFlexOffset="10px">
+        <mat-form-field fxFlex="180px">
+          <input matInput formControlName="dstart" [matDatepicker]="picker" placeholder="F.inicio">
+          <mat-error *ngIf="f.dstart.errors?.required">El campo es requerido.</mat-error>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field fxFlex="180px">
+          <input matInput formControlName="dend" [matDatepicker]="picker2" placeholder="F.fin">
+          <mat-error *ngIf="f.dend.errors?.required">El campo es requerido.</mat-error>
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row wrap"  fxFill fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px" >
+          <mat-checkbox formControlName="iva" >IVA</mat-checkbox>
+      </div>  
+
+      <div fxLayout="row wrap" fxLayoutGap="30px">
+        <div fxLayout="column wrap" >
+          <div fxLayout="row wrap" style="width:100%" >
+            <mat-checkbox #water fxFlex="61px" (change)="showInput($event, 'water')">Agua</mat-checkbox>
+          </div>
+          <div *ngIf="showIwater" fxLayout="row wrap"  style="width:100%">
+            <mat-form-field fxFlex="110px">
+                <input matInput formControlName="watertax" type="number" placeholder="Euros" required>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxLayout="column wrap">
+            <div fxLayout="row wrap" style="width:100%">
+              <mat-checkbox #gas (change)="showInput($event, 'gas')">Gas</mat-checkbox>
+            </div>
+            <div *ngIf="showIgas" fxLayout="row wrap"  style="width:100%">
+              <mat-form-field fxFlex="110px" >
+                <input matInput formControlName="gastax" type="number" placeholder="Euros" required>
+              </mat-form-field>
+            </div>
+        </div>
+        <div fxLayout="column wrap">
+            <div fxLayout="row wrap"  style="width:100%">
+              <mat-checkbox #electricity (change)="showInput($event, 'electricity')">Electricidad</mat-checkbox>
+            </div>
+            <div *ngIf="showIelectricity" fxLayout="row wrap"  style="width:100%">
+              <mat-form-field fxFlex="110px">
+                <input matInput formControlName="electricitytax" type="number" placeholder="Euros" required>
+              </mat-form-field>
+            </div>
+        </div>
+        <div fxLayout="column wrap">
+            <div fxLayout="row wrap"  style="width:100%">
+              <mat-checkbox #community (change)="showInput($event,'community')">Comunidad</mat-checkbox>
+            </div>
+            <div *ngIf="showIcommunity" fxLayout="row wrap"  style="width:100%">
+              <mat-form-field fxFlex="110px">
+                  <input matInput formControlName="communitytax" type="number" placeholder="Euros" required>
+              </mat-form-field>
+            </div>
+        </div>
+      </div>
+    </div>
   </mat-dialog-content>
   <mat-dialog-actions>
       <button mat-button mat-dialog-close class="btnc">Cancelar</button>
-      <button mat-button class="btng">Guardar</button>
+      <button mat-button class="btng" [disabled]="form.invalid || form.pristine">Guardar</button>
   </mat-dialog-actions>
+</form>

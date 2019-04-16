@@ -24,16 +24,16 @@
 
     <ng-container matColumnDef="dstart">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Inicio</th>
-      <td mat-cell *matCellDef="let element">{{element.dstart}}</td>
+      <td mat-cell *matCellDef="let element">{{element.dstart | date:'dd/mm/yyyy'}}</td>
     </ng-container>
  
     <ng-container matColumnDef="dend">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Fin</th>
-      <td mat-cell *matCellDef="let element">{{element.dend}}</td>
+      <td mat-cell *matCellDef="let element">{{element.dend | date:'dd/mm/yyyy'}}</td>
     </ng-container>
 
     <ng-container matColumnDef="iva">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Iva</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>IVA</th>
       <td mat-cell *matCellDef="let element">{{element.iva}}</td>
     </ng-container>
     

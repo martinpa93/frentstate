@@ -1,94 +1,95 @@
+<mat-toolbar color="primary">
+  <div style="margin:auto;">
+    <h2 mat-dialog-title>{{title}}</h2>
+  </div>  
+</mat-toolbar>
+  
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <mat-toolbar color="primary">
-      <div style="margin:auto;">
-        <h2 mat-dialog-title>{{title}}</h2>
-      </div>  
-  </mat-toolbar>
-
-  <mat-dialog-content fxLayout="row wrap"  >
-
-    <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px" fxFlexOffset="10px">
-      <mat-form-field>
-        <input matInput formControlName="cref" placeholder="Ref.catastral" name="cref" required>
-        <mat-error *ngIf="f.cref.errors?.required">El campo es requerido.</mat-error>
-        <mat-error *ngIf="f.cref.errors?.minlength">Debes introducir 20 carácteres.</mat-error>
-        <mat-error *ngIf="f.cref.errors?.maxlength">Debes introducir 20 carácteres.</mat-error>
-        <mat-error *ngIf="f.cref.errors?.pattern &&
-                          !f.cref.errors?.required &&
-                          !f.cref.errors?.minlength &&
-                          !f.cref.errors?.maxlength">
-                        Referencia catastral inválida.
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field color="primary">
-        <input matInput formControlName="address" placeholder="Dirección" name="name" required>
-        <mat-error *ngIf="f.address.errors?.required">El campo es requerido.</mat-error>
-        <mat-error *ngIf="f.address.errors?.pattern &&
-                          !f.address.errors?.required">
-                          Dirección inválida.
-        </mat-error>
-      </mat-form-field>
-    </div>
-
-    <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px" fxFlexOffset="10px">
-      <mat-form-field>
-        <mat-select formControlName="population" placeholder="C.autónoma" required>
-          <mat-option *ngFor="let data of loop" [value]="data" >{{ data }}</mat-option>
-        </mat-select>
-        <mat-error *ngIf="f.province.errors?.required">El campo es requerido.</mat-error>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-select formControlName="province" placeholder="Provincia" required>
-          <mat-option *ngFor="let val of arrayProv" [value]="val">{{ val }}</mat-option>
-        </mat-select>
-        <mat-error *ngIf="f.province.errors?.required">El campo es requerido.</mat-error>
-      </mat-form-field>
-    </div>
-
-    <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px" fxFlexOffset="10px">
-      <mat-form-field>
-        <input matInput formControlName="cp" type="number" placeholder="Código postal" required>
-        <mat-error *ngIf="f.cp.errors?.required">El campo es requerido.</mat-error>
-        <mat-error *ngIf="f.cp.errors?.pattern">Código postal inválido.</mat-error>
-      </mat-form-field>
-
-      <mat-form-field>
-          <mat-select formControlName="type" placeholder="Tipo de inmueble" required>
-              <mat-option *ngFor="let i of arrayTypes" [value]="i">{{ i }}</mat-option>
-          </mat-select>
-        <mat-error *ngIf="f.nroom.errors?.required">El campo es requerido.</mat-error>
-      </mat-form-field>
-    </div>
-
-    <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px" fxFlexOffset="10px">
-      <mat-form-field>
-        <input matInput formControlName="m2" type="number" placeholder="Dimensiones" required>
-        <mat-error *ngIf="f.m2.errors?.required">El campo es requerido.</mat-error>
-        <mat-error *ngIf="f.m2.errors?.pattern">Dimensión inválida.</mat-error>
-      </mat-form-field>
-
-     <!--  <mat-form-field> -->
-      <div>
-        <mat-checkbox formControlName="ac">Aire acondicionado</mat-checkbox>
+  <mat-dialog-content>
+    <div fxLayout="row wrap">
+      <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px" fxFlexOffset="10px">
+        <mat-form-field>
+          <input matInput formControlName="cref" placeholder="Ref.catastral" name="cref" required>
+          <mat-error *ngIf="f.cref.errors?.required">El campo es requerido.</mat-error>
+          <mat-error *ngIf="f.cref.errors?.minlength">Debes introducir 20 carácteres.</mat-error>
+          <mat-error *ngIf="f.cref.errors?.maxlength">Debes introducir 20 carácteres.</mat-error>
+          <mat-error *ngIf="f.cref.errors?.pattern &&
+                            !f.cref.errors?.required &&
+                            !f.cref.errors?.minlength &&
+                            !f.cref.errors?.maxlength">
+                          Referencia catastral inválida.
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field color="primary">
+          <input matInput formControlName="address" placeholder="Dirección" name="name" required>
+          <mat-error *ngIf="f.address.errors?.required">El campo es requerido.</mat-error>
+          <mat-error *ngIf="f.address.errors?.pattern &&
+                            !f.address.errors?.required">
+                            Dirección inválida.
+          </mat-error>
+        </mat-form-field>
       </div>
-      <!-- <mat-error *ngIf="f.ac.errors?.required">Aire acondicionado requerido.</mat-error> -->
-      <!-- </mat-form-field> -->
-    </div>
-    <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px" fxFlexOffset="10px">
-      <mat-form-field>
-        <mat-select formControlName="nroom" placeholder="Nº de habitaciones" required>
-          <mat-option *ngFor="let i of arrayNumber" [value]="i">{{ i }}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-select formControlName="nbath" placeholder="Nº de baños" required>
-          <mat-option *ngFor="let i of arrayNumber" [value]="i">{{ i }}</mat-option>
-        </mat-select>
-      </mat-form-field>
+
+      <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px" fxFlexOffset="10px">
+        <mat-form-field>
+          <mat-select formControlName="population" placeholder="C.autónoma" required>
+            <mat-option *ngFor="let data of loop" [value]="data" >{{ data }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="f.province.errors?.required">El campo es requerido.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select formControlName="province" placeholder="Provincia" required>
+            <mat-option *ngFor="let val of arrayProv" [value]="val">{{ val }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="f.province.errors?.required">El campo es requerido.</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px" fxFlexOffset="10px">
+        <mat-form-field>
+          <input matInput formControlName="cp" type="number" placeholder="Código postal" required>
+          <mat-error *ngIf="f.cp.errors?.required">El campo es requerido.</mat-error>
+          <mat-error *ngIf="f.cp.errors?.pattern">Código postal inválido.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-select formControlName="type" placeholder="Tipo de inmueble" required>
+                <mat-option *ngFor="let i of arrayTypes" [value]="i">{{ i }}</mat-option>
+            </mat-select>
+          <mat-error *ngIf="f.nroom.errors?.required">El campo es requerido.</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px" fxFlexOffset="10px">
+        <mat-form-field>
+          <input matInput formControlName="m2" type="number" placeholder="Dimensiones" required>
+          <mat-error *ngIf="f.m2.errors?.required">El campo es requerido.</mat-error>
+          <mat-error *ngIf="f.m2.errors?.pattern">Dimensión inválida.</mat-error>
+        </mat-form-field>
+
+      <!--  <mat-form-field> -->
+        <div>
+          <mat-checkbox formControlName="ac">Aire acondicionado</mat-checkbox>
+        </div>
+        <!-- <mat-error *ngIf="f.ac.errors?.required">Aire acondicionado requerido.</mat-error> -->
+        <!-- </mat-form-field> -->
+      </div>
+      <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px" fxFlexOffset="10px">
+        <mat-form-field>
+          <mat-select formControlName="nroom" placeholder="Nº de habitaciones" required>
+            <mat-option *ngFor="let i of arrayNumber" [value]="i">{{ i }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select formControlName="nbath" placeholder="Nº de baños" required>
+            <mat-option *ngFor="let i of arrayNumber" [value]="i">{{ i }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
     </div>
   </mat-dialog-content>
   <mat-dialog-actions>
-      <button mat-button mat-dialog-close class="btnc">Cancelar</button>
-      <button mat-button  type="submit" class="btng" [disabled]="form.invalid || form.pristine">Guardar</button>
+    <button mat-button mat-dialog-close class="btnc">Cancelar</button>
+    <button mat-button  type="submit" class="btng" [disabled]="form.invalid || form.pristine">Guardar</button>
   </mat-dialog-actions>
 </form>

@@ -61,25 +61,25 @@ export class ListContractComponent implements OnInit{
   onEdit(id:any): void {
     const dialogRef = this.dialog.open(AddContractComponent, {
       data:{data:id, mode:'edit'},
-      width: '480px',height:'500px',autoFocus:true,
-      minHeight:400,minWidth:400,maxHeight:700,maxWidth:480});
+      width: '480px',autoFocus:true
+    });
 
     dialogRef.afterClosed().subscribe(
       
       data =>{
         if(data){
+          console.log(this.MyDataSource.data);
           let objIndex =  this.MyDataSource.data.findIndex(obj => obj.id == id.id);
-
           //Update object's name property.
-         /*  this.MyDataSource.data[objIndex].name = data.name;
-          this.MyDataSource.data[objIndex].surname = data.surname;
-          this.MyDataSource.data[objIndex].dbirth =data.dbirth;
-          this.MyDataSource.data[objIndex].address = data.address;
-          this.MyDataSource.data[objIndex].population = data.population;
-          this.MyDataSource.data[objIndex].phone = data.phone;
-          this.MyDataSource.data[objIndex].iban = data.iban;
-          this.MyDataSource.data[objIndex].job =data.job ;
-          this.MyDataSource.data[objIndex].salary = data.salary; */
+          this.MyDataSource.data[objIndex].property_id = data.property_id;
+          this.MyDataSource.data[objIndex].renter_id = data.renter_id;
+          this.MyDataSource.data[objIndex].dstart =data.dstart;
+          this.MyDataSource.data[objIndex].dend = data.dend;
+          this.MyDataSource.data[objIndex].iva = data.iva;
+          this.MyDataSource.data[objIndex].watertax = data.watertax;
+          this.MyDataSource.data[objIndex].gastax = data.gastax;
+          this.MyDataSource.data[objIndex].electricitytax =data.electricitytax ;
+          this.MyDataSource.data[objIndex].communitytax = data.communitytax;
         }
       }
     );
@@ -88,8 +88,8 @@ export class ListContractComponent implements OnInit{
   onDelete(element:any): void {
     const dialogRef = this.dialog.open(DeleteCDialogComponent, {
       data:{data:element},
-      width: '480px',height:'500px',autoFocus:true,
-      minHeight:400,minWidth:400,maxHeight:700,maxWidth:480});
+      width: '480px',autoFocus:true,
+    });
     
       dialogRef.afterClosed().subscribe(
         data =>{

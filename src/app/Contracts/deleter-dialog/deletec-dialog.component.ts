@@ -1,8 +1,8 @@
 import { Component, Inject } from '@angular/core';
 
 import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
-import { Renter } from 'src/app/core/models/Renter';
-import { RenterService } from 'src/app/core/services/renter.service';
+import { ContractService } from 'src/app/core/services/contract.service';
+import { Contract } from 'src/app/core/models/contract';
 
 @Component({
   selector: 'delete-dialog',
@@ -11,17 +11,21 @@ import { RenterService } from 'src/app/core/services/renter.service';
 })
 export class DeleteCDialogComponent {
   title:string;
-  message: string;
+  property: string;
+  renter: string;
+  message:string;
   constructor(public dialogRef: MatDialogRef<DeleteCDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private rservice:RenterService,
+    private cservice:ContractService,
     private snackBar:MatSnackBar
   ) {
 
   }
 
   ngOnInit() {
-    this.title=`Confirmar borrado contrato:${this.data.data.id}`;
+    this.title=`Confirmar borrado contrato:`;
+    this.property=`Inmueble ${this.data.data.property_id}`;
+    this.renter=`Inquilino ${this.data.data.renter_id}`;
     this.message=`El borrado de este registro podría provocar la pérdida
     de información relacionada con este y su borrado permanente.`;
 
@@ -29,8 +33,8 @@ export class DeleteCDialogComponent {
 
 
   onConfirm(){
-   this.rservice.deleteRenter(this.data.data.dni).subscribe(
-      (data:Renter) => {
+   this.cservice.deleteContract(this.data.data.dni).subscribe(
+      (data:Contract) => {
         this.snackBar.open('Eliminado', 'OK', {
           verticalPosition: 'bottom',
           horizontalPosition: 'center',
