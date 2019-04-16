@@ -98,7 +98,7 @@ export class AddContractComponent {
       else if(input === 'community') {this.showIcommunity=false; this.form.patchValue({communitytax:0});}
     }
   }
-  
+
   getProperties(){
     this.pservice
     .getProperties()
@@ -125,6 +125,13 @@ export class AddContractComponent {
 
   get f() { return this.form.controls; }
   
+
+  myFilter = (d: Date): boolean => {
+    const day = d.getTime();
+    if(this.form.value.dstart && (this.form.value.dstart.getTime() < day ))return true;
+    return false;
+  }
+
   onSubmit() {
     if (this.data){
       this.form.controls['property_id'].enable(); 
