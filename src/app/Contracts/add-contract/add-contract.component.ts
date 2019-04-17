@@ -41,7 +41,6 @@ export class AddContractComponent {
   }
 
   ngOnInit() {
-    
     this.form = this.fb.group({
       'property_id': ['', [Validators.required]],
       'renter_id': ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
@@ -156,7 +155,7 @@ export class AddContractComponent {
           duration: 4000,
           panelClass: "snackBar"
         })
-      this.dialogRef.close(this.form.value);
+        this.dialogRef.close(data);
       });
     }
   }
