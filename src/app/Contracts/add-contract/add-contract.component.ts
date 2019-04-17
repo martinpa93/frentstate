@@ -64,8 +64,8 @@ export class AddContractComponent {
       this.form.patchValue({
         property_id:this.data.data.property_id,
         renter_id:this.data.data.renter_id,
-        dstart:this.data.data.dstart,
-        dend:this.data.data.dend,
+        dstart:new Date(this.data.data.dstart),
+        dend:new Date(this.data.data.dend),
         iva:this.data.data.iva,
         watertax:this.data.data.watertax,
         gastax:this.data.data.gastax,
@@ -128,7 +128,7 @@ export class AddContractComponent {
 
   myFilter = (d: Date): boolean => {
     const day = d.getTime();
-    if(this.form.value.dstart && (this.form.value.dstart.getTime() < day ))return true;
+    if(this.form.value.dstart && this.form.value.dstart.getTime() < day)return true;
     return false;
   }
 
