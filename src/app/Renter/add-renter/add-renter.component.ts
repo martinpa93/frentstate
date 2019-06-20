@@ -39,7 +39,7 @@ export class AddRenterComponent {
   maxDate = new Date(2001, 0, 1);
   dnipattern:string="\\d{8}[A-Z]{1}";
   namepattern:string="([a-zA-Z]{3,8}\\s?){1,3}";
-  addresspattern:string="(Via|Plaza|Plz|C\/|Calle|Avenida|){1}\\s{1}((\\w){1,30}\\s?){1,3}\\s{1}(1?\\d?\\d?\\d{1}){1}\.{1}\\s{1}([0-5]?\\d?\\d{1}){1}\ª{1}\-{1}([0-1]?\\d?\\d{1}){1}\º{1}";
+  addresspattern:string=".{10,50}";
   phonepattern:string="(\\+34|0034|34)?[6789]\\d{8}";
   ibanpattern:string="ES\\d{22}";
   salarypattern:string="\\d?\\d\\d\\d((\.|\,)\\d\\d)?";

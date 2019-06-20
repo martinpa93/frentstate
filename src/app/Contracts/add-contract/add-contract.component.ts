@@ -152,7 +152,7 @@ export class AddContractComponent {
         this.snackBar.open('Guardado', 'OK', {
           verticalPosition: 'bottom',
           horizontalPosition: 'center',
-          duration: 4000,
+          duration: 4000, 
           panelClass: "snackBar"
         })
         this.dialogRef.close(data);

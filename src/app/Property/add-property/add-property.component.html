@@ -47,7 +47,7 @@
 
       <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px" fxFlexOffset="10px">
         <mat-form-field>
-          <input matInput formControlName="cp" type="number" placeholder="Código postal" required>
+          <input matInput formControlName="cp" placeholder="Código postal" required>
           <mat-error *ngIf="f.cp.errors?.required">El campo es requerido.</mat-error>
           <mat-error *ngIf="f.cp.errors?.pattern">Código postal inválido.</mat-error>
         </mat-form-field>
