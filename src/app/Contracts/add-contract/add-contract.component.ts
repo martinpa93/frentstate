@@ -98,6 +98,10 @@ export class AddContractComponent {
     }
   }
 
+  changeStartDate(){
+    this.form.patchValue({dend:''});
+  }
+
   getProperties(){
     this.pservice
     .getProperties()
