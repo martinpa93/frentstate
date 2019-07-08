@@ -24,7 +24,7 @@
 
       <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px" fxFlexOffset="10px">
         <mat-form-field fxFlex="180px">
-          <input matInput formControlName="dstart" [matDatepicker]="picker" (ngModelChange)="resetPicker($event)" placeholder="F.inicio" required>
+          <input matInput formControlName="dstart" [matDatepicker]="picker" (dateChange)="changeStartDate($event)" placeholder="F.inicio" required>
           <mat-error *ngIf="f.dstart.errors?.required">El campo es requerido.</mat-error>
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
@@ -44,44 +44,24 @@
       <div fxLayout="row wrap" fxLayoutGap="30px" fxFill fxLayoutAlign="center center">
         <div fxLayout="column wrap" >
           <div fxLayout="row wrap"  >
-            <mat-checkbox  fxFlex="110px" #water (change)="showInput($event, 'water')">Agua</mat-checkbox>
-          </div>
-          <div *ngIf="showIwater" fxLayout="row wrap">
-            <mat-form-field fxFlex="110px">
-                <input matInput formControlName="watertax" type="number" placeholder="Euros" required>
-            </mat-form-field>
+            <mat-checkbox  fxFlex="110px">Agua</mat-checkbox>
           </div>
         </div>
         <div fxLayout="column wrap">
             <div fxLayout="row wrap" >
-              <mat-checkbox fxFlex="110px" #gas (change)="showInput($event, 'gas')">Gas</mat-checkbox>
-            </div>
-            <div *ngIf="showIgas" fxLayout="row wrap">
-              <mat-form-field fxFlex="110px" >
-                <input matInput formControlName="gastax" type="number" placeholder="Euros" required>
-              </mat-form-field>
+              <mat-checkbox fxFlex="110px">Gas</mat-checkbox>
             </div>
         </div>
       </div>
       <div fxLayout="row wrap" fxLayoutGap="30px" fxFill fxLayoutAlign="center center">
         <div fxLayout="column wrap">
             <div fxLayout="row wrap" >
-              <mat-checkbox fxFlex="110px" #electricity (change)="showInput($event, 'electricity')">Electricidad</mat-checkbox>
-            </div>
-            <div *ngIf="showIelectricity" fxLayout="row wrap">
-              <mat-form-field fxFlex="110px">
-                <input matInput formControlName="electricitytax" type="number" placeholder="Euros" required>
-              </mat-form-field>
+              <mat-checkbox fxFlex="110px">Electricidad</mat-checkbox>
             </div>
         </div>
         <div fxLayout="column wrap">
             <div fxLayout="row wrap" >
-              <mat-checkbox fxFlex="110px" #community (change)="showInput($event,'community')">Comunidad</mat-checkbox>
-            </div>
-            <div *ngIf="showIcommunity" fxLayout="row wrap">
-              <mat-form-field fxFlex="110px">
-                  <input matInput formControlName="communitytax" type="number" placeholder="Euros" required>
-              </mat-form-field>
+              <mat-checkbox fxFlex="110px">Comunidad</mat-checkbox>
             </div>
         </div>
       </div>
