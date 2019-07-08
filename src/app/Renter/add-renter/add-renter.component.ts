@@ -59,7 +59,7 @@ export class AddRenterComponent {
       'name': ['', [Validators.required, Validators.minLength(2), Validators.maxLength(10), Validators.pattern(this.namepattern)]],
       'surname': ['', [Validators.required,Validators.minLength(2), Validators.maxLength(10)]],
       'dbirth': ['', [Validators.required]],
-      'address': ['', [Validators.required, Validators.pattern(this.addresspattern) /* Validators.minLength(5), Validators.maxLength(25) */]],
+      'address': ['', [Validators.required, /* Validators.pattern(this.addresspattern) */ /* Validators.minLength(5), Validators.maxLength(25) */]],
       'population': ['', [Validators.required]],
       'phone': ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9), Validators.pattern(this.phonepattern)]],
       'iban': ['', [Validators.required, Validators.pattern(this.ibanpattern)]],

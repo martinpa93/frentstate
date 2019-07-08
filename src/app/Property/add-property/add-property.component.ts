@@ -116,7 +116,7 @@ export class AddPropertyComponent {
 
     this.form = this.fb.group({
       'cref': ['', [Validators.required, Validators.minLength(20), Validators.maxLength(20),Validators.pattern(this.crefpattern)]],
-      'address': ['', [Validators.required, Validators.pattern(this.addresspattern)]],
+      'address': ['', [Validators.required, /* Validators.pattern(this.addresspattern) */]],
       'population': ['', [Validators.required]],
       'province': ['', [Validators.required]],
       'cp': ['', [Validators.required, Validators.pattern(this.cppattern)]],

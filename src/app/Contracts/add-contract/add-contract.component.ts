@@ -124,6 +124,9 @@ export class AddContractComponent {
 
   get f() { return this.form.controls; }
   
+  resetPicker() {
+    this.form.patchValue({dend:""});
+  }
 
   myFilter = (d: Date): boolean => {
     const day = d.getTime();
