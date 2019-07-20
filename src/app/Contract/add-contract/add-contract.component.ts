@@ -36,11 +36,6 @@ export class AddContractComponent {
       'renter_id': ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
       'dstart': ['', [Validators.required]],
       'dend': ['', [Validators.required]],
-      'iva': [0, []],
-      'watertax': [0, []],
-      'gastax': [0, []],
-      'electricitytax': [0, []],
-      'communitytax': [0, []]
     });
     
 
@@ -51,11 +46,6 @@ export class AddContractComponent {
         renter_id:this.data.data.renter_id,
         dstart:new Date(this.data.data.dstart),
         dend:new Date(this.data.data.dend),
-        iva:this.data.data.iva,
-        watertax:this.data.data.watertax,
-        gastax:this.data.data.gastax,
-        electricitytax:this.data.data.electricitytax,
-        communitytax:this.data.data.communitytax
       });
       
       this.form.controls['property_id'].disable(); 

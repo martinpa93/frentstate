@@ -1,20 +1,23 @@
-/* import {  NgModule } from '@angular/core';
-
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { ListPropertyComponent } from './list-property/list-property.component';
-import { ListPropertyDataSource } from './list-property/list-property-datasource';
-import { PropertyRoutingModule } from './property-routing.module';
-
+import { AddPropertyComponent } from './add-property/add-property.component';
+import { DeletePDialogComponent } from './deletep-dialog/deletep-dialog.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
-     
-     PropertyRoutingModule
+    SharedModule,
+    RouterModule.forChild([{path:'', component:ListPropertyComponent}]),
   ],
   declarations: [
-    ListPropertyComponent
+    ListPropertyComponent,
+    AddPropertyComponent,
+    DeletePDialogComponent
   ],
-  exports: [ListPropertyComponent,PropertyRoutingModule]
-
+  entryComponents: [
+    AddPropertyComponent,
+    DeletePDialogComponent
+  ]
 })
 export class PropertyModule {}
- */

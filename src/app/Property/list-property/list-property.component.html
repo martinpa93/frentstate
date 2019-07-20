@@ -3,7 +3,7 @@
     <span class="title-center">Inmuebles</span>
 </mat-toolbar>
 
-<div class="example-header" fxLayout="row wrap" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+<div class="header" fxLayout="row wrap" fxLayoutAlign="space-around center" fxLayoutGap="20px">
   <mat-form-field fxFill fxFlex=60>
     <input matInput (keyup)="doFilter($event.target.value)" placeholder="Filtro">
   </mat-form-field>
@@ -43,22 +43,17 @@
     
     <ng-container matColumnDef="m2">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Dimensiones</th>
-      <td mat-cell *matCellDef="let element">{{element.m2}}</td>
-    </ng-container>
-    
-    <ng-container matColumnDef="ac">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Aire acondicionado</th>
-      <td mat-cell *matCellDef="let element">{{element.ac}}</td>
+      <td mat-cell *matCellDef="let element" class="number-col">{{element.m2}}</td>
     </ng-container>
     
     <ng-container matColumnDef="nroom">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>N. Habitaciones</th>
-      <td mat-cell *matCellDef="let element">{{element.nroom}}</td>
+      <td mat-cell *matCellDef="let element" class="number-col">{{element.nroom}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="nbath" >
+    <ng-container matColumnDef="nbath">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>N. Baños</th>
-      <td mat-cell *matCellDef="let element">{{element.nbath}}</td>
+      <td mat-cell *matCellDef="let element" class="number-col">{{element.nbath}}</td>
     </ng-container>
 
 

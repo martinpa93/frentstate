@@ -11,32 +11,12 @@ import { SharedModule } from  './shared/shared.module';
 
 import { AuthComponent } from './auth/auth.component';
 import { AdminComponent } from './admin/admin.component';
-/* import { PropertyModule } from './Property/property.module';
- */
-import { ListPropertyComponent } from './Property/list-property/list-property.component';
-import { AddPropertyComponent } from './Property/add-property/add-property.component';
-import { ListRenterComponent } from './Renter/list-renter/list-renter.component';
-import { ListContractComponent } from './Contracts/list-contract/list-contract.component';
-import { AddRenterComponent } from './Renter/add-renter/add-renter.component';
-import { AddContractComponent } from './Contracts/add-contract/add-contract.component';
-import { DeleteDialogComponent } from './Property/delete-dialog/delete-dialog.component';
-import { DeleteRDialogComponent } from './Renter/deleter-dialog/deleter-dialog.component';
-import { DeleteCDialogComponent } from './Contracts/deleter-dialog/deletec-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
     AdminComponent,
-    ListPropertyComponent,
-    ListRenterComponent,
-    ListContractComponent,
-    AddPropertyComponent,
-    DeleteDialogComponent,
-    AddRenterComponent,
-    DeleteRDialogComponent,
-    AddContractComponent,
-    DeleteCDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -44,10 +24,8 @@ import { DeleteCDialogComponent } from './Contracts/deleter-dialog/deletec-dialo
     SharedModule,
     CoreModule,
     AppRoutingModule,
-
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents:[AddPropertyComponent, DeleteDialogComponent, AddRenterComponent, DeleteRDialogComponent, AddContractComponent, DeleteCDialogComponent]
 })
 export class AppModule { }

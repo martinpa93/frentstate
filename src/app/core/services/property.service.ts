@@ -13,17 +13,14 @@ export class PropertyService {
     getProperties() :Observable<any>{
         return this.http.get(`${environment.apiUrl}/property`)
         .pipe(map(
-            data => {
-              return data;
-            }));
+            data => {return data;}
+        ));
     }
 
     getProperty(id):Observable<any>{
         return this.http.get(`${environment.apiUrl}/property/${id}`)
         .pipe(map(
-            data => {
-              return data;
-            }
+            data => {return data;}
         ));
     }
 
@@ -31,7 +28,6 @@ export class PropertyService {
         return this.http.post(`${environment.apiUrl}/property`, property)
         .pipe(tap(
             (property) => console.log(`added property w/ id=${property.cref}`)),
-        
         );
     }
 

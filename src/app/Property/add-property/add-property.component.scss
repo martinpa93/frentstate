@@ -6,6 +6,17 @@
     background-color: aliceblue;
 }
 
+.form-row{
+    margin:auto;
+}
+
+.mat-form-field{
+    margin-right:20px;
+
+    @media (max-width: 600px){
+       
+    }
+}
 
 ::ng-deep snack-bar-container.snackBar {
     background-color: green;
@@ -15,3 +26,9 @@
   ::ng-deep snack-bar-container.snackBar button{
       color:white;
   }
+
+  @media (max-width: 600px){
+    .formCol{
+        place-content: center!important;
+    }
+}

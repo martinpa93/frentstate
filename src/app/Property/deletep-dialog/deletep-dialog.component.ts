@@ -6,13 +6,13 @@ import { Property } from 'src/app/core/models/Property';
 
 @Component({
   selector: 'delete-dialog',
-  templateUrl: './delete-dialog.component.html',
-  styleUrls: ['./delete-dialog.component.scss']
+  templateUrl: './deletep-dialog.component.html',
+  styleUrls: ['./deletep-dialog.component.scss']
 })
-export class DeleteDialogComponent {
+export class DeletePDialogComponent {
   title:string;
   message: string;
-  constructor(public dialogRef: MatDialogRef<DeleteDialogComponent>,
+  constructor(public dialogRef: MatDialogRef<DeletePDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private pservice:PropertyService,
     private snackBar:MatSnackBar

@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
 import { MatPaginator, MatSort, MatDialog, MatSnackBar } from '@angular/material';
 import { MatTableDataSource } from '@angular/material/table';
 import { PropertyService } from 'src/app/core/services/property.service';
@@ -7,7 +6,7 @@ import { PropertyService } from 'src/app/core/services/property.service';
 import { Property } from 'src/app/core/models/Property';
 
 import { AddPropertyComponent } from '../add-property/add-property.component';
-import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
+import { DeletePDialogComponent } from '../deletep-dialog/deletep-dialog.component';
 
 @Component({
   selector: 'app-list-property',
@@ -24,7 +23,7 @@ export class ListPropertyComponent implements OnInit{
               ){}
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['cref','address','population','province','cp','type','m2','ac','nroom','nbath','actions'];
+  displayedColumns = ['cref','address','population','province','cp','type','m2','nroom','nbath','actions'];
 
   ngOnInit(){
     this.getProperties();
@@ -80,7 +79,6 @@ export class ListPropertyComponent implements OnInit{
           this.MyDataSource.data[objIndex].cp = data.cp;
           this.MyDataSource.data[objIndex].type = data.type;
           this.MyDataSource.data[objIndex].m2 = data.m2;
-          this.MyDataSource.data[objIndex].ac = data.ac;
           this.MyDataSource.data[objIndex].nroom =data.nroom ;
           this.MyDataSource.data[objIndex].nbath = data.nbath;
 
@@ -90,7 +88,7 @@ export class ListPropertyComponent implements OnInit{
   }
 
   onDelete(element:any): void {
-    const dialogRef = this.dialog.open(DeleteDialogComponent, {
+    const dialogRef = this.dialog.open(DeletePDialogComponent, {
       data:{data:element},
       width: '400px',height:'250px',autoFocus:true,
       minHeight:"250px",minWidth:"400px",maxHeight:"280px",maxWidth:"500px"});

@@ -1,12 +1,12 @@
 export interface Property {
+    id:string;
     cref: string;
     address: string;
     population:string;
     province:string;
-    cp:number;
+    cp:string;
     type:string;
     m2:number;
-    ac:boolean;
     nroom:number;
     nbath:number;
 }

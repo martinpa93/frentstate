@@ -64,7 +64,7 @@ export class AuthComponent implements OnInit {
             duration: 4000,
             panelClass: "snackBar"
           })
-          this.router.navigateByUrl('/admin/properties')
+          this.router.navigateByUrl('/admin')
         } 
       );
     }

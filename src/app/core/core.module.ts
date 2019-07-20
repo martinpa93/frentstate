@@ -1,5 +1,4 @@
 import { NgModule,ErrorHandler } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpTokenInterceptor } from './interceptors/token.interceptor';
@@ -13,9 +12,6 @@ import { ContractService } from './services/contract.service';
 import { XhrErrorHandlerService } from './services/xhr-error-handler.service';
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptor, multi: true },
     XhrErrorHandlerService,
@@ -26,7 +22,6 @@ import { XhrErrorHandlerService } from './services/xhr-error-handler.service';
     PropertyService,
     RenterService,
     ContractService
-  ],
-  declarations: []
+  ]
 })
 export class CoreModule { }

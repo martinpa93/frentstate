@@ -7,10 +7,10 @@ import { ContractService } from 'src/app/core/services/contract.service';
 import { Contract } from 'src/app/core/models/contract';
 
 import { AddContractComponent } from '../add-contract/add-contract.component';
-import { DeleteCDialogComponent } from '../deleter-dialog/deletec-dialog.component';
+import { DeleteCDialogComponent } from '../deletec-dialog/deletec-dialog.component';
 
 @Component({
-  selector: 'app-list-Contract',
+  selector: 'app-list-contract',
   templateUrl: './list-contract.component.html',
   styleUrls: ['./list-contract.component.scss'],
 })
@@ -24,7 +24,7 @@ export class ListContractComponent implements OnInit{
             private router: Router){}
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['property_id','renter_id','dstart','dend','iva','watertax','gastax','electricitytax','communitytax','actions'];
+  displayedColumns = ['property_id','renter_id','dstart','dend','actions'];
 
   ngOnInit(){
     this.getContracts();
@@ -74,11 +74,6 @@ export class ListContractComponent implements OnInit{
           this.MyDataSource.data[objIndex].renter_id = data.renter_id;
           this.MyDataSource.data[objIndex].dstart =data.dstart;
           this.MyDataSource.data[objIndex].dend = data.dend;
-          this.MyDataSource.data[objIndex].iva = data.iva;
-          this.MyDataSource.data[objIndex].watertax = data.watertax;
-          this.MyDataSource.data[objIndex].gastax = data.gastax;
-          this.MyDataSource.data[objIndex].electricitytax =data.electricitytax ;
-          this.MyDataSource.data[objIndex].communitytax = data.communitytax;
         }
       }
     );

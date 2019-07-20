@@ -35,14 +35,12 @@ export class RenterService {
         );
     }
 
-
     updateRenter (id, renter): Observable<any> {
         return this.http.put(`${environment.apiUrl}/renter/${id}`, renter)
         .pipe(
           tap((renter) => console.log(`updated renter id=${id}`))
         );
     }
-
 
     deleteRenter (id): Observable<any> {
         return this.http.delete(`${environment.apiUrl}/renter/${id}`)
