@@ -16,7 +16,7 @@ import { MatSnackBar, MatSidenav } from '@angular/material';
 export class AdminComponent {
   @ViewChild('drawer') sidenav: MatSidenav;
   
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.XSmall)
     .pipe(
       map(result => result.matches)
     );

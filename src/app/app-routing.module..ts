@@ -11,7 +11,8 @@ const routes: Routes = [
   children:[
             {path:'properties', loadChildren:'./Property/property.module#PropertyModule'},
             {path: 'renters', loadChildren:'./Renter/renter.module#RenterModule'},
-            {path: 'contracts', loadChildren:'./Contract/contract.module#ContractModule'}
+            {path: 'contracts', loadChildren:'./Contract/contract.module#ContractModule'},
+            {path:'editor', loadChildren:'./Contract/editor/editor.module#EditorModule'},
             ]}
 ];
  

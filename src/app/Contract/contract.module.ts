@@ -13,7 +13,7 @@ import { DeleteCDialogComponent } from './deletec-dialog/deletec-dialog.componen
   declarations: [
     ListContractComponent,
     AddContractComponent,
-    DeleteCDialogComponent
+    DeleteCDialogComponent,
   ],
   entryComponents: [
     AddContractComponent,

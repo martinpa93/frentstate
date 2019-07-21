@@ -16,14 +16,14 @@ import { AdminComponent } from './admin/admin.component';
   declarations: [
     AppComponent,
     AuthComponent,
-    AdminComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     SharedModule,
     CoreModule,
-    AppRoutingModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent],

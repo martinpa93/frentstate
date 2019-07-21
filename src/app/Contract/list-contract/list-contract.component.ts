@@ -18,6 +18,7 @@ export class ListContractComponent implements OnInit{
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   MyDataSource:any;
+  showDiv:boolean=false;
 
   constructor(private service:ContractService,
               private dialog:MatDialog,
@@ -56,6 +57,10 @@ export class ListContractComponent implements OnInit{
           this.MyDataSource.filter ='';
         }
     });
+  }
+
+  openEditor():void{
+
   }
 
   onEdit(id:any): void {
