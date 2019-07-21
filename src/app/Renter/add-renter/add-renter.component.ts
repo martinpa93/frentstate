@@ -42,7 +42,6 @@ export class AddRenterComponent {
   addresspattern:string=".{10,50}";
   phonepattern:string="(\\+34|0034|34)?[6789]\\d{8}";
   ibanpattern:string="ES\\d{22}";
-  salarypattern:string="\\d?\\d\\d\\d((\.|\,)\\d\\d)?";
 
   constructor(public dialogRef: MatDialogRef<AddRenterComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -60,11 +59,11 @@ export class AddRenterComponent {
       'surname': ['', [Validators.required,Validators.minLength(2), Validators.maxLength(10)]],
       'dbirth': ['', [Validators.required]],
       'address': ['', [Validators.required, /* Validators.pattern(this.addresspattern) */ /* Validators.minLength(5), Validators.maxLength(25) */]],
+      'cp': ['', [Validators.required]],
       'population': ['', [Validators.required]],
       'phone': ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9), Validators.pattern(this.phonepattern)]],
       'iban': ['', [Validators.required, Validators.pattern(this.ibanpattern)]],
-      'job': ['', [Validators.required,Validators.minLength(5), Validators.maxLength(20)]],
-      'salary': ['', [Validators.required, Validators.pattern(this.salarypattern)]]
+      'job': ['', [Validators.required,Validators.minLength(5), Validators.maxLength(20)]]
     });
 
     if(this.data){
@@ -75,11 +74,11 @@ export class AddRenterComponent {
         surname:this.data.data.surname,
         dbirth:this.data.data.dbirth,
         address:this.data.data.address,
+        cp:this.data.data.cp,
         population:this.data.data.population,
         phone:this.data.data.phone,
         iban:this.data.data.iban,
-        job:this.data.data.job,
-        salary:this.data.data.salary
+        job:this.data.data.job
       });
       this.form.controls['dni'].disable();
     }

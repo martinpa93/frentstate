@@ -58,16 +58,15 @@
 
       <div fxLayout="row wrap" class="form-row">
         <mat-form-field>
+          <input matInput formControlName="cp" placeholder="Código postal" required>
+          <mat-error *ngIf="f.cp.errors?.required">El campo es requerido.</mat-error>
+          <mat-error *ngIf="f.cp.errors?.pattern">Código postal inválido.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
           <mat-select formControlName="population" placeholder="Comunidad autónoma" required>
             <mat-option *ngFor="let data of geoList" [value]="data">{{ data }}</mat-option>
           </mat-select>
           <mat-error *ngIf="f.population.errors?.required">El campo es requerido.</mat-error>
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput formControlName="phone" placeholder="Teléfono" required>
-          <mat-error *ngIf="f.phone.errors?.required">El campo es requerido.</mat-error>
-          <mat-error *ngIf="f.phone.errors?.pattern && !f.phone.errors?.required">
-                        Teléfono inválido, ej 678432212.</mat-error>
         </mat-form-field>
       </div>
 
@@ -82,16 +81,16 @@
 
       <div fxLayout="row wrap" class="form-row">
         <mat-form-field>
+          <input matInput formControlName="phone" placeholder="Teléfono" required>
+          <mat-error *ngIf="f.phone.errors?.required">El campo es requerido.</mat-error>
+          <mat-error *ngIf="f.phone.errors?.pattern && !f.phone.errors?.required">
+                        Teléfono inválido, ej 678432212.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
           <input matInput formControlName="job" placeholder="Trabajo" required>
           <mat-error *ngIf="f.job.errors?.required">El campo es requerido.</mat-error>
           <mat-error *ngIf="f.job.errors?.minlength">La longitud mínima son 2 carácteres.</mat-error>
           <mat-error *ngIf="f.job.errors?.maxlength">La longitud máxima son 10 carácteres.</mat-error>
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput formControlName="salary" type="number" placeholder="Salario" required>
-          <mat-error *ngIf="f.salary.errors?.required">El campo es requerido.</mat-error>
-          <mat-error *ngIf="f.salary.errors?.pattern && !f.salary.errors?.required">
-                    Salario inválido.</mat-error>
         </mat-form-field>
       </div>
     </div>

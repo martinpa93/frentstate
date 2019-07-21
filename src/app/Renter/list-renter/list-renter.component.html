@@ -31,14 +31,15 @@
       <td mat-cell *matCellDef="let element">{{element.dbirth | date:'dd/mm/yyyy'}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="cp">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>CP</th>
-      <td mat-cell *matCellDef="let element">{{element.cp}}</td>
-    </ng-container>
-
+    
     <ng-container matColumnDef="address">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Dirección</th>
       <td mat-cell *matCellDef="let element">{{element.address}}</td>
+    </ng-container>
+    
+    <ng-container matColumnDef="cp">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>CP</th>
+      <td mat-cell *matCellDef="let element">{{element.cp}}</td>
     </ng-container>
     
     <ng-container matColumnDef="population">
@@ -46,14 +47,15 @@
       <td mat-cell *matCellDef="let element">{{element.population}}</td>
     </ng-container>
     
-    <ng-container matColumnDef="phone">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Teléfono</th>
-      <td mat-cell *matCellDef="let element">{{element.phone}}</td>
-    </ng-container>
     
     <ng-container matColumnDef="iban">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Tarjeta de crédito</th>
       <td mat-cell *matCellDef="let element">{{element.iban}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="phone">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Teléfono</th>
+      <td mat-cell *matCellDef="let element">{{element.phone}}</td>
     </ng-container>
     
     <ng-container matColumnDef="job">

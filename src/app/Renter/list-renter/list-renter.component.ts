@@ -24,7 +24,7 @@ export class ListRenterComponent implements OnInit{
             private router: Router){}
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['dni','name','surname','dbirth','address','population','phone','iban','job','actions'];
+  displayedColumns = ['dni','name','surname','dbirth','address','cp','population','phone','iban','job','actions'];
 
 
   ngOnInit(){
@@ -76,9 +76,10 @@ export class ListRenterComponent implements OnInit{
           this.MyDataSource.data[objIndex].surname = data.surname;
           this.MyDataSource.data[objIndex].dbirth =data.dbirth;
           this.MyDataSource.data[objIndex].address = data.address;
+          this.MyDataSource.data[objIndex].cp = data.cp;
           this.MyDataSource.data[objIndex].population = data.population;
-          this.MyDataSource.data[objIndex].phone = data.phone;
           this.MyDataSource.data[objIndex].iban = data.iban;
+          this.MyDataSource.data[objIndex].phone = data.phone;
           this.MyDataSource.data[objIndex].job =data.job ;
         }
       }
