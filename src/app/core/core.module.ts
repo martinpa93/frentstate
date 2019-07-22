@@ -10,6 +10,7 @@ import { PropertyService } from './services/property.service';
 import { RenterService } from './services/renter.service';
 import { ContractService } from './services/contract.service';
 import { XhrErrorHandlerService } from './services/xhr-error-handler.service';
+import { FileService } from './services/file.service';
 
 @NgModule({
   providers: [
@@ -21,7 +22,8 @@ import { XhrErrorHandlerService } from './services/xhr-error-handler.service';
     UserService,
     PropertyService,
     RenterService,
-    ContractService
+    ContractService,
+    FileService
   ]
 })
 export class CoreModule { }

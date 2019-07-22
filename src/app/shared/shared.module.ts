@@ -8,9 +8,9 @@ import { MatButtonModule,MatToolbarModule,
   MatIconModule,MatMenuModule,MatSidenavModule,MatExpansionModule, 
   MatListModule,MatFormFieldModule,MatCardModule,MatRadioModule, 
   MatDatepickerModule,MatInputModule,MatNativeDateModule,MatTableModule,
-MatPaginatorModule,MatSortModule,MatDialogModule,MatSelectModule, MatSnackBarModule,} from '@angular/material';
+  MatPaginatorModule,MatSortModule,MatDialogModule,MatSelectModule, MatSnackBarModule} from '@angular/material';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-
+import {MatTabsModule} from '@angular/material/tabs';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 
@@ -43,7 +43,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatSortModule,
     MatSelectModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTabsModule,
     
     
   ],
@@ -72,6 +73,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatDatepickerModule,
     MatInputModule,
     MatNativeDateModule,
+    MatTabsModule,
+    
     //table
     MatTableModule,
     MatPaginatorModule,
@@ -79,7 +82,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatSelectModule,
     MatDialogModule,
     MatSnackBarModule,
-    
+   
+
+    //Declarations
   ]
   })
   export class SharedModule { }

@@ -5,6 +5,7 @@ import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 import { Renter } from 'src/app/core/models/Renter';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { RenterService } from 'src/app/core/services/renter.service';
+import { FileService } from 'src/app/core/services/file.service';
 
 @Component({
   selector: 'add-renter',
@@ -37,6 +38,7 @@ export class AddRenterComponent {
   form: FormGroup;
   minDate = new Date(1930, 0, 1);
   maxDate = new Date(2001, 0, 1);
+  files: string[]= [];
   dnipattern:string="\\d{8}[A-Z]{1}";
   namepattern:string="([a-zA-Z]{3,8}\\s?){1,3}";
   addresspattern:string=".{10,50}";
@@ -47,6 +49,7 @@ export class AddRenterComponent {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
     private rservice:RenterService,
+    private fservice:FileService,
     private snackBar:MatSnackBar
   ) {
 

@@ -122,7 +122,6 @@ export class AddPropertyComponent {
       'cp': ['', [Validators.required, Validators.pattern(this.cppattern)]],
       'type': ['', [Validators.required]],
       'm2': ['', [Validators.required, Validators.pattern(this.m2pattern)]],
-      'ac': [false, /* [Validators.required] */],
       'nroom': ['', [Validators.required]],
       'nbath': ['', [Validators.required]]
     });
@@ -141,7 +140,6 @@ export class AddPropertyComponent {
         cp:this.data.id.cp,
         type:this.data.id.type,
         m2:this.data.id.m2,
-        ac:this.data.id.ac,
         nroom:this.data.id.nroom,
         nbath:this.data.id.nbath
       });

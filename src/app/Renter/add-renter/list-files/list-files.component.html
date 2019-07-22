@@ -1,0 +1,17 @@
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="fileupload">
+    <input formControlName="file" type="file" class="inputfile">
+    <span><button mat-fab color="primary" type="submit" class="btng">Guardar</button></span>
+  </div>
+</form>
+<mat-list class="list-files">
+  <h2 class="list-header mat-h3 mat-subheading">Listado de archivos</h2>
+  <mat-list-item *ngFor="let file of files">
+    <h3 matLine>  </h3>
+    <p matLine>
+      <span> </span>
+      <span class="demo-2">  </span>
+    </p>
+  </mat-list-item>
+</mat-list>

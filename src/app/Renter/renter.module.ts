@@ -4,6 +4,7 @@ import { SharedModule } from '../shared/shared.module';
 import { ListRenterComponent } from './list-renter/list-renter.component';
 import { AddRenterComponent } from './add-renter/add-renter.component';
 import { DeleteRDialogComponent } from './deleter-dialog/deleter-dialog.component';
+import { ListFilesComponent } from './add-renter/list-files/list-files.component';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { DeleteRDialogComponent } from './deleter-dialog/deleter-dialog.componen
   declarations: [
     ListRenterComponent,
     AddRenterComponent,
-    DeleteRDialogComponent
+    DeleteRDialogComponent,
+    ListFilesComponent
   ],
   entryComponents: [
     AddRenterComponent,
