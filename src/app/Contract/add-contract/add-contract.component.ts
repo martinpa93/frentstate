@@ -59,27 +59,15 @@ export class AddContractComponent implements OnInit {
   get f() { return this.form.controls; }
 
   getProperties(){
-    if (this.data) {
-      this.pservice
-      .getProperties()
-      .subscribe((data) => {
-        const loop = [];
-        data.forEach(function(element) {
-          loop.push(element);
-        });
-        this.properties = loop;
+    this.pservice
+    .getProperties()
+    .subscribe((data) => {
+      const loop = [];
+      data.forEach(function(element) {
+        loop.push(element);
       });
-    } else {
-      this.pservice
-      .getPropertiesAvaliable()
-      .subscribe((data) => {
-        const loop = [];
-        data.forEach(function(element) {
-          loop.push(element);
-        });
-        this.properties = loop;
-      });
-    }
+      this.properties = loop;
+    });
   }
 
   getRenters(){
@@ -104,9 +92,9 @@ export class AddContractComponent implements OnInit {
 
   onSubmit() {
     if (this.data){
-      this.form.controls['property_id'].enable(); 
+      this.form.controls['property_id'].enable();
       this.form.controls['renter_id'].enable();
-      this.cservice.updateContract(this.data.data.id,this.form.value).subscribe(
+      this.cservice.updateContract(this.data.data.id, this.form.value).subscribe(
         () => {
           this.snackBar.open('Guardado', 'OK', {
           verticalPosition: 'bottom',
