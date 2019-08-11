@@ -1,4 +1,4 @@
-import { Component, Inject, ViewChild } from '@angular/core';
+import { Component, Inject, ViewChild, OnInit } from '@angular/core';
 
 import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar, MatCheckbox } from '@angular/material';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -13,19 +13,19 @@ import { ContractService } from 'src/app/core/services/contract.service';
   templateUrl: './add-contract.component.html',
   styleUrls: ['./add-contract.component.scss']
 })
-export class AddContractComponent {
-  title = "Añadir contrato";
+export class AddContractComponent implements OnInit {
+  title = 'Añadir contrato';
   form: FormGroup;
-  properties=[];
-  renters=[];
+  properties = [];
+  renters = [];
 
   constructor(public dialogRef: MatDialogRef<AddContractComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
-    private cservice:ContractService,
-    private pservice:PropertyService,
-    private rservice:RenterService,
-    private snackBar:MatSnackBar
+    private cservice: ContractService,
+    private pservice: PropertyService,
+    private rservice: RenterService,
+    private snackBar: MatSnackBar
   ) {
 
   }
@@ -33,22 +33,21 @@ export class AddContractComponent {
   ngOnInit() {
     this.form = this.fb.group({
       'property_id': ['', [Validators.required]],
-      'renter_id': ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
+      'renter_id': ['', [Validators.required]],
       'dstart': ['', [Validators.required]],
       'dend': ['', [Validators.required]],
     });
-    
 
-    if(this.data){
-      this.title="Editar contrato";
+    if (this.data) {
+      this.title = 'Editar contrato';
       this.form.patchValue({
-        property_id:this.data.data.property_id,
-        renter_id:this.data.data.renter_id,
-        dstart:new Date(this.data.data.dstart),
-        dend:new Date(this.data.data.dend),
+        property_id: this.data.data.property_id,
+        renter_id: this.data.data.renter_id,
+        dstart: new Date(this.data.data.dstart),
+        dend: new Date(this.data.data.dend),
       });
-      
-      this.form.controls['property_id'].disable(); 
+
+      this.form.controls['property_id'].disable();
       this.form.controls['renter_id'].disable();
     }
 
@@ -58,38 +57,48 @@ export class AddContractComponent {
 
 
   get f() { return this.form.controls; }
-  
+
   getProperties(){
-    this.pservice
-    .getProperties()
-    .subscribe((data) => {
-      let loop=[];
-      data.forEach(function(element) {
-        loop.push(element.cref);
+    if (this.data) {
+      this.pservice
+      .getProperties()
+      .subscribe((data) => {
+        const loop = [];
+        data.forEach(function(element) {
+          loop.push(element);
+        });
+        this.properties = loop;
       });
-      this.properties=loop;
-    });
+    } else {
+      this.pservice
+      .getPropertiesAvaliable()
+      .subscribe((data) => {
+        const loop = [];
+        data.forEach(function(element) {
+          loop.push(element);
+        });
+        this.properties = loop;
+      });
+    }
   }
-  
+
   getRenters(){
     this.rservice
     .getRenters()
     .subscribe((data) => {
-      let loop=[];
+      const loop = [];
       data.forEach(function(element) {
-        loop.push(element.dni);
+        loop.push(element);
       });
-      this.renters=loop;
+      this.renters = loop;
     });
   }
-  
-  changeStartDate(){
-    this.form.patchValue({dend:''});
-  }
-  
+
+  changeStartDate(){ this.form.patchValue({dend:''}); }
+
   myFilter = (d: Date): boolean => {
     const day = d.getTime();
-    if(this.form.value.dstart && this.form.value.dstart.getTime() < day)return true;
+    if (this.form.value.dstart && this.form.value.dstart.getTime() < day) return true;
     return false;
   }
 
@@ -98,26 +107,25 @@ export class AddContractComponent {
       this.form.controls['property_id'].enable(); 
       this.form.controls['renter_id'].enable();
       this.cservice.updateContract(this.data.data.id,this.form.value).subscribe(
-        data=>{
+        () => {
           this.snackBar.open('Guardado', 'OK', {
           verticalPosition: 'bottom',
           horizontalPosition: 'center',
           duration: 4000,
-          panelClass: "snackBar"
-        })
+          panelClass: 'snackBar'
+        });
         this.dialogRef.close(this.form.value);
       });
-    }
-    else{ 
+    } else {
       this.cservice.addContract(this.form.value).subscribe(
-        data=>{
+        data => {
         this.snackBar.open('Guardado', 'OK', {
           verticalPosition: 'bottom',
           horizontalPosition: 'center',
-          duration: 4000, 
-          panelClass: "snackBar"
+          duration: 4000,
+          panelClass: 'snackBar'
         })
-        this.dialogRef.close(data);
+        this.dialogRef.close(data); 
       });
     }
   }

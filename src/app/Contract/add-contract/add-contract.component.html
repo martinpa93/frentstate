@@ -10,13 +10,13 @@
       <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px" fxFlexOffset="10px">
         <mat-form-field>
           <mat-select formControlName="property_id" placeholder="Propiedad" required>
-            <mat-option *ngFor="let data of properties" [value]="data">{{ data }}</mat-option>
+            <mat-option *ngFor="let data of properties" [value]="data.cref">{{ data.address }}</mat-option>
           </mat-select>
           <mat-error *ngIf="f.property_id.errors?.required">El campo es requerido.</mat-error>
         </mat-form-field>
         <mat-form-field>
           <mat-select formControlName="renter_id" placeholder="Inquilino" required>
-            <mat-option *ngFor="let data of renters" [value]="data">{{ data }}</mat-option>
+            <mat-option *ngFor="let data of renters" [value]="data.dni">{{ data.name + ' ' + data.surname }}</mat-option>
           </mat-select>
           <mat-error *ngIf="f.renter_id.errors?.required">El campo es requerido.</mat-error>
         </mat-form-field>

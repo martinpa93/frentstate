@@ -36,7 +36,7 @@ export class ListFilesComponent {
 
   private prepareSave(): any {
     let input = new FormData();
-    input.append('file', this.form.get('file').value);
+    input.append('file', 'ajo');
     return input;
   }
 

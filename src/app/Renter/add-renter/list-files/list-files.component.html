@@ -1,7 +1,7 @@
 
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
+<form [formGroup]="form" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
   <div class="fileupload">
-    <input formControlName="file" type="file" class="inputfile">
+    <input formControlName="file" id="file" type="file" name="file" class="inputfile">
     <span><button mat-fab color="primary" type="submit" class="btng">Guardar</button></span>
   </div>
 </form>

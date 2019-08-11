@@ -10,6 +10,10 @@ export class PropertyService {
         private http: HttpClient
     ) {}
 
+    getPropertiesAvaliable(): Observable<any> {
+        return this.http.get(`${environment.apiUrl}/contractsAvaliable`);
+    }
+
     getProperties() :Observable<any>{
         return this.http.get(`${environment.apiUrl}/property`)
         .pipe(map(
