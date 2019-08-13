@@ -17,23 +17,22 @@ import { DeleteCDialogComponent } from '../deletec-dialog/deletec-dialog.compone
 export class ListContractComponent implements OnInit{
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  MyDataSource:any;
-  showDiv:boolean=false;
+  MyDataSource: any;
+  showDiv = false;
 
-  constructor(private service:ContractService,
+  constructor(private cservice:ContractService,
               private dialog:MatDialog,
             private router: Router){}
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['property_id','renter_id','dstart','dend','actions'];
+  displayedColumns = ['property_id','address','renter_id','name','dstart','dend','actions'];
 
   ngOnInit(){
     this.getContracts();
   }
-  
-  
+
   getContracts() {
-    this.service
+    this.cservice
     .getContracts()
     .subscribe((data: Contract[]) => {
     this.MyDataSource = new MatTableDataSource();
@@ -52,9 +51,9 @@ export class ListContractComponent implements OnInit{
 
     dialogRef.afterClosed().subscribe(
       data => {
-        if(data){
-          this.MyDataSource.data.splice(0,0,data);
-          this.MyDataSource.filter ='';
+        if (data) {
+          this.MyDataSource.data.splice(0, 0, data);
+          this.MyDataSource.filter = '';
         }
     });
   }
@@ -70,14 +69,15 @@ export class ListContractComponent implements OnInit{
     });
 
     dialogRef.afterClosed().subscribe(
-      
       data =>{
         if(data){
-          let objIndex =  this.MyDataSource.data.findIndex(obj => obj.id == id.id);
-          //Update object's name property.
+          const objIndex =  this.MyDataSource.data.findIndex(obj => obj.id === id.id);
+
+          // Update object's name property.
+
           this.MyDataSource.data[objIndex].property_id = data.property_id;
           this.MyDataSource.data[objIndex].renter_id = data.renter_id;
-          this.MyDataSource.data[objIndex].dstart =data.dstart;
+          this.MyDataSource.data[objIndex].dstart = data.dstart;
           this.MyDataSource.data[objIndex].dend = data.dend;
         }
       }
@@ -93,7 +93,7 @@ export class ListContractComponent implements OnInit{
       dialogRef.afterClosed().subscribe(
         data =>{
           if(data){
-            let objIndex =  this.MyDataSource.data.findIndex(obj => obj.id == element.id);
+            const objIndex =  this.MyDataSource.data.findIndex(obj => obj.id === element.id);
             this.MyDataSource.data.splice(objIndex, 1);
             this.MyDataSource.filter ='';
           }

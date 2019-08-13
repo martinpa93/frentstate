@@ -1,4 +1,4 @@
-import { Component, Inject, ViewChild, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 
 import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar, MatCheckbox } from '@angular/material';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -19,6 +19,7 @@ export class AddContractComponent implements OnInit {
   properties = [];
   renters = [];
 
+
   constructor(public dialogRef: MatDialogRef<AddContractComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
@@ -31,11 +32,13 @@ export class AddContractComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getProperties();
+    this.getRenters();
     this.form = this.fb.group({
       'property_id': ['', [Validators.required]],
       'renter_id': ['', [Validators.required]],
       'dstart': ['', [Validators.required]],
-      'dend': ['', [Validators.required]],
+      'dend': ['', [Validators.required]]
     });
 
     if (this.data) {
@@ -51,8 +54,6 @@ export class AddContractComponent implements OnInit {
       this.form.controls['renter_id'].disable();
     }
 
-    this.getProperties();
-    this.getRenters();
   }
 
 
@@ -107,12 +108,19 @@ export class AddContractComponent implements OnInit {
     } else {
       this.cservice.addContract(this.form.value).subscribe(
         data => {
+        const address = this.properties.find((item) => item.cref === this.form.value.property_id).address;
+        const name = this.renters.find((item) => item.dni === this.form.value.renter_id).name;
+        const surname = this.renters.find((item) => item.dni === this.form.value.renter_id).surname;
+        data.address = address;
+        data.name = name;
+        data.surname = surname;
+
         this.snackBar.open('Guardado', 'OK', {
           verticalPosition: 'bottom',
           horizontalPosition: 'center',
           duration: 4000,
           panelClass: 'snackBar'
-        })
+        });
         this.dialogRef.close(data); 
       });
     }

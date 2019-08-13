@@ -1,8 +1,6 @@
 import { Component, Inject } from '@angular/core';
 
-import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
-import { Renter } from 'src/app/core/models/Renter';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { RenterService } from 'src/app/core/services/renter.service';
 import { FileService } from 'src/app/core/services/file.service';

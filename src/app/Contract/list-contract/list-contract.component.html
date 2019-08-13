@@ -15,10 +15,20 @@
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Inmueble</th>
       <td mat-cell *matCellDef="let element">{{element.property_id}}</td>
     </ng-container>
+  
+    <ng-container matColumnDef="address">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Dirección</th>
+      <td mat-cell *matCellDef="let element">{{element.address}}</td>
+    </ng-container>
    
     <ng-container matColumnDef="renter_id">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Inquilino</th>
       <td mat-cell *matCellDef="let element">{{element.renter_id}}</td>
+    </ng-container>
+   
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+      <td mat-cell *matCellDef="let element">{{element.name+' '+element.surname}}</td>
     </ng-container>
 
     <ng-container matColumnDef="dstart">

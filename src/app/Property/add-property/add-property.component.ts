@@ -107,12 +107,11 @@ export class AddPropertyComponent {
 
   ngOnInit() {
 
-    let loop=[];
+    const loop=[];
     this.geoList.forEach(function(element) {
       loop.push(element.population);
     });
     this.loop=loop;
-    console.log();
 
     this.form = this.fb.group({
       'cref': ['', [Validators.required, Validators.minLength(20), Validators.maxLength(20),Validators.pattern(this.crefpattern)]],
@@ -152,9 +151,8 @@ export class AddPropertyComponent {
 
   onChanges(): void {
     this.form.get('population').valueChanges.subscribe(val => {
-      this.arrayProv=[];
-      let tmp=this.geoList[this.geoList.findIndex(x => x.population === val)].province;
-      this.arrayProv=this.arrayProv.concat(tmp)
+      let tmp = this.geoList[this.geoList.findIndex(x => x.population === val)].province;
+      this.arrayProv = tmp || [];
     });
   }
 
