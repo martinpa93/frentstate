@@ -1,4 +1,7 @@
 .mat-elevation-z8{
+  @media (max-width: 650px) {
+    height: calc(100% - 233px);
+  }
   overflow: auto;
   height: calc(100% - 247px);
 }

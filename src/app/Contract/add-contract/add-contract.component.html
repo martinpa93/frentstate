@@ -7,7 +7,7 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <mat-dialog-content>
     <div fxLayout="row wrap" fxLayoutAlign="center center">
-      <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px" fxFlexOffset="10px">
+      <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px">
         <mat-form-field>
           <mat-select formControlName="property_id" placeholder="Propiedad" required>
             <mat-option *ngFor="let data of properties" [value]="data.cref">{{ data.address }}</mat-option>
@@ -22,7 +22,7 @@
         </mat-form-field>
       </div>
 
-      <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px" fxFlexOffset="10px">
+      <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px">
         <mat-form-field fxFlex="180px">
           <input matInput formControlName="dstart" [matDatepicker]="picker" (dateChange)="changeStartDate($event)" placeholder="F.inicio" required>
           <mat-error *ngIf="f.dstart.errors?.required">El campo es requerido.</mat-error>

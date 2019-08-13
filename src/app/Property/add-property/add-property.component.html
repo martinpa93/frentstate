@@ -6,8 +6,8 @@
   
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <mat-dialog-content>
-    <div fxLayout="row wrap">
-      <div fxLayout="row wrap" class="form-row">
+    <div fxLayout="row wrap" fxLayoutAlign="center center">
+      <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px">
         <mat-form-field>
           <input matInput formControlName="cref" placeholder="Ref.catastral" name="cref" required>
           <mat-error *ngIf="f.cref.errors?.required">El campo es requerido.</mat-error>
@@ -30,7 +30,7 @@
         </mat-form-field>
       </div>
 
-      <div fxLayout="row wrap" class="form-row">
+      <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px">
         <mat-form-field>
           <mat-select formControlName="population" placeholder="C.autónoma" required>
             <mat-option *ngFor="let data of loop" [value]="data" >{{ data }}</mat-option>
@@ -45,7 +45,7 @@
         </mat-form-field>
       </div>
 
-      <div fxLayout="row wrap" class="form-row">
+      <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px">
         <mat-form-field>
           <input matInput formControlName="cp" placeholder="Código postal" required>
           <mat-error *ngIf="f.cp.errors?.required">El campo es requerido.</mat-error>
@@ -60,14 +60,14 @@
         </mat-form-field>
       </div>
 
-      <div fxLayout="row wrap" fxLayoutAlign="center center" class="form-row" fxFill>
+      <div fxLayout="row wrap" fxLayoutAlign="center center" fxFill>
         <mat-form-field>
           <input matInput formControlName="m2" type="number" placeholder="Dimensiones" required>
           <mat-error *ngIf="f.m2.errors?.required">El campo es requerido.</mat-error>
           <mat-error *ngIf="f.m2.errors?.pattern">Dimensión inválida.</mat-error>
         </mat-form-field>
       </div>
-      <div fxLayout="row wrap" class="form-row">
+      <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px">
         <mat-form-field>
           <mat-select formControlName="nroom" placeholder="Nº de habitaciones" required>
             <mat-option *ngFor="let i of arrayNumber" [value]="i">{{ i }}</mat-option>
