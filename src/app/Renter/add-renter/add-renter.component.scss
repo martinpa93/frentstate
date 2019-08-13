@@ -5,25 +5,3 @@
 .bntg:hover{
     background-color: aliceblue;
 }
-
-.form-row{
-    margin:auto;
-}
-
-.mat-tab-header{
-    margin-bottom:10px;
-}
-
-.mat-form-field{
-    margin-right:20px;
-
-    @media (max-width: 600px){
-       
-    }
-}
-
-@media (max-width: 600px){
-    .formCol{
-        place-content: center!important;
-    }
-}

@@ -6,8 +6,8 @@
   </mat-toolbar>
 
   <mat-dialog-content fxLayout="row wrap">
-    <div  style="margin:0 auto;" fxLayout="row wrap">
-      <div fxLayout="row wrap" class="form-row">
+    <div fxLayout="row wrap" fxLayoutAlign="center center">
+      <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px">
         <mat-form-field>
           <input matInput formControlName="dni" placeholder="DNI" required>
           <mat-error *ngIf="f.dni.errors?.required">El campo es requerido.</mat-error>
@@ -26,14 +26,14 @@
         </mat-form-field>
       </div>
 
-      <div fxLayout="row wrap" class="form-row">
+      <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px">
         <mat-form-field>
           <input matInput formControlName="surname" placeholder="Apellido" required>
           <mat-error *ngIf="f.surname.errors?.required">El campo es requerido.</mat-error>
           <mat-error *ngIf="f.surname.errors?.minlength">La longitud mínima son 2 carácteres.</mat-error>
           <mat-error *ngIf="f.surname.errors?.maxlength">La longitud mínima son 2 carácteres..</mat-error>
         </mat-form-field>
-        <mat-form-field style="max-width:180px;">
+        <mat-form-field fxFlex="180px">
           <input matInput formControlName="dbirth" [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="F.nacimiento" required >
           <mat-error *ngIf="f.dbirth.errors?.required">El campo es requerido.</mat-error>
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -41,8 +41,8 @@
         </mat-form-field>
       </div>
 
-      <div fxLayout="row wrap" class="form-row">
-        <mat-form-field fxFlex="380px">
+      <div fxLayout="row wrap" fxLayoutAlign="center center" fxFlex.gt-xs="390px">
+        <mat-form-field fxFill>
           <input matInput formControlName="address" placeholder="Dirección" required>
           <mat-error *ngIf="f.address.errors?.required">El campo es requerido.</mat-error>
           <mat-error *ngIf="f.address.errors?.minlength">La longitud mínima son 5 carácteres.</mat-error>
@@ -56,7 +56,7 @@
         </mat-form-field>
       </div>
 
-      <div fxLayout="row wrap" class="form-row">
+      <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px">
         <mat-form-field>
           <input matInput formControlName="cp" placeholder="Código postal" required>
           <mat-error *ngIf="f.cp.errors?.required">El campo es requerido.</mat-error>
@@ -70,8 +70,8 @@
         </mat-form-field>
       </div>
 
-      <div fxLayout="row wrap" class="form-row">
-        <mat-form-field fxFlex="380px">
+      <div fxLayout="row wrap" fxLayoutAlign="center center" fxFlex.gt-xs="390px">
+        <mat-form-field fxFill>
           <input matInput formControlName="iban" pattern="ES\d{22}" placeholder="IBAN" required>
           <mat-error *ngIf="f.iban.errors?.required">El campo es requerido.</mat-error>
           <mat-error *ngIf="f.iban.errors?.pattern && !f.iban.errors?.required">
@@ -79,7 +79,7 @@
         </mat-form-field>
       </div>
 
-      <div fxLayout="row wrap" class="form-row">
+      <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap.gt-xs="30px">
         <mat-form-field>
           <input matInput formControlName="phone" placeholder="Teléfono" required>
           <mat-error *ngIf="f.phone.errors?.required">El campo es requerido.</mat-error>
