@@ -12,6 +12,8 @@ import { RenterService } from 'src/app/core/services/renter.service';
 export class DeleteRDialogComponent {
   title:string;
   message: string;
+  renter: string;
+
   constructor(public dialogRef: MatDialogRef<DeleteRDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private rservice:RenterService,
@@ -21,7 +23,8 @@ export class DeleteRDialogComponent {
   }
 
   ngOnInit() {
-    this.title=`Confirmar borrado Inquilino:${this.data.data.dni}`;
+    this.title = `Confirmar borrado Inquilino:`;
+    this.renter = `${this.data.data.name} ${this.data.data.surname}`;
     this.message=`El borrado de este registro podría provocar la pérdida
     de información relacionada con este y su borrado permanente.`;
 

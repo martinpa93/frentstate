@@ -11,6 +11,7 @@ import { Property } from 'src/app/core/models/Property';
 })
 export class DeletePDialogComponent {
   title:string;
+  property:string;
   message: string;
   constructor(public dialogRef: MatDialogRef<DeletePDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -21,7 +22,8 @@ export class DeletePDialogComponent {
   }
 
   ngOnInit() {
-    this.title=`Confirmar borrado Propiedad:${this.data.data.cref}`;
+    this.title=`Confirmar borrado Propiedad:`;
+    this.property= this.data.data.address;
     this.message=`El borrado de este registro podría provocar la pérdida
     de información relacionada con este y su borrado permanente.`;
 

@@ -89,8 +89,7 @@ export class ListRenterComponent implements OnInit{
   onDelete(element:any): void {
     const dialogRef = this.dialog.open(DeleteRDialogComponent, {
       data:{data:element},
-      width: '400px',height:'250px',autoFocus:true,
-      minHeight:"250px",minWidth:"400px",maxHeight:"280px",maxWidth:"500px"});
+      width: '400px'});
     
       dialogRef.afterClosed().subscribe(
         data =>{

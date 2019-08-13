@@ -24,8 +24,8 @@ export class DeleteCDialogComponent {
 
   ngOnInit() {
     this.title=`Confirmar borrado :`;
-    this.property=`Inmueble ${this.data.data.property_id}`;
-    this.renter=`Inquilino ${this.data.data.renter_id}`;
+    this.property=`Inmueble ${this.data.data.address}`;
+    this.renter=`Inquilino ${this.data.data.name}  ${this.data.data.surname}`;
     this.message=`El borrado de este registro podría provocar la pérdida
     de información relacionada con este y su borrado permanente.`;
 
