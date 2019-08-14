@@ -5,3 +5,4 @@
 html, body { height: 100%; width:100%;background-color: #fafafa;}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+.mat-column-actions { padding-right:0px!important; }

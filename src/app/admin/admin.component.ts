@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -23,7 +23,6 @@ export class AdminComponent {
 
   constructor(private service:UserService,
               private breakpointObserver: BreakpointObserver,
-              private route: ActivatedRoute,
               private router: Router,
               private snackBar:MatSnackBar) {}
 

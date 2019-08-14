@@ -20,6 +20,7 @@
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="!(isHandset$ | async)">
     <mat-nav-list>
+      <a mat-list-item routerLink="home" routerLinkActive="active-link" (click)="linkClose()"><mat-icon>apps</mat-icon>Home</a>
       <a mat-list-item routerLink="properties" routerLinkActive="active-link" (click)="linkClose()"><mat-icon>home</mat-icon>Inmuebles</a>
       <a mat-list-item routerLink="renters" routerLinkActive="active-link" (click)="linkClose()"><mat-icon> contacts</mat-icon>Inquilinos</a>
       <a mat-list-item routerLink="contracts"routerLinkActive="active-link" (click)="linkClose()">	<mat-icon>description</mat-icon>Contratos</a>
