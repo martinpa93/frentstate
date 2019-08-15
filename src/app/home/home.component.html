@@ -1,3 +1,23 @@
-<p>
-  home works!
-</p>
+<div class="container" fxFill>
+  <div fxLayoutAlign="center center">
+    <h1 fxLayoutAlign="center center">Home</h1>
+  </div>
+  <mat-card class="properties-avaliable-card">
+    <mat-card-header>
+        <mat-card-title>Propiedades ocupadas</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div  style="max-width: 700px; margin:auto; ">
+          <canvas
+          baseChart
+          [chartType]="'doughnut'"
+          [datasets]="chartData"
+          [labels]="chartLabels"
+          [options]="chartOptions"
+          [legend]="false"
+          >
+          </canvas>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

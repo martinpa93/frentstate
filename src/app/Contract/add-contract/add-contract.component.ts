@@ -3,6 +3,8 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar, MatCheckbox } from '@angular/material';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Contract } from 'src/app/core/models/contract';
+import * as moment from 'moment'; 
+
 
 import { PropertyService } from 'src/app/core/services/property.service';
 import { RenterService } from 'src/app/core/services/renter.service';
@@ -92,6 +94,10 @@ export class AddContractComponent implements OnInit {
   }
 
   onSubmit() {
+    const auxDstart = moment.utc(this.form.value.dstart).toDate();
+    const auxDend = moment.utc(this.form.value.dend).toDate();
+    this.form.value.dstart = moment(auxDstart).local().format('YYYY-MM-DD HH:mm:ss');
+    this.form.value.dend = moment(auxDend).local().format('YYYY-MM-DD HH:mm:ss');
     if (this.data){
       this.form.controls['property_id'].enable();
       this.form.controls['renter_id'].enable();
@@ -106,14 +112,10 @@ export class AddContractComponent implements OnInit {
         this.dialogRef.close(this.form.value);
       });
     } else {
-      this.cservice.addContract(this.form.value).subscribe(
-        data => {
-        const address = this.properties.find((item) => item.cref === this.form.value.property_id).address;
-        const name = this.renters.find((item) => item.dni === this.form.value.renter_id).name;
-        const surname = this.renters.find((item) => item.dni === this.form.value.renter_id).surname;
-        data.address = address;
-        data.name = name;
-        data.surname = surname;
+      this.cservice.addContract(this.form.value).subscribe(data => {
+        data.address = this.properties.find((item) => item.cref === this.form.value.property_id).address;
+        data.name = this.renters.find((item) => item.dni === this.form.value.renter_id).name;
+        data.surname = this.renters.find((item) => item.dni === this.form.value.renter_id).surname;
 
         this.snackBar.open('Guardado', 'OK', {
           verticalPosition: 'bottom',

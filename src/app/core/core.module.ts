@@ -15,7 +15,6 @@ import { FileService } from './services/file.service';
 @NgModule({
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptor, multi: true },
-    XhrErrorHandlerService,
     { provide: ErrorHandler, useClass: XhrErrorHandlerService },
     AuthGuard,
     JwtService,

@@ -12,6 +12,7 @@ import { MatButtonModule,MatToolbarModule,
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import {MatTabsModule} from '@angular/material/tabs';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import {MAT_DATE_LOCALE} from '@angular/material';
 
 
 
@@ -45,19 +46,16 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatDialogModule,
     MatSnackBarModule,
     MatTabsModule,
-    
-    
   ],
   declarations: [
   ],
-  providers: [],
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'es-ES' }],
   exports: [
     CommonModule,
     HttpClientModule,
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    
     FlexLayoutModule,
     MatButtonModule,
     MatCheckboxModule,
