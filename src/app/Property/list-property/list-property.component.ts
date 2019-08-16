@@ -28,16 +28,15 @@ export class ListPropertyComponent implements OnInit{
   ngOnInit(){
     this.getProperties();
   }
-  
-  
+
   getProperties() {
     this.service
     .getProperties()
     .subscribe((data: Property[]) => {
-    this.MyDataSource = new MatTableDataSource();
-    this.MyDataSource.data = data;
-    this.MyDataSource.paginator = this.paginator;
-    this.MyDataSource.sort = this.sort;
+      this.MyDataSource = new MatTableDataSource();
+      this.MyDataSource.data = data;
+      this.MyDataSource.paginator = this.paginator;
+      this.MyDataSource.sort = this.sort;
     });
   }
 
@@ -95,9 +94,8 @@ export class ListPropertyComponent implements OnInit{
       dialogRef.afterClosed().subscribe(
         data =>{
           if(data){
-            let objIndex =  this.MyDataSource.data.findIndex(obj => obj.cref == element.cref);
+            const objIndex =  this.MyDataSource.data.findIndex( obj => obj.cref === element.cref);
             this.MyDataSource.data.splice(objIndex, 1);
-            this.MyDataSource.filter ='';
           }
         }
       );
