@@ -107,11 +107,11 @@ export class AddPropertyComponent {
 
   ngOnInit() {
 
-    const loop=[];
+    const loop = [];
     this.geoList.forEach(function(element) {
       loop.push(element.population);
     });
-    this.loop=loop;
+    this.loop = loop;
 
     this.form = this.fb.group({
       'cref': ['', [Validators.required, Validators.minLength(20), Validators.maxLength(20),Validators.pattern(this.crefpattern)]],
@@ -129,18 +129,18 @@ export class AddPropertyComponent {
 
 
 
-    if(this.data){
-      this.title="Editar inmueble";
+    if (this.data) {
+      this.title='Editar inmueble';
       this.form.patchValue({
-        cref:this.data.id.cref,
-        address:this.data.id.address,
-        population:this.data.id.population,
-        province:this.data.id.province,
-        cp:this.data.id.cp,
-        type:this.data.id.type,
-        m2:this.data.id.m2,
-        nroom:this.data.id.nroom,
-        nbath:this.data.id.nbath
+        cref: this.data.id.cref,
+        address: this.data.id.address,
+        population: this.data.id.population,
+        province: this.data.id.province,
+        cp: this.data.id.cp,
+        type: this.data.id.type,
+        m2: this.data.id.m2,
+        nroom: this.data.id.nroom,
+        nbath: this.data.id.nbath
       });
       this.form.controls['cref'].disable();
     }
@@ -151,34 +151,33 @@ export class AddPropertyComponent {
 
   onChanges(): void {
     this.form.get('population').valueChanges.subscribe(val => {
-      let tmp = this.geoList[this.geoList.findIndex(x => x.population === val)].province;
+      const tmp = this.geoList[this.geoList.findIndex(x => x.population === val)].province;
       this.arrayProv = tmp || [];
     });
   }
 
   onSubmit() {
-    if (this.data){
+    if (this.data) {
       this.pservice.updateProperty(this.data.id.cref,this.form.value).subscribe(
-        data=>{
+        data => {
           this.snackBar.open('Guardado', 'OK', {
           verticalPosition: 'bottom',
           horizontalPosition: 'center',
           duration: 4000,
-          panelClass: "snackBar"
+          panelClass: 'snackBar'
         })
         this.dialogRef.close(this.form.value);
       });
     }
-    else{
-      console.log(this.form.value);
+    else {
       this.pservice.addProperty(this.form.value).subscribe(
-        data=>{
+        _ => {
           this.snackBar.open('Guardado', 'OK', {
           verticalPosition: 'bottom',
           horizontalPosition: 'center',
           duration: 4000,
-          panelClass: "snackBar"
-        })
+          panelClass: 'snackBar'
+        });
         this.dialogRef.close(this.form.value);}
       );
     }

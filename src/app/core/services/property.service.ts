@@ -11,7 +11,7 @@ export class PropertyService {
     ) {}
 
     getPropertiesAvaliable(): Observable<any> {
-        return this.http.get(`${environment.apiUrl}/contractsAvaliable`);
+        return this.http.get(`${environment.apiUrl}/propertiesAvaliable`);
     }
 
     getProperties() :Observable<any>{

@@ -36,9 +36,8 @@ export class HomeComponent implements OnInit {
         }
       });
     });
-    this.pservice.getProperties().subscribe(data => { console.log(data);this.total = data.length; });
-    console.log(this.total);
-    this.chartData[0].data = [this.numberHouses, this.numberShops, this.numberGarages];
+    this.pservice.getProperties().subscribe(data => { this.total = data.length; });
+    this.chartData[0].data = [this.numberHouses, this.numberShops, this.numberGarages, this.total];
     this.chartLabels = ['Viviendas ocupadas', 'Locales comerciales ocupados', 'Garajes ocupados', 'Disponibles'];
   }
 

@@ -19,7 +19,7 @@ export class ListContractComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   MyDataSource: any;
   showDiv = false;
-  filter;
+  filter: string;
 
   constructor(private cservice: ContractService,
               private dialog: MatDialog,
@@ -54,7 +54,7 @@ export class ListContractComponent implements OnInit {
       data => {
         if (data) {
           this.MyDataSource.data.splice(0, 0, data);
-          this.doFilter(this.filter);
+          if (typeof this.filter === 'string' && this.filter ) { this.doFilter(this.filter); }
         }
     });
   }
@@ -78,7 +78,7 @@ export class ListContractComponent implements OnInit {
           this.MyDataSource.data[objIndex].renter_id = data.renter_id;
           this.MyDataSource.data[objIndex].dstart = data.dstart;
           this.MyDataSource.data[objIndex].dend = data.dend;
-          this.doFilter(this.filter);
+          if (typeof this.filter === 'string' && this.filter ) { this.doFilter(this.filter); }
         }
       }
     );
