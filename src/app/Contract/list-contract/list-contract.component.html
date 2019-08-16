@@ -5,7 +5,7 @@
 
 <div class="header" fxLayout="row wrap" fxLayoutAlign="space-around center">
   <mat-form-field fxFill fxFlex=60>
-    <input matInput (keyup)="doFilter($event.target.value)" placeholder="Filtro">
+    <input matInput [(ngModel)]="filter" (keyup)="doFilter($event.target.value)"  placeholder="Filtro">
   </mat-form-field>
 </div>
 

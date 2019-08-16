@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { PropertyService } from '../core/services/property.service';
-import { element } from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-home',

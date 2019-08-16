@@ -14,20 +14,21 @@ import { DeleteCDialogComponent } from '../deletec-dialog/deletec-dialog.compone
   templateUrl: './list-contract.component.html',
   styleUrls: ['./list-contract.component.scss'],
 })
-export class ListContractComponent implements OnInit{
+export class ListContractComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   MyDataSource: any;
   showDiv = false;
+  filter;
 
-  constructor(private cservice:ContractService,
-              private dialog:MatDialog,
-            private router: Router){}
+  constructor(private cservice: ContractService,
+              private dialog: MatDialog,
+            private router: Router) {}
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['property_id','address','renter_id','name','dstart','dend','actions'];
+  displayedColumns = ['property_id', 'address', 'renter_id', 'name', 'dstart', 'dend', 'actions'];
 
-  ngOnInit(){
+  ngOnInit() {
     this.getContracts();
   }
 
@@ -42,63 +43,60 @@ export class ListContractComponent implements OnInit{
     });
   }
 
-  doFilter = (value: string) => {
+  doFilter(value: string) {
     this.MyDataSource.filter = value.trim().toLocaleLowerCase();
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(AddContractComponent, {autoFocus:true, width:"600px"});
+    const dialogRef = this.dialog.open(AddContractComponent, {autoFocus: true, width: '600px'});
 
     dialogRef.afterClosed().subscribe(
       data => {
         if (data) {
           this.MyDataSource.data.splice(0, 0, data);
-          this.MyDataSource.filter = '';
+          this.doFilter(this.filter);
         }
     });
   }
 
-  openEditor():void{
+  openEditor(): void {
 
   }
 
-  onEdit(id:any): void {
+  onEdit(id: any): void {
     const dialogRef = this.dialog.open(AddContractComponent, {
-      data:{data:id, mode:'edit'},
-      width: '480px',autoFocus:true
+      data: { data: id, mode: 'edit'},
+      width: '480px', autoFocus: true
     });
 
     dialogRef.afterClosed().subscribe(
-      data =>{
-        if(data){
+      data => {
+        if (data) {
           const objIndex =  this.MyDataSource.data.findIndex(obj => obj.id === id.id);
-
-          // Update object's name property.
 
           this.MyDataSource.data[objIndex].property_id = data.property_id;
           this.MyDataSource.data[objIndex].renter_id = data.renter_id;
           this.MyDataSource.data[objIndex].dstart = data.dstart;
           this.MyDataSource.data[objIndex].dend = data.dend;
+          this.doFilter(this.filter);
         }
       }
     );
   }
 
-  onDelete(element:any): void {
+  onDelete(element: any): void {
     const dialogRef = this.dialog.open(DeleteCDialogComponent, {
-      data:{data:element},
-      width: '480px',autoFocus:true,
+      data: { data: element},
+      width: '480px', autoFocus: true,
     });
-    
-      dialogRef.afterClosed().subscribe(
-        data =>{
-          if(data){
-            const objIndex =  this.MyDataSource.data.findIndex(obj => obj.id === element.id);
-            this.MyDataSource.data.splice(objIndex, 1);
-            this.MyDataSource.filter ='';
-          }
+
+    dialogRef.afterClosed().subscribe(
+      data => {
+        if (data) {
+          const objIndex =  this.MyDataSource.data.findIndex(obj => obj.id === element.id);
+          this.MyDataSource.data.splice(objIndex, 1);
         }
-      );
+      }
+    );
   }
 }
- 

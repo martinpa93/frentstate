@@ -61,7 +61,7 @@ export class AddContractComponent implements OnInit {
 
   get f() { return this.form.controls; }
 
-  getProperties(){
+  getProperties() {
     this.pservice
     .getProperties()
     .subscribe((data) => {
@@ -73,7 +73,7 @@ export class AddContractComponent implements OnInit {
     });
   }
 
-  getRenters(){
+  getRenters() {
     this.rservice
     .getRenters()
     .subscribe((data) => {
@@ -85,7 +85,7 @@ export class AddContractComponent implements OnInit {
     });
   }
 
-  changeStartDate(){ this.form.patchValue({dend:''}); }
+  changeStartDate(){ this.form.patchValue({dend: ''}); }
 
   myFilter = (d: Date): boolean => {
     const day = d.getTime();
@@ -98,7 +98,7 @@ export class AddContractComponent implements OnInit {
     const auxDend = moment.utc(this.form.value.dend).toDate();
     this.form.value.dstart = moment(auxDstart).local().format('YYYY-MM-DD HH:mm:ss');
     this.form.value.dend = moment(auxDend).local().format('YYYY-MM-DD HH:mm:ss');
-    if (this.data){
+    if (this.data) {
       this.form.controls['property_id'].enable();
       this.form.controls['renter_id'].enable();
       this.cservice.updateContract(this.data.data.id, this.form.value).subscribe(
@@ -110,6 +110,22 @@ export class AddContractComponent implements OnInit {
           panelClass: 'snackBar'
         });
         this.dialogRef.close(this.form.value);
+      },
+      (err) => {
+        if (err.status === 400 ) {
+          if (err.error === 'El rango de fechas es incorrecto') {
+            this.snackBar.open('El rango de fechas se solapa con otro', 'ERR', {
+              verticalPosition: 'bottom',
+              horizontalPosition: 'center',
+              duration: 4000
+            });
+            this.form.controls['property_id'].disable();
+            this.form.controls['renter_id'].disable();
+            this.form.controls['dstart'].reset();
+            this.form.controls['dend'].reset();
+            return;
+          }
+        }
       });
     } else {
       this.cservice.addContract(this.form.value).subscribe(data => {
@@ -124,6 +140,25 @@ export class AddContractComponent implements OnInit {
           panelClass: 'snackBar'
         });
         this.dialogRef.close(data); 
+      },
+      (err) => {
+        console.log(err);
+        if (err.status === 400 ) {
+          if (err.error === 'El rango de fechas es incorrecto') {
+            this.snackBar.open('El rango de fechas se solapa', 'ERR', {
+              verticalPosition: 'bottom',
+              horizontalPosition: 'center',
+              duration: 4000
+            });
+            this.form.reset();
+            return;
+          }
+          this.snackBar.open('Los datos enviados no son válidos', 'ERR', {
+            verticalPosition: 'bottom',
+            horizontalPosition: 'center',
+            duration: 4000
+          });
+        }
       });
     }
   }

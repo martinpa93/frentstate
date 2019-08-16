@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable} from 'rxjs';
-import { map,tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 
 @Injectable()
@@ -10,17 +10,17 @@ export class ContractService {
         private http: HttpClient
     ) {}
 
-    getContracts() :Observable<any>{
+    getContracts(): Observable<any> {
         return this.http.get(`${environment.apiUrl}/contract`)
         .pipe(map(
-            data => {return data;}
+            data => { return data; }
         ));
     }
 
-    getContract(id):Observable<any>{
+    getContract(id): Observable<any> {
         return this.http.get(`${environment.apiUrl}/contract/${id}`)
         .pipe(map(
-            data => {return data;}
+            data => { return data; }
         ));
     }
 
