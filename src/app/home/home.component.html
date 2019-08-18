@@ -4,11 +4,17 @@
   </div>
   <mat-card class="properties-avaliable-card">
     <mat-card-header>
-        <mat-card-title>Propiedades ocupadas</mat-card-title>
+      <mat-card-title>Propiedades ocupadas</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <div  style="max-width: 700px; margin:auto; ">
-          <canvas
+      <div>
+        <mat-progress-spinner *ngIf="loading else loader"
+          style="margin:auto"
+          class="loading-indicator"
+          mode="indeterminate">
+        </mat-progress-spinner>
+        <ng-template #loader>
+          <canvas  style="max-height: 400px; max-width:800px;margin:auto;"
           baseChart
           [chartType]="'doughnut'"
           [datasets]="chartData"
@@ -17,6 +23,15 @@
           [legend]="false"
           >
           </canvas>
+          <div fxLayout="row wrap" class="chart-result">
+            <p>Viviendas ocupadas: {{ numberHouses }} </p>
+            <p>Locales comerciales ocupados: {{ numberShops }} </p>
+            <p>Garajes ocupados: {{ numberGarages }} </p>
+            <p>Total inmuebles ocupados: {{ totalBusy }}</p>
+            <p>Disponibles:  {{ total-totalBusy }}</p>
+            <p>Total:   {{ total }}</p>
+          </div>
+        </ng-template>
       </div>
     </mat-card-content>
   </mat-card>

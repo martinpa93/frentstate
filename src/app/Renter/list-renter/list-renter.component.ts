@@ -17,29 +17,31 @@ import { DeleteRDialogComponent } from '../deleter-dialog/deleter-dialog.compone
 export class ListRenterComponent implements OnInit{
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  MyDataSource:any;
-  renterList:Renter[];
-  constructor(private service:RenterService,
-              private dialog:MatDialog,
-            private router: Router){}
+  MyDataSource: any;
+  renterList: Renter[];
+  loading = true;
+
+  constructor(private service: RenterService,
+              private dialog: MatDialog,
+            private router: Router) {}
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['dni','name','surname','dbirth','address','cp','population','phone','iban','job','actions'];
+  displayedColumns = ['dni', 'name', 'surname', 'dbirth', 'address', 'cp', 'population', 'phone', 'iban', 'job', 'actions'];
 
 
   ngOnInit(){
     this.getRenters();
   }
-  
-  
+
   getRenters() {
     this.service
     .getRenters()
     .subscribe((data: Renter[]) => {
-    this.MyDataSource = new MatTableDataSource();
-    this.MyDataSource.data = data;
-    this.MyDataSource.paginator = this.paginator;
-    this.MyDataSource.sort = this.sort;
+      this.MyDataSource = new MatTableDataSource();
+      this.MyDataSource.data = data;
+      this.MyDataSource.paginator = this.paginator;
+      this.MyDataSource.sort = this.sort;
+      this.loading = false;
     });
   }
 

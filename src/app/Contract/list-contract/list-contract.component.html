@@ -10,6 +10,12 @@
 </div>
 
 <div class="mat-elevation-z8">
+  <div *ngIf="loading"> 
+    <mat-progress-spinner
+      class="spinner-props"
+      mode="indeterminate">
+    </mat-progress-spinner>
+  </div>
   <table mat-table class="full-width-table" [dataSource]="MyDataSource" matSort aria-label="Elements">
     <ng-container matColumnDef="property_id">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Inmueble</th>

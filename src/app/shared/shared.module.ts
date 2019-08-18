@@ -13,7 +13,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import {MatTabsModule} from '@angular/material/tabs';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MAT_DATE_LOCALE} from '@angular/material';
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -46,6 +46,7 @@ import {MAT_DATE_LOCALE} from '@angular/material';
     MatDialogModule,
     MatSnackBarModule,
     MatTabsModule,
+    MatProgressSpinnerModule
   ],
   declarations: [
   ],
@@ -79,6 +80,7 @@ import {MAT_DATE_LOCALE} from '@angular/material';
     MatSelectModule,
     MatDialogModule,
     MatSnackBarModule,
+    MatProgressSpinnerModule
     // Declarations
   ]
   })

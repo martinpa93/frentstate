@@ -19,6 +19,7 @@ export class ListContractComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   MyDataSource: any;
   showDiv = false;
+  loading = true;
   filter = '';
 
   constructor(private cservice: ContractService,
@@ -36,10 +37,11 @@ export class ListContractComponent implements OnInit {
     this.cservice
     .getContracts()
     .subscribe((data: Contract[]) => {
-    this.MyDataSource = new MatTableDataSource();
-    this.MyDataSource.data = data;
-    this.MyDataSource.paginator = this.paginator;
-    this.MyDataSource.sort = this.sort;
+      this.MyDataSource = new MatTableDataSource();
+      this.MyDataSource.data = data;
+      this.MyDataSource.paginator = this.paginator;
+      this.MyDataSource.sort = this.sort;
+      this.loading = false;
     });
   }
 

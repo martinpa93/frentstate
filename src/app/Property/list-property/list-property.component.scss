@@ -1,3 +1,10 @@
+.spinner-props {
+  position:fixed;
+  z-index:1000;
+  top: 50%;
+  left: 50%;
+}
+
 .mat-elevation-z8{
   @media (max-width: 650px) {
     height: calc(100% - 233px);

@@ -16,14 +16,16 @@ import { DeletePDialogComponent } from '../deletep-dialog/deletep-dialog.compone
 export class ListPropertyComponent implements OnInit{
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  MyDataSource:any;
-  property:Property;
-  constructor(private service:PropertyService,
-              private dialog:MatDialog,
-              ){}
-
+  MyDataSource: any;
+  property: Property;
+  loading = true;
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['cref','address','population','province','cp','type','m2','nroom','nbath','actions'];
+
+  constructor(private service: PropertyService,
+              private dialog: MatDialog,
+              ){}
+
 
   ngOnInit(){
     this.getProperties();
@@ -37,6 +39,7 @@ export class ListPropertyComponent implements OnInit{
       this.MyDataSource.data = data;
       this.MyDataSource.paginator = this.paginator;
       this.MyDataSource.sort = this.sort;
+      this.loading = false;
     });
   }
 
@@ -50,7 +53,6 @@ export class ListPropertyComponent implements OnInit{
      });
 
     dialogRef.afterClosed().subscribe(
-      
       data =>{
         if(data){
           this.MyDataSource.data.splice(0,0,data);

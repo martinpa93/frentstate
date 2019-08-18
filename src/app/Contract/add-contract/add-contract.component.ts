@@ -142,7 +142,6 @@ export class AddContractComponent implements OnInit {
         this.dialogRef.close(data); 
       },
       (err) => {
-        console.log(err);
         if (err.status === 400 ) {
           if (err.error === 'El rango de fechas es incorrecto') {
             this.snackBar.open('El rango de fechas se solapa', 'ERR', {
