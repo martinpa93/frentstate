@@ -14,16 +14,15 @@ export class AuthComponent implements OnInit {
   authType: String = '';
   title: String = '';
   authForm: FormGroup;
-  hide:boolean = true;
+  hide = true;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private userService: UserService,
     private fb: FormBuilder,
-    private snackBar:MatSnackBar
+    private snackBar: MatSnackBar
   ) {
-    // use FormBuilder to create a form group
     this.authForm = this.fb.group({
       'email': ['', [Validators.required, Validators.email]],
       'password': ['', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]]
@@ -31,15 +30,11 @@ export class AuthComponent implements OnInit {
   }
 
   ngOnInit() {
-    //Enrutador se suscribe para ver los cambios y aplicar efecto
     this.route.url.subscribe(data => {
-      // ultima secuencia del path
       this.authType = data[data.length - 1].path;
-      //cambia el titulo segun el path
       this.title = (this.authType === 'login') ? 'Login' : 'Registro';
-      // añade un control al formulario y su validación de ser el registro
       if (this.authType === 'register') {
-        this.authForm.addControl('name', new FormControl('',[Validators.required, Validators.minLength(3), Validators.maxLength(10)]));
+        this.authForm.addControl('name', new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]));
       }
     });
   }
@@ -47,41 +42,39 @@ export class AuthComponent implements OnInit {
   get f() { return this.authForm.controls; }
 
   goToggle() {
-    (this.authType === 'login') ?  this.router.navigate(['/register']): this.router.navigate(['/login']);
+    (this.authType === 'login') ?  this.router.navigate(['/register']) : this.router.navigate(['/login']);
   }
 
   submitForm() {
     const credentials = this.authForm.value;
-   
-    if (this.authType == 'login'){
+    if (this.authType === 'login') {
       this.userService
       .login(credentials)
       .subscribe(
-        data =>{
+        _ => {
           this.snackBar.open('Conectado', 'OK', {
             verticalPosition: 'bottom',
             horizontalPosition: 'center',
             duration: 4000,
-            panelClass: "snackBar"
-          })
-          this.router.navigateByUrl('/admin')
-        } 
+            panelClass: 'snackBar'
+          });
+          this.router.navigateByUrl('/admin/home');
+        }
       );
     }
 
-    if (this.authType == 'register'){
+    if (this.authType === 'register') {
       return this.userService
       .register(credentials)
       .subscribe(
-        
-        data => {
+        _ => {
           this.snackBar.open('¡Registro completado con éxito!', 'OK', {
             verticalPosition: 'bottom',
             horizontalPosition: 'center',
             duration: 4000,
-            panelClass: "snackBar"
-          })
-          this.router.navigateByUrl('/login')
+            panelClass: 'snackBar'
+          });
+          this.router.navigateByUrl('/login');
         });
     }
   }
