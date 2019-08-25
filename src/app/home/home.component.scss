@@ -16,3 +16,21 @@ canvas {
     padding-right:10px;
 
 }
+
+.notifications-container{
+    margin-top:20px;
+}
+
+.list-container {
+    height: 400px;
+    width: 100%;
+    border: 1px solid black;
+  }
+  
+  .example-item {
+    height: 100px;
+  }
+
+  @media (max-width: 1024px){
+    
+  }

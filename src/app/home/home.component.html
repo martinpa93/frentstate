@@ -1,38 +1,53 @@
-<div class="container" fxFill>
-  <div fxLayoutAlign="center center">
-    <h1 fxLayoutAlign="center center">Home</h1>
-  </div>
+<div fxFill>
   <mat-card class="properties-avaliable-card">
+     
     <mat-card-header>
       <mat-card-title>Propiedades ocupadas</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <div>
         <mat-progress-spinner *ngIf="loading else loader"
           style="margin:auto"
           class="loading-indicator"
           mode="indeterminate">
         </mat-progress-spinner>
-        <ng-template #loader>
-          <canvas  style="max-height: 400px; max-width:800px;margin:auto;"
-          baseChart
-          [chartType]="'doughnut'"
-          [datasets]="chartData"
-          [labels]="chartLabels"
-          [options]="chartOptions"
-          [legend]="false"
-          >
-          </canvas>
-          <div fxLayout="row wrap" class="chart-result">
-            <p>Viviendas ocupadas: {{ numberHouses }} </p>
-            <p>Locales comerciales ocupados: {{ numberShops }} </p>
-            <p>Garajes ocupados: {{ numberGarages }} </p>
-            <p>Total inmuebles ocupados: {{ totalBusy }}</p>
-            <p>Disponibles:  {{ total-totalBusy }}</p>
-            <p>Total:   {{ total }}</p>
-          </div>
+        <ng-template #loader >
+            <canvas style="max-height: 400px; max-width:800px;margin:auto;"  
+            baseChart
+            [chartType]="'doughnut'"
+            [datasets]="chartData"
+            [labels]="chartLabels"
+            [options]="chartOptions"
+            [legend]="false"
+            >
+            </canvas>
+            <div fxLayout.gt-md="row wrap" fxLayout.lt-lg="column wrap" fxLayoutAlign.lt-lg="start center" fxLayoutAlign.gt-md="center center" class="chart-result">
+              <p>Viviendas ocupadas: {{ numberHouses }} </p>
+              <p>Locales comerciales ocupados: {{ numberShops }} </p>
+              <p>Garajes ocupados: {{ numberGarages }} </p>
+              <p>Total inmuebles ocupados: {{ totalBusy }}</p>
+              <p>Disponibles:  {{ total-totalBusy }}</p>
+              <p>Total:   {{ total }}</p>
+            </div>
         </ng-template>
-      </div>
     </mat-card-content>
   </mat-card>
+  
+  <mat-card class="notifications-container">
+    <mat-card-header>
+        <mat-card-title>Notificaciones</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <cdk-virtual-scroll-viewport itemSize="100" minBufferPx="1200" maxBufferPx="1200"  class="list-container" >
+         <mat-list>
+           <mat-list-item *cdkVirtualFor="let item of notifications" class="example-item">
+              <h4 mat-line>{{item.event}}</h4>
+              <p mat-line>{{item.description}}</p>
+              <mat-divider></mat-divider>
+          </mat-list-item>
+         </mat-list>
+      </cdk-virtual-scroll-viewport>
+    </mat-card-content>
+  </mat-card>
+  <div style="height: 50px;"></div>
+
 </div>

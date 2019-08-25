@@ -14,6 +14,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MAT_DATE_LOCALE} from '@angular/material';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 
 @NgModule({
@@ -46,7 +47,9 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatDialogModule,
     MatSnackBarModule,
     MatTabsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    ScrollingModule,
+
   ],
   declarations: [
   ],
@@ -80,9 +83,10 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatSelectModule,
     MatDialogModule,
     MatSnackBarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    ScrollingModule,
+
     // Declarations
   ]
   })
   export class SharedModule { }
-  

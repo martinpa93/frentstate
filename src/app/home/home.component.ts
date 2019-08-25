@@ -1,13 +1,14 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { PropertyService } from '../core/services/property.service';
 import { BaseChartDirective } from 'ng2-charts';
+import { NotificationService } from '../core/services/notification.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  @ViewChild(BaseChartDirective) chart: BaseChartDirective;
+  objectKeys = Object.keys;
   numberHouses = 0;
   numberShops = 0;
   numberGarages = 0;
@@ -27,11 +28,23 @@ export class HomeComponent implements OnInit {
   ];
 
   chartLabels = [];
+  notifications;
 
-  constructor(private pservice: PropertyService) {
+  constructor(
+      private pservice: PropertyService,
+      private nservice: NotificationService
+    ) {
   }
 
   ngOnInit() {
+    this.getChartData();
+    this.nservice.getNotifications().subscribe(data => {
+      this.notifications =  Object.keys(data).map(i => data[i]);
+      console.log(this.notifications);
+    });
+  }
+
+  private getChartData() {
     this.pservice.getPropertiesAvaliable().subscribe(data => {
       data.forEach(element => {
         if (element.status === true) {
@@ -42,7 +55,7 @@ export class HomeComponent implements OnInit {
           }
         }
       });
-      this.pservice.getProperties().subscribe(data => {
+      this.pservice.getProperties().subscribe( _ => {
         this.total = data.length;
         this.totalBusy = this.numberGarages + this.numberHouses + this.numberShops;
         this.chartData[0].data = [this.numberHouses, this.numberShops, this.numberGarages];
