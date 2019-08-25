@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   total = 0;
   totalBusy = 0;
   loading = true;
+  loading2 = true;
 
   chartOptions = {
     responsive: true
@@ -40,6 +41,7 @@ export class HomeComponent implements OnInit {
     this.getChartData();
     this.nservice.getNotifications().subscribe(data => {
       this.notifications =  Object.keys(data).map(i => data[i]);
+      this.loading2 = false;
     });
   }
 

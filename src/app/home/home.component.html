@@ -37,14 +37,19 @@
         <mat-card-title>Notificaciones</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <cdk-virtual-scroll-viewport itemSize="100" minBufferPx="1200" maxBufferPx="1200"  class="list-container" >
-         <mat-list>
-           <mat-list-item *cdkVirtualFor="let item of notifications" class="example-item">
+      <mat-progress-spinner *ngIf="loading2"
+        style="margin:auto"
+        class="loading-indicator"
+        mode="indeterminate">
+      </mat-progress-spinner>
+      <cdk-virtual-scroll-viewport *ngIf="!loading2" itemSize="100" minBufferPx="1200" maxBufferPx="1200"  class="list-container" >
+        <mat-list>
+          <mat-list-item *cdkVirtualFor="let item of notifications" class="example-item">
               <h4 mat-line>{{item.event}}</h4>
               <p mat-line>{{item.description}}</p>
               <mat-divider></mat-divider>
           </mat-list-item>
-         </mat-list>
+        </mat-list>
       </cdk-virtual-scroll-viewport>
     </mat-card-content>
   </mat-card>
