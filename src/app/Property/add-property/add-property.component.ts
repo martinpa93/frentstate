@@ -151,7 +151,8 @@ export class AddPropertyComponent {
 
   onChanges(): void {
     this.form.get('population').valueChanges.subscribe(val => {
-      const tmp = this.geoList[this.geoList.findIndex(x => x.population === val)].province;
+      let tmp = this.geoList[this.geoList.findIndex(x => x.population === val)];
+      if(tmp) tmp = tmp.province;
       this.arrayProv = tmp || [];
     });
   }
