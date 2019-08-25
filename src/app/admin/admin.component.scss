@@ -4,13 +4,15 @@
 
 .sidenav {
   position: fixed;
-  top: 64px !important;
   bottom: 0;
   left: 0;
   padding: 0;
   min-width: 150px;
   &.collapsed {
     top: 56px;
+  }
+  @media (min-width: 650px){
+    top: 64px !important;
   }
 }
 
@@ -29,11 +31,6 @@ mat-sidenav-container {
 
 .myspacer {
   flex: 1 1 auto;
-}
-
-.btcolor{
-  color:white;
-  border-width: 3px;
 }
 
 .icolor{

@@ -40,7 +40,6 @@ export class HomeComponent implements OnInit {
     this.getChartData();
     this.nservice.getNotifications().subscribe(data => {
       this.notifications =  Object.keys(data).map(i => data[i]);
-      console.log(this.notifications);
     });
   }
 
