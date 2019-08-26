@@ -24,10 +24,6 @@ export class AddPropertyComponent {
   cppattern = '((0[1-9]|5[0-2])|[1-4][0-9])[0-9]{3}';
   m2pattern = '(\\d?\\d?\\d?\\d{1}){1}';
 
-
-
-
-
   constructor(public dialogRef: MatDialogRef<AddPropertyComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
@@ -101,8 +97,7 @@ export class AddPropertyComponent {
         })
         this.dialogRef.close(this.form.value);
       });
-    }
-    else {
+    } else {
       this.pservice.addProperty(this.form.value).subscribe(
         _ => {
           this.snackBar.open('Guardado', 'OK', {
