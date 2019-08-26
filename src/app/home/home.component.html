@@ -1,12 +1,14 @@
 <div fxFill>
+  <div>
+    <mat-progress-spinner *ngIf="loading"
+      class="loading-indicator"
+      mode="indeterminate">
+    </mat-progress-spinner>
+  </div>
   <mat-tab-group class=home-tab>
       <mat-tab label="Disponibilidad" class="properties-container">
-        <mat-progress-spinner *ngIf="loading else loader"
-          style="margin:auto"
-          class="loading-indicator"
-          mode="indeterminate">
-        </mat-progress-spinner>
-        <ng-template #loader >
+        <ng-container *ngIf="!loading">
+          <div class="chart-container">
             <canvas style="max-height: 400px; max-width:800px;margin:auto;"  
             baseChart
             [chartType]="'doughnut'"
@@ -24,10 +26,11 @@
               <p>Disponibles:  {{ total-totalBusy }}</p>
               <p>Total:   {{ total }}</p>
             </div>
-        </ng-template>
+          </div>
+        </ng-container>
       </mat-tab>
       <mat-tab label="Notificaciones">
-        <cdk-virtual-scroll-viewport *ngIf="!loading2" itemSize="5" minBufferPx="100" maxBufferPx="1200"  class="list-container" >
+        <cdk-virtual-scroll-viewport *ngIf="!loading2" itemSize="5" minBufferPx="100" maxBufferPx="1200" [style.height.px]="height" class="list-container" >
           <mat-list>
             <mat-list-item *cdkVirtualFor="let item of notifications" class="example-item">
                 <h4 mat-line>{{item.event}}</h4>

@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   total = 0;
   totalBusy = 0;
   loading = true;
+  height = window.innerHeight - 112;
 
   chartOptions = {
     responsive: true

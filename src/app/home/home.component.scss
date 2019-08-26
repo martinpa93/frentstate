@@ -1,8 +1,21 @@
+.loading-indicator {
+    position:fixed;
+    margin:auto;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    
+}
+
 .properties-container {
 }
 
 canvas {
     padding-bottom:15px;
+}
+.chart-container {
+    padding-top:50px;
 }
 
 .chart-result > p {
@@ -16,7 +29,6 @@ canvas {
 }
 
 .list-container {
-    height: 400px;
     width: 100%;
     border: 1px solid black;
 }
