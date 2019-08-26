@@ -3,6 +3,7 @@ import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PropertyService } from 'src/app/core/services/property.service';
+import { LOCATION } from '../../core/models/location';
 
 @Component({
   selector: 'add-property',
@@ -10,87 +11,18 @@ import { PropertyService } from 'src/app/core/services/property.service';
   styleUrls: ['./add-property.component.scss'],
 })
 export class AddPropertyComponent {
-  geoList: any = [
-    {
-      "population": "Andalucia",
-      "province": ["Almeria", "Cadiz", "Córdoba", "Granada", "Huelva", "Jaén", "Málaga", "Sevilla"]
-    },
-    {
-      "population": "Aragon",
-      "province": ["Huesca", "Teruel", "Zaragoza"]
-    },
-    {
-      "population": "Asturias",
-      "province": ["Oviedo"]
-    },
-    {
-      "population": "Baleares",
-      "province": ["Palma de Mallorca"]
-    },
-    {
-      "population": "Canarias",
-      "province": ["Santa Cruz de Tenerife", "Las Palmas de Gran Canaria"]
-    },
-    {
-      "population": "Cantabria",
-      "province": ["Santander"]
-    },
-    {
-      "population": "Castilla-La Mancha",
-      "province": ["Albacete", "Ciudad Real", "Cuenca", "Guadalajara", "Toledo"]
-    },
-    {
-      "population": "Castilla y León",
-      "province": ["Ávila", "Burgos", "León", "Salamanca", "Segovia", "Soria", "Valladolid", "Zamora"]
-    },
-    {
-      "population": "Cataluña",
-      "province": ["Barcelona", "Gerona", "Lérida", "Tarragona"]
-    },
-    {
-      "population": "Comunidad Valenciana",
-      "province": ["Alicante", "Castellón de la Plana", "Valencia"]
-    },
-    {
-      "population": "Extremadura",
-      "province": ["Badajoz", "Cáceres"]
-    },
-    {
-      "population": "Galicia",
-      "province": ["La Coruña", "Lugo", "Orense", "Pontevedra"]
-    },
-    {
-      "population": "Madrid",
-      "province": ["Madrid"]
-    },
-    {
-      "population": "Murcia",
-      "province": ["Murcia"]
-    },
-    {
-      "population": "Navarra",
-      "province": ["Pamplona"]
-    },
-    {
-      "population": "País Vasco",
-      "province": ["Bilbao", "San Sebastián", "Vitoria"]
-    },
-    {
-      "population": "La Rioja",
-      "province": ["Logroño"]
-    }
-  ];
-  title = "Añadir inmueble";
-  arrayTypes:Array<string>=["Vivienda","Local comercial","Garaje"];
+  geoList: any = LOCATION;
+  title = 'Añadir inmueble';
+  arrayTypes:Array<string>=['Vivienda','Local comercial','Garaje'];
   arrayNumber:Array<number>=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
   form: FormGroup;
   property:any;
   loop:any;
-  arrayProv:any=[];
-  crefpattern:string="[a-zA-z0-9]{20}";
-  addresspattern:string="(Via|Plaza|Plz|C\/|Calle|Avenida|){1}\\s{1}(\\w){1,30}\\s{1}(1?\\d?\\d?\\d{1}){1}\.{1}\\s{1}([0-5]?\\d?\\d{1}){1}\ª{1}\-{1}([0-1]?\\d?\\d{1}){1}\º{1}";
-  cppattern:string="((0[1-9]|5[0-2])|[1-4][0-9])[0-9]{3}";
-  m2pattern:string="(\\d?\\d?\\d?\\d{1}){1}";
+  arrayProv = [];
+  crefpattern = '[a-zA-z0-9]{20}';
+  addresspattern = '(Via|Plaza|Plz|C\/|Calle|Avenida|){1}\\s{1}(\\w){1,30}\\s{1}(1?\\d?\\d?\\d{1}){1}\.{1}\\s{1}([0-5]?\\d?\\d{1}){1}\ª{1}\-{1}([0-1]?\\d?\\d{1}){1}\º{1}';
+  cppattern = '((0[1-9]|5[0-2])|[1-4][0-9])[0-9]{3}';
+  m2pattern = '(\\d?\\d?\\d?\\d{1}){1}';
 
 
 
